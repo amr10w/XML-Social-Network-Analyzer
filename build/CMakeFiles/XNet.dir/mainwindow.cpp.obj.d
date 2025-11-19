@@ -383,7 +383,7 @@ CMakeFiles/XNet.dir/mainwindow.cpp.obj: \
  D:/QT/6.9.3/mingw_64/include/QtGui/qcursor.h \
  D:/QT/6.9.3/mingw_64/include/QtGui/qbitmap.h \
  D:/QT/6.9.3/mingw_64/include/QtWidgets/qtabwidget.h \
- C:/Users/Amr/Desktop/Study/DSA\ Project/XML-Social-Network-Analyzer/build/XNet_autogen/include/ui_mainwindow.h \
+ C:/Users/Amr/Desktop/Study/DSAPRO~1/XML-SO~1/build/XNET_A~1/include/ui_mainwindow.h \
  D:/QT/6.9.3/mingw_64/include/QtCore/QVariant \
  D:/QT/6.9.3/mingw_64/include/QtCore/qvariant.h \
  D:/QT/6.9.3/mingw_64/include/QtWidgets/QApplication \
@@ -424,4 +424,8 @@ CMakeFiles/XNet.dir/mainwindow.cpp.obj: \
  D:/QT/6.9.3/mingw_64/include/QtWidgets/QStatusBar \
  D:/QT/6.9.3/mingw_64/include/QtWidgets/qstatusbar.h \
  D:/QT/6.9.3/mingw_64/include/QtWidgets/QWidget \
- D:/QT/6.9.3/mingw_64/include/QtWidgets/qwidget.h
+ D:/QT/6.9.3/mingw_64/include/QtWidgets/qwidget.h \
+ D:/QT/6.9.3/mingw_64/include/QtWidgets/QMessageBox \
+ D:/QT/6.9.3/mingw_64/include/QtWidgets/qmessagebox.h \
+ D:/QT/6.9.3/mingw_64/include/QtWidgets/qdialog.h \
+ D:/QT/6.9.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h
