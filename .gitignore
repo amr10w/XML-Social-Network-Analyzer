@@ -1,0 +1,36 @@
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- VS Code ----
+.vscode/
+*.code-workspace
+
+# ---- Build folders ----
+build/
+bin/
+obj/
+out/
+
+# ---- C++ compiled files ----
+*.exe
+*.out
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+
+# ---- CMake ----
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# ---- Debug / Logs ----
+*.log
+*.tmp
+
+# ---- Backup files ----
+*~
+*.bak

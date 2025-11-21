@@ -1,9 +1,0 @@
-C:/Users/Amr/Desktop/Study/DSA Project/XML-Social-Network-Analyzer/build/CMakeFiles/XNet.dir
-C:/Users/Amr/Desktop/Study/DSA Project/XML-Social-Network-Analyzer/build/CMakeFiles/edit_cache.dir
-C:/Users/Amr/Desktop/Study/DSA Project/XML-Social-Network-Analyzer/build/CMakeFiles/rebuild_cache.dir
-C:/Users/Amr/Desktop/Study/DSA Project/XML-Social-Network-Analyzer/build/CMakeFiles/list_install_components.dir
-C:/Users/Amr/Desktop/Study/DSA Project/XML-Social-Network-Analyzer/build/CMakeFiles/install.dir
-C:/Users/Amr/Desktop/Study/DSA Project/XML-Social-Network-Analyzer/build/CMakeFiles/install/local.dir
-C:/Users/Amr/Desktop/Study/DSA Project/XML-Social-Network-Analyzer/build/CMakeFiles/install/strip.dir
-C:/Users/Amr/Desktop/Study/DSA Project/XML-Social-Network-Analyzer/build/CMakeFiles/XNet_autogen_timestamp_deps.dir
-C:/Users/Amr/Desktop/Study/DSA Project/XML-Social-Network-Analyzer/build/CMakeFiles/XNet_autogen.dir
