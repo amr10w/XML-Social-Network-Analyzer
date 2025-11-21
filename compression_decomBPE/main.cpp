@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
 
-    ifstream input("C:\\Users\\mocam\\OneDrive\\Desktop\\Senior 1 Fall 2025\\Data structures and algorthims\\Project\\sample2.xml");
+    ifstream input("sample2.xml");
     if(!input)
     {
         cerr << "Error opening input.xml" << endl;

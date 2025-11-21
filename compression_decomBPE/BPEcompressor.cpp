@@ -118,30 +118,19 @@ bool BPECompressor::saveToFile(const string& path, const CompressedData& data) {
 
 // Load compressed data from file
 CompressedData BPECompressor::loadFromFile(const string& path) {
-    ifstream file(path, ios::binary);
+    std::ifstream file(path);
     CompressedData out;
-    if (!file) return out;
-
-    string header;
-    getline(file, header);
-
-    int rulesCount;
-    file >> rulesCount;
-    file.ignore();
-
-    for (int i=0;i<rulesCount;i++){
-        string line;
-        getline(file,line);
-        size_t sep = line.find('|');
-        out.dictionary.push_back({line.substr(0,sep), line.substr(sep+1)});
+    
+    if (!file.is_open()) {
+        std::cerr << "Error: Cannot open the file: " << path << std::endl;
+        out.encodedText="";
+        return out;  // return empty string on error
     }
 
-    string delimiter;
-    getline(file,delimiter);
-
-    stringstream ss;
-    ss << file.rdbuf();
-    out.encodedText = ss.str();
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    file.close();
+    out.encodedText = buffer.str();
 
     return out;
 }
