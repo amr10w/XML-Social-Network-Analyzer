@@ -8,19 +8,28 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()
 
+set(GRAPHVIZ_DIR "C:/Program Files/Graphviz") 
+
 
 qt_add_executable(XNet
-    WIN32 MACOSX_BUNDLE
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
+
+main.cpp
+mainwindow.cpp
+mainwindow.h
+mainwindow.ui
+disjointsets.h
+graph.h
+graph2img.h
 )
+file(GLOB GVC_LIBS "${GRAPHVIZ_DIR}/lib/*.lib")
+
+include_directories("${GRAPHVIZ_DIR}/include/graphviz")
 
 target_link_libraries(XNet
     PRIVATE
         Qt::Core
         Qt::Widgets
+        ${GVC_LIBS}
 )
 
 include(GNUInstallDirs)
