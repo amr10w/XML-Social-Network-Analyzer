@@ -17,9 +17,7 @@ main.cpp
 mainwindow.cpp
 mainwindow.h
 mainwindow.ui
-disjointsets.h
-graph.h
-graph2img.h
+
 )
 file(GLOB GVC_LIBS "${GRAPHVIZ_DIR}/lib/*.lib")
 
