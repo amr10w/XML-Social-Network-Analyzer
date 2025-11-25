@@ -119,22 +119,29 @@ void Tree<T>::print_preorder_helper(Node<T>* node) {
 }
 
 
-template<typename T>
+template <typename T>
 void Tree<T>::print_prettified_helper(Node<T>* node, string indentation) {
     if (!node) return;
 
-    if (!node->children.empty()) {
-        cout << indentation << "<" << node->data << ">" << "\n";
+    bool OmEleaf = (node->children.size() == 1) && (node->children[0]->children.empty());
 
-        for (auto child : node->children)
-            print_prettified_helper(child, indentation + "   ");
+    if (!OmEleaf) {
+        cout << indentation << "<" << node->data << ">\n";
 
-        cout << indentation << "</" << node->data << ">" << "\n";
+        for (int i = 0; i < node->children.size(); i++) {
+            print_prettified_helper(node->children[i],indentation + "    ");
+        }
+
+        cout << indentation << "</" << node->data << ">\n";
     }
     else {
-        cout << indentation << node->data << "\n";
+        cout << indentation << "<" << node->data << ">";
+        cout << node->children[0]->data;
+        cout << "</" << node->data << ">\n";
     }
 }
+
+
 
 
 
