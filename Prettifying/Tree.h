@@ -123,9 +123,9 @@ template <typename T>
 void Tree<T>::print_prettified_helper(Node<T>* node, string indentation) {
     if (!node) return;
 
-    bool OmEleaf = (node->children.size() == 1) && (node->children[0]->children.empty());
+    bool preLeaf = (node->children.size() == 1) && (node->children[0]->children.empty());
 
-    if (!OmEleaf) {
+    if (!preLeaf) {
         cout << indentation << "<" << node->data << ">\n";
 
         for (int i = 0; i < node->children.size(); i++) {
