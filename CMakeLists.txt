@@ -8,20 +8,30 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()
 
+add_subdirectory(src/UI)
+add_subdirectory(src/app)
+add_subdirectory(src/CLI)
+add_subdirectory(src/core)
+
 
 qt_add_executable(XNet
-    WIN32 MACOSX_BUNDLE
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
+   
+    
+    
 )
+set_target_properties(XNet PROPERTIES OUTPUT_NAME "xml_editor")
+
 
 target_link_libraries(XNet
     PRIVATE
+        app
+        UI
+        core
+        CLI
         Qt::Core
         Qt::Widgets
 )
+
 
 include(GNUInstallDirs)
 
