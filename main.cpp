@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
             cout << "\n[+] Compression complete!\n";
             cout << "\n[+] Compression ratio: " << ratio << "%\n";
             cout << "\n[+] Compression time: " << duration.count() << " ms\n";
+            cout << "\n[+] Compression size(encoding): " << compression_size << " bytes\n";
             compressor.saveToFile(outputPath, compressed);
             cout << "\n[+] Saved output to \"" << outputPath << "\"" << endl;
             return 0;
