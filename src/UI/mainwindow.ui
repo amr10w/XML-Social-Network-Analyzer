@@ -97,7 +97,7 @@
 }</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnOk">
+   <widget class="QPushButton" name="btnOkok">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -135,6 +135,29 @@
     </property>
     <property name="text">
      <string>Cancel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="browseButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>190</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>browseButton</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditFilePath">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>230</y>
+      <width>113</width>
+      <height>21</height>
+     </rect>
     </property>
    </widget>
   </widget>

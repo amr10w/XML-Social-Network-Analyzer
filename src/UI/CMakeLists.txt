@@ -5,9 +5,12 @@ add_library(UI STATIC
 )
 
 target_link_libraries(UI
-    PRIVATE Qt6::Core Qt6::Widgets
+    
+    PRIVATE core 
+    Qt6::Core Qt6::Widgets
 )
 
 target_include_directories(UI
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} 
+    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/../core
 )

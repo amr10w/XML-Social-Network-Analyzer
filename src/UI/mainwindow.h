@@ -20,8 +20,10 @@ public:
 private slots:
     void on_btnOk_Clicked();
     void on_btnCancel_Clicked();
+    void on_browseButton_clicked();
 
 private:
     Ui::MainWindow *ui;
 };
+
 #endif // MAINWINDOW_H
