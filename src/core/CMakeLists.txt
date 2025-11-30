@@ -6,6 +6,13 @@ add_library(core STATIC
     XMLMinifier.h
     XMLMinifier.cpp
     Tree.h
+    SimpleMap.h
+    BPE.h
+    BPE.cpp
+    XML_Compress.h
+    XML_Compress.cpp
+    XML_Decompress.h
+    XML_Decompress.cpp
 )
 
 target_link_libraries(core

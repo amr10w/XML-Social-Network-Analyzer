@@ -2,7 +2,8 @@
 #include "XMLValidator.h"
 #include "XMLMinifier.h"
 #include "Tree.h"
-#include "XML_BPE.h"
+#include "XML_Compress.h"
+#include "XML_Decompress.h"
 #include <vector>
 
 enum ErrorCode {
