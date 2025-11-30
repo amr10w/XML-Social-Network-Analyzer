@@ -2,13 +2,13 @@
 
 void BPE_decompress(const std::string &inputPath, const std::string &outputPath)
 {
-  std::string input = readFileToString(inputPath);
+  readFileToString(inputPath);
 
   writeToFile(outputPath, "");
 
   BPE decompressor;
 
-  auto loaded = decompressor.from_string(input);
+  auto loaded = decompressor.load_from_file(inputPath);
   auto start = std::chrono::high_resolution_clock::now();
   std::cout << "\n[+] Started decompressing \"" << inputPath << "\"\n";
   std::string decompressed = decompressor.decompress(loaded);

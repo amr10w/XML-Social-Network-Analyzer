@@ -1,8 +1,10 @@
 #ifndef BPE_H
 #define BPE_H
-#include <string>
-#include <vector>
 #include "SimpleMap.h"
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <iostream>
 
 struct CompressedData{
     std::vector<std::string> dictionary;
@@ -17,7 +19,7 @@ public:
     std::string decompress(const CompressedData& compressedData);
 
     std::string to_string(const CompressedData& data);
-    CompressedData from_string(const std::string& path);
+    CompressedData load_from_file(const std::string& path);
 
 
 private:
