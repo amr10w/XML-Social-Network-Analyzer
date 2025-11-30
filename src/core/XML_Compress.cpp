@@ -4,8 +4,6 @@ void BPE_compress(const std::string &inputPath, const std::string &outputPath)
 {
   std::string xml = readFileToString(inputPath);
 
-  writeToFile(outputPath, "");
-
   BPE compressor;
 
   auto start = std::chrono::high_resolution_clock::now();
@@ -25,6 +23,6 @@ void BPE_compress(const std::string &inputPath, const std::string &outputPath)
   std::cout << "\n[+] Compression ratio: " << ratio << "%\n";
   std::cout << "\n[+] Compression time: " << duration.count() << " ms\n";
   std::cout << "\n[+] Compression size(encoding): " << compression_size << " bytes\n";
-  writeToFile(outputPath, compressor.to_string(compressed));
+  compressor.write_to_file(outputPath, compressed);
   std::cout << "\n[+] Saved output to \"" << outputPath << "\"" << std::endl;
 }

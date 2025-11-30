@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
         // xml_editor verify -i test.xml
         // xml_editor mini -i in.xml -o out.xml
         // xml_editor json -i test.xml -o test.json
-        // xml_editor compress -i test.xml -o test.comp
-        // xml_editor decompress -i test.comp -o test_decompressed.xml
+        // xml_editor compress -i sample.xml -o sample.comp
+        // xml_editor decompress -i sample.comp -o sample_decompressed.xml
 
 
 

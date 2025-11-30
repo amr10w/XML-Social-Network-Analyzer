@@ -18,7 +18,7 @@ public:
     CompressedData compress(const std::string& xmlText);
     std::string decompress(const CompressedData& compressedData);
 
-    std::string to_string(const CompressedData& data);
+    void write_to_file(const std::string& path, const CompressedData& data);
     CompressedData load_from_file(const std::string& path);
 
 

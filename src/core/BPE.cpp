@@ -144,9 +144,9 @@ std::string BPE::decompress(const CompressedData &compressedData)
     return currentText;
 }
 
-std::string BPE::to_string(const CompressedData &data)
+void BPE::write_to_file(const std::string& path, const CompressedData &data)
 {
-    std::stringstream output;
+    std::ofstream output(path, std::ios::binary);
 
     size_t count = data.dictionary.size();
     output.write((char *)&count, sizeof(size_t));
@@ -160,7 +160,8 @@ std::string BPE::to_string(const CompressedData &data)
     output.write(&sep, 1);
 
     output.write(data.encodedText.data(), data.encodedText.size());
-    return output.str();
+
+    output.close();
 }
 
 CompressedData BPE::load_from_file(const std::string &path)
