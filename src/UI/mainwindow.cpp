@@ -1,13 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "FileUtils.h"
-#include "XMLValidator.h"
-#include "XMLMinifier.h"
-#include "Tree.h"
-#include <QMessageBox>
-#include <QFileDialog>
-#include <QFile>
-#include <QDir>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -15,10 +8,22 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Connect buttons to slots
-    connect(ui->btnOkok, &QPushButton::clicked, this, &MainWindow::on_btnOk_Clicked);
-    connect(ui->btnCancel, &QPushButton::clicked, this, &MainWindow::on_btnCancel_Clicked);
-    connect(ui->browseButton, &QPushButton::clicked, this, &MainWindow::on_browseButton_clicked);
+    // 1. Create instances of your pages
+    m_welcomePage = new WelcomePage(this);
+    
+    // 2. Add them to the stacked widget (defined in mainwindow.ui)
+    ui->stackedWidget->addWidget(m_welcomePage);
+    
+    // (Example: Add a second page later)
+    // m_processingPage = new ProcessingPage(this);
+    // ui->stackedWidget->addWidget(m_processingPage);
+
+    // 3. Connect signals from WelcomePage to MainWindow slots
+    connect(m_welcomePage, &WelcomePage::startProcessingClicked, this, &MainWindow::onStartProcessingClicked);
+    connect(m_welcomePage, &WelcomePage::aboutClicked, this, &MainWindow::onAboutClicked);
+
+    // Start at index 0 (Welcome Page)
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 MainWindow::~MainWindow()
@@ -26,35 +31,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_btnOk_Clicked()
+void MainWindow::switchToPage(int index)
 {
-    QMessageBox::information(this, "Info", "Ok button clicked");
+    ui->stackedWidget->setCurrentIndex(index);
 }
 
-void MainWindow::on_btnCancel_Clicked()
+void MainWindow::onStartProcessingClicked()
 {
-    QMessageBox::warning(this, "Warning", "Cancel button clicked");
+    qDebug() << "Switching to Processing Page...";
+    // In the future: ui->stackedWidget->setCurrentWidget(m_processingPage);
 }
 
-void MainWindow::on_browseButton_clicked()
+void MainWindow::onAboutClicked()
 {
-    QString filePath = QFileDialog::getOpenFileName(
-        this,
-        "Select XML File",
-        QDir::homePath(),            // default start folder
-        "XML Files (*.xml);;All Files (*.*)"
-    );
-
-    if (!filePath.isEmpty()) {
-        std::string content = readFileToString(filePath.toStdString());
-    
-
-    std::vector<Token> tokens = tokenizeXML(content);
-
-    Tree<std::string>* tree = buildTree(tokens);
-    tree->print_prettified();
-    std::string out = "amr.xml";
-    writeToFile(out,tree->getPrettifyingString());
-
-    }
+    qDebug() << "Showing About info...";
 }

@@ -12,7 +12,7 @@ add_subdirectory(src/UI)
 add_subdirectory(src/app)
 add_subdirectory(src/CLI)
 add_subdirectory(src/core)
-
+add_subdirectory(src/UI/pages)
 
 qt_add_executable(XNet
    

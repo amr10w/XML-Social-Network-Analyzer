@@ -1,0 +1,10 @@
+<!DOCTYPE RCC>
+<RCC>
+  <qresource prefix="/"></qresource>
+  <qresource prefix="/new/Prefix1">
+    <file>images/xml.png</file>
+    <file>images/header_icon.png</file>
+    <file>images/icon_info.png</file>
+    <file>images/icon_play.png</file>
+  </qresource>
+</RCC>
