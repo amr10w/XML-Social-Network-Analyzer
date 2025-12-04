@@ -4,6 +4,12 @@ add_library(UI_Pages STATIC
     WelcomePage.cpp
     WelcomePage.h
     WelcomePage.ui
+    Aboutpage.cpp
+    Aboutpage.h
+    Aboutpage.ui
+    VerificationPage.h
+    VerificationPage.cpp
+    VerificationPage.ui
     resources.qrc
    
 )

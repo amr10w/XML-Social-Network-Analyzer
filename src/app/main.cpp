@@ -1,31 +1,30 @@
 #include "mainwindow.h"
+#include "VerificationPage.h" // <--- Include this
 #include "CLICommands.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     // CASE 1 — user passed CLI arguments
-    if(argc>1)
+    if(argc > 1)
     {
         CLICommands cli;
-        return cli.handle(argc, argv);   // run CLI only
-
-        // xml_editor verify -i test.xml
-        // xml_editor mini -i in.xml -o out.xml
-        // xml_editor json -i test.xml -o test.json
-        // xml_editor compress -i sample.xml -o sample.comp
-        // xml_editor decompress -i sample.comp -o sample_decompressed.xml
-
-
-
+        return cli.handle(argc, argv);
     }
-    else{
-    // CASE 2 — no arguments → launch GUI
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();
-    }
+    else
+    {
+        // CASE 2 — no arguments → launch GUI
+        QApplication a(argc, argv);
 
-    
+        a.setStyleSheet("QMessageBox { background-color: #2b2b2b; } QLabel { color: white; }");
+        // 1. Create and show the Main Window
+        MainWindow w;
+        w.show();
+
+        // 2. Create and show the Verification Window alongside it
+        VerificationPage v;
+        v.show();
+
+        return a.exec();
+    }
 }
