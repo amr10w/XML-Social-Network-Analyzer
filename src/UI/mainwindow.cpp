@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "AboutPage.h"
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -44,5 +45,6 @@ void MainWindow::onStartProcessingClicked()
 
 void MainWindow::onAboutClicked()
 {
-    qDebug() << "Showing About info...";
+    AboutPage aboutDialog(this);
+    aboutDialog.exec(); // .exec() opens it as a modal dialog (blocks interaction with main window)
 }
