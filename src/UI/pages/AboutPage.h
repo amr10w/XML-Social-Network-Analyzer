@@ -15,6 +15,10 @@ public:
     explicit AboutPage(QWidget *parent = nullptr);
     ~AboutPage();
 
+private slots:
+    // This slot handles the "Meet Our Team" button click
+    void on_btnTeam_clicked();
+
 private:
     Ui::AboutPage *ui;
 };
