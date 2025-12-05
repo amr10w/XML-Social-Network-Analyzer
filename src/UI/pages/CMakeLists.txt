@@ -4,9 +4,14 @@ add_library(UI_Pages STATIC
     WelcomePage.cpp
     WelcomePage.h
     WelcomePage.ui
+    TeamPage.cpp      
+    TeamPage.h       
+    TeamPage.ui       
     resources.qrc
-   
-)
+    ProcessingPage.cpp
+    ProcessingPage.h
+    ProcessingPage.ui
+    )
 
 set_property(TARGET UI_Pages PROPERTY AUTORCC ON)
 
