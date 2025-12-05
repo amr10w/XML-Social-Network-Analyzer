@@ -12,9 +12,12 @@ int main(int argc, char *argv[])
 
         // xml_editor verify -i test.xml
         // xml_editor mini -i in.xml -o out.xml
+        // xml_editor format -i in.xml -o out.xml
         // xml_editor json -i test.xml -o test.json
         // xml_editor compress -i sample.xml -o sample.comp
         // xml_editor decompress -i sample.comp -o sample_decompressed.xml
+        // xml_editor mutual -i input_file.xml -ids 1,2,3
+        // xml_editor draw -i input_file.xml -o output.png
 
 
 

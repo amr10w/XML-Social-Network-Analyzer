@@ -18,6 +18,7 @@ int CLICommands::handle(int argc, char *argv[])
     if(cmd == "compress") return compressCommand(args);
     if(cmd == "decompress") return decompressCommand(args);
     if(cmd == "mutual") return mutualCommand(args);
+    if(cmd == "draw") return visualizerCommand(args);
     
 
     std::cerr << "Unknown command: " << cmd << "\n";
@@ -30,6 +31,11 @@ int CLICommands::verifyCommand(const std::vector<std::string> &args)
     if(args.size() < 2 || args[0] != "-i") {
         std::cerr<<"Invalid option\n";
         std::cerr << "Usage: verify -i <filename>\n";
+        return ERR_INVALID_OPTION;
+    }
+    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a .xml file\n";
         return ERR_INVALID_OPTION;
     }
 
@@ -70,6 +76,11 @@ int CLICommands::verifyCommand(const std::vector<std::string> &args)
             std::cerr << "Usage: verify -i <filename> -f -o <filename>\n";
             return ERR_INVALID_OPTION;
         }
+        if(args[4].length() < 4 || args[4].substr(args[4].length() - 4) != ".xml") {
+            std::cerr << "Invalid option\n";
+            std::cerr << "Output file must be a .xml file\n";
+            return ERR_INVALID_OPTION;
+        }
         
     }
     
@@ -81,6 +92,16 @@ int CLICommands::minifyCommand(const std::vector<std::string> &args)
     if(args.size() < 2 || args[0] != "-i" || args[2]!= "-o") {
         std::cerr<<"Invalid option\n";
         std::cerr << "Usage: mini -i <filename> -o <filename>\n";
+        return ERR_INVALID_OPTION;
+    }
+    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a .xml file\n";
+        return ERR_INVALID_OPTION;
+    }
+    if(args[3].length() < 4 || args[3].substr(args[3].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Output file must be a .xml file\n";
         return ERR_INVALID_OPTION;
     }
 
@@ -100,6 +121,16 @@ int CLICommands::prettifyCommand(const std::vector<std::string> &args)
     if(args.size() < 2 || args[0] != "-i" || args[2]!= "-o") {
         std::cerr<<"Invalid option\n";
         std::cerr << "Usage: format -i <filename> -o <filename>\n";
+        return ERR_INVALID_OPTION;
+    }
+    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a .xml file\n";
+        return ERR_INVALID_OPTION;
+    }
+    if(args[3].length() < 4 || args[3].substr(args[3].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Output file must be a .xml file\n";
         return ERR_INVALID_OPTION;
     }
     std::string filename = args[1];
@@ -133,6 +164,16 @@ int CLICommands::compressCommand(const std::vector<std::string> &args)
         std::cerr << "Usage: compress -i <filename> -o <filename>\n";
         return ERR_INVALID_OPTION;
     }
+    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a .xml file\n";
+        return ERR_INVALID_OPTION;
+    } 
+    if(args[3].length() < 5 || args[3].substr(args[3].length() - 5) != ".comp") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Output file must be a .comp file\n";
+        return ERR_INVALID_OPTION;
+    }
 
     BPE_compress(args[1], args[3]);
 
@@ -146,7 +187,16 @@ int CLICommands::decompressCommand(const std::vector<std::string> &args)
         std::cerr << "Usage: decompress -i <filename> -o <filename>\n";
         return ERR_INVALID_OPTION;
     }
-
+    if(args[1].length() < 5 || args[1].substr(args[1].length() - 5) != ".comp") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a .comp file\n";
+        return ERR_INVALID_OPTION;
+    }
+    if(args[3].length() < 4 || args[3].substr(args[3].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Output file must be a .xml file\n";
+        return ERR_INVALID_OPTION;
+    }
     BPE_decompress(args[1], args[3]);
 
     return OK;
@@ -157,6 +207,12 @@ int CLICommands::mutualCommand(const std::vector<std::string> &args)
     if(args.size() != 4 || args[0] != "-i"  || args[2]!= "-ids") {
         std::cerr<<"Invalid option\n";
         std::cerr << "Usage: mutual -i <filename> -ids <ids>\n";
+        return ERR_INVALID_OPTION;
+    }
+
+    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a .xml file\n";
         return ERR_INVALID_OPTION;
     }
 
@@ -202,3 +258,30 @@ int CLICommands::mutualCommand(const std::vector<std::string> &args)
     return OK;
 }
 
+int CLICommands::visualizerCommand(const std::vector<std::string> &args)
+{
+    if(args.size() != 4 || args[0] != "-i" || args[2] != "-o") {
+        std::cerr<<"Invalid option\n";
+        std::cerr << "Usage: draw -i <filename.xml> -o <filename.png>\n";
+        return ERR_INVALID_OPTION;
+    }
+
+    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a .xml file\n";
+        return ERR_INVALID_OPTION;
+    }
+    if(args[3].length() < 4 || args[3].substr(args[3].length() - 4) != ".png") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Output file must be a .png file\n";
+        return ERR_INVALID_OPTION;
+    }
+    
+    std::string filename = args[1];
+    std::string content = readFileToString(filename);
+    if(content == "") return ERR_FILE_NOT_FOUND;
+    
+    Graph graph(content);
+    Visualizer(graph,args[3]);
+    return OK;
+}

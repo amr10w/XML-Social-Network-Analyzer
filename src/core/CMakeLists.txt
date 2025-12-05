@@ -17,6 +17,9 @@ add_library(core STATIC
     Graph.cpp
     Mutual.cpp
     Mutual.h
+    GraphvizWrapper.h
+    GraphVisualizer.h
+    GraphVisualizer.cpp
 )
 
 target_link_libraries(core
@@ -28,3 +31,19 @@ target_link_libraries(core
 target_include_directories(core
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 )
+
+# --- CONDITIONAL LINKING ---
+# We use the variable set in the Root CMake
+if(GRAPHVIZ_FOUND)
+    # 1. Find the libs
+    file(GLOB GVC_LIBS "${GRAPHVIZ_DIR}/lib/*.lib")
+    
+    # 2. Add Include path
+    target_include_directories(core PRIVATE "${GRAPHVIZ_DIR}/include")
+    
+    # 3. Link the libs
+    target_link_libraries(core PRIVATE ${GVC_LIBS})
+    
+    # 4. CRITICAL: Tell C++ code that Graphviz is here
+    target_compile_definitions(core PUBLIC ENABLE_GRAPHVIZ)
+endif()

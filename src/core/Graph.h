@@ -21,6 +21,7 @@ public:
     bool hasEdge(int from,int to);
     void print();
     int getNumberOfUsers();
+    GRAPH getGraph() const;
 
 };
 #endif

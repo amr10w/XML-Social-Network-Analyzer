@@ -136,3 +136,8 @@ int Graph::getNumberOfUsers()
 {
     return graph.size();
 }
+
+GRAPH Graph::getGraph() const
+{
+    return graph;
+}
