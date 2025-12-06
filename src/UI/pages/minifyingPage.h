@@ -30,7 +30,6 @@ private:
     qint64 originalSize;
     qint64 minifiedSize;
 
-    QString minifyXMLString(const QString& xml);
     void updateStatistics();
     void updateOutputVisibility();
     void showMessage(const QString& message, bool isError = false);
