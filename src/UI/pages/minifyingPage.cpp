@@ -6,6 +6,7 @@
 #include <QTextStream>
 #include <QFileInfo>
 #include <QScrollBar>
+#include "../../core/XMLMinifier.h" // Include for minifyXML function
 
 MinifyingPage::MinifyingPage(QWidget *parent)
     : QScrollArea(parent)
@@ -87,8 +88,14 @@ void MinifyingPage::onMinifyXML()
         // Calculate original size
         originalSize = inputXML.toUtf8().size();
         
-        // Minify the XML
-        outputXML = minifyXMLString(inputXML);
+        // Convert QString to std::string for the utility function
+        std::string xmlContentStd = inputXML.toStdString();
+        
+        // Minify the XML using the external function
+        std::string minifiedXmlStd = minifyXML(xmlContentStd);
+        
+        // Convert the result back to QString
+        outputXML = QString::fromStdString(minifiedXmlStd);
         
         // Calculate minified size
         minifiedSize = outputXML.toUtf8().size();
@@ -118,50 +125,6 @@ void MinifyingPage::onMinifyXML()
     }
 }
 
-QString MinifyingPage::minifyXMLString(const QString& xml)
-{
-    // Convert to std::string for processing
-    std::string xmlContent = xml.toStdString();
-    std::string result;
-    
-    bool insideTag = false;
-    bool prevSpace = false;
-    
-    for (size_t i = 0; i < xmlContent.size(); ++i) {
-        char c = xmlContent[i];
-        
-        if (c == '<') {
-            insideTag = true;
-            // Remove trailing space before tag
-            while (!result.empty() && result.back() == ' ')
-                result.pop_back();
-            result += c;
-        }
-        else if (c == '>') {
-            insideTag = false;
-            result += c;
-        }
-        else if (insideTag) {
-            // Inside tag: preserve everything except newlines/tabs
-            if (c != '\n' && c != '\r' && c != '\t')
-                result += c;
-        }
-        else {
-            // Outside tag (text content)
-            if (!isspace(c)) {
-                result += c;
-                prevSpace = false;
-            }
-            else if (!prevSpace) {
-                // Collapse multiple spaces into one
-                result += ' ';
-                prevSpace = true;
-            }
-        }
-    }
-    
-    return QString::fromStdString(result);
-}
 
 void MinifyingPage::updateStatistics()
 {
