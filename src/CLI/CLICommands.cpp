@@ -3,7 +3,7 @@
 
 int CLICommands::handle(int argc, char *argv[])
 {
-     if(argc < 2) {
+    if(argc < 2) {
         std::cout << "Usage: xml_editor <command> [options]\n";
         return ERR_MISSING_ARGUMENT;
     }
@@ -153,6 +153,19 @@ int CLICommands::xmlToJsonCommand(const std::vector<std::string> &args)
         std::cerr << "Usage: json -i <filename> -o <filename>\n";
         return ERR_INVALID_OPTION;
     }
+    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a .xml file\n";
+        return ERR_INVALID_OPTION;
+    } 
+    if(args[3].length() < 5 || args[3].substr(args[3].length() - 5) != ".json") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Output file must be a .json file\n";
+        return ERR_INVALID_OPTION;
+    }
+    std::string content = readFileToString(args[1]);
+    Tree<std::string>* root = buildTree(tokenizeXML(content));
+    writeToFile(args[3], JsonConverter::convert(root->getRoot()));
 
     return OK;
 }

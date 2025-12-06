@@ -4,6 +4,7 @@
 #include "Tree.h"
 #include "XML_Compress.h"
 #include "XML_Decompress.h"
+#include "JsonConverter.h"
 #include "Graph.h"
 #include "Mutual.h"
 #include "GraphVisualizer.h"

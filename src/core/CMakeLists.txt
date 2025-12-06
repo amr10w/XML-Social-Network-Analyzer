@@ -20,6 +20,8 @@ add_library(core STATIC
     GraphvizWrapper.h
     GraphVisualizer.h
     GraphVisualizer.cpp
+    JsonConverter.cpp
+    JsonConverter.h
 )
 
 target_link_libraries(core
