@@ -19,10 +19,12 @@ signals:
     // Signals to tell MainWindow what the user wants to do
     void startProcessingClicked();
     void aboutClicked();
+    void teamPageClicked();
 
 private slots:
     void on_btnStart_clicked();
     void on_btnAbout_clicked();
+    void on_btnTeam_clicked();
 
 private:
     Ui::WelcomePage *ui;
