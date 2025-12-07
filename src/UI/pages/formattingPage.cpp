@@ -1,6 +1,6 @@
 #include "formattingPage.h"
 #include "ui_formattingPage.h"
-#include "../../../XML and tree/Tree.h"
+#include "../../core/Tree.h" 
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QFile>
