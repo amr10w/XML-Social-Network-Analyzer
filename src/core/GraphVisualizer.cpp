@@ -35,10 +35,10 @@ bool Visualizer(const Graph &graph , const std::string &file_name)
         file << "    ];\n";
         // ===============================
         
-        for(int i=1;i<(int)graph.getGraph().size();i++)
+        for(const auto& entry : graph.getGraph())
         {
-            for(int j=0;j<(int)graph.getGraph()[i].size();j++){
-                file<<"\t"<< i << " -> "<< graph.getGraph()[i][j] <<";\n";
+            for(int j=0;j<(int)entry.second.size();j++){
+                file<<"\t"<< entry.second[j] << " -> "<< entry.first <<";\n";
             }
         }
         file << "}\n";

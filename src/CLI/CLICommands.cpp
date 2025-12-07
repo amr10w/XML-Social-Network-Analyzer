@@ -246,11 +246,6 @@ int CLICommands::mutualCommand(const std::vector<std::string> &args)
     while (std::getline(ss, token, ',')) {
         try {
             int num = std::stoi(token);
-            if (num < 0 || num > num_users) {
-                std::cerr << "Invalid option\n";
-                std::cerr << "Ids must be between 0 and " << num_users << "\n";
-                return ERR_INVALID_OPTION;
-            }
             idsVector.push_back(num);
         } catch (...) {
             std::cerr << "Invalid option\n";
