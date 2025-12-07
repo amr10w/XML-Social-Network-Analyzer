@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <set>
-#include "mutual.h"
+#include "Mutual.h"
 
 // ----------------------------------------------------
 // Compute mutual followers of given IDs

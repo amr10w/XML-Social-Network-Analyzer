@@ -5,7 +5,7 @@ Graph::Graph(const std::string &content)
     
     std::vector<Token> tokens= tokenizeXML(content);
     int users =countUsers(tokens);
-    graph.resize(users+1);
+    numberOfUsers=users;
     buildGraph(tokens);
 }
 
@@ -38,6 +38,10 @@ void Graph::buildGraph(const std::vector<Token> &tokens)
             {
                 std::cerr << "Missing value for user ID at token " << i << "\n";
                 continue;
+            }
+            // Ensure user exists in graph even if they have no followers
+            if (graph.find(id) == graph.end()) {
+                graph[id] = {};
             }
 
             while(i < tokens.size()&&tokens[i].text != "/user")
@@ -89,23 +93,22 @@ int Graph::countUsers(const std::vector<Token> &tokens)
 
 void Graph::print()
 {
-    for (int i = 0; i < graph.size(); ++i)
+    for (const auto& entry : graph)
     {
-        std::cout << i << ": ";
+        std::cout << entry.first << ": ";
 
-        for (int neighbor : graph[i])
+        for (int neighbor : entry.second)
         {
             std::cout << neighbor << " ";
         }
 
         std::cout << "\n";
     }
-
 }
 
 bool Graph::addEdge(int from, int to)
 {
-    if(from<graph.size()){
+    if(graph.find(from) != graph.end()){
         graph[from].push_back(to);
         return true;
     }
@@ -114,19 +117,18 @@ bool Graph::addEdge(int from, int to)
 
 std::vector<int> Graph::getNeighbors(int from)
 {
-    if(from<graph.size())
+    if(graph.find(from) != graph.end())
         return graph[from];
-    std::vector<int> v;
-    return v;
+    return {};
 }
 
 bool Graph::hasEdge(int from,int to)
 {
-    if(from<graph.size())
+    if(graph.find(from) == graph.end())
         return false;
-    for(int i=0;i<graph[from].size();i++)
+    for(int neighbor : graph[from])
     {
-        if(graph[from][i]==to)
+        if(neighbor == to)
             return true;
     }
     return false;
