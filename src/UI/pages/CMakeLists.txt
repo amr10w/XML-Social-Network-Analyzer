@@ -17,6 +17,9 @@ add_library(UI_Pages STATIC
     minifyingPage.cpp
     minifyingPage.h
     minifyingPage.ui
+    json_converter_page.ui
+    json_converter_page.h
+    json_converter_page.cpp
 )
 
 set_property(TARGET UI_Pages PROPERTY AUTORCC ON)
