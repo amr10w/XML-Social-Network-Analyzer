@@ -20,6 +20,8 @@ add_library(UI_Pages STATIC
     json_converter_page.ui
     json_converter_page.h
     json_converter_page.cpp
+    postsearch.cpp
+    postsearch.h
 )
 
 set_property(TARGET UI_Pages PROPERTY AUTORCC ON)

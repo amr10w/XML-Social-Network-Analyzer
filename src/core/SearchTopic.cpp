@@ -68,8 +68,8 @@ static std::string extractPostText(const std::string& postBlock) {
     return "";
 }
 
-std::vector<PostMatch> searchPostsByTopic(const std::string& xmlContent, const std::string& topic) {
-    std::vector<PostMatch> matches;
+std::vector<PostMatchTopic> searchPostsByTopic(const std::string& xmlContent, const std::string& topic) {
+    std::vector<PostMatchTopic> matches;
     if (topic.empty()) return matches;
 
     std::string topicLower = toLower(topic);
@@ -126,7 +126,7 @@ std::vector<PostMatch> searchPostsByTopic(const std::string& xmlContent, const s
         }
 
         if (matched) {
-            PostMatch pm;
+            PostMatchTopic pm;
             pm.id = extractPostId(postBlock);
             pm.text = extractPostText(postBlock);
             matches.push_back(pm);
@@ -138,7 +138,7 @@ std::vector<PostMatch> searchPostsByTopic(const std::string& xmlContent, const s
     return matches;
 }
 
-void printMatches(const std::vector<PostMatch>& matches) {
+void printMatches(const std::vector<PostMatchTopic>& matches) {
     if (matches.empty()) {
         std::cout << "No posts found for the requested topic.\n";
         return;

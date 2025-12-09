@@ -117,21 +117,21 @@ void printMatches(const std::vector<PostMatch>& matches) {
 /* -------------------------------
    main just for test
    ------------------------------- */
-/*int main() {
-    const std::string filename = "sample.xml"; // file name hardcoded
-    const std::string wordToSearch = "this";  // word hardcoded
+// int main() {
+//     const std::string filename = "sample.xml"; // file name hardcoded
+//     const std::string wordToSearch = "this";  // word hardcoded
 
-    std::ifstream in(filename);
-    if (!in) {
-        std::cerr << "cannot open " << filename << ". put sample.xml near exe.\n";
-        return 1;
-    }
-    std::string content((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
-    in.close();
+//     std::ifstream in(filename);
+//     if (!in) {
+//         std::cerr << "cannot open " << filename << ". put sample.xml near exe.\n";
+//         return 1;
+//     }
+//     std::string content((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+//     in.close();
 
-    std::cout << "Searching file: " << filename << " for word: \"" << wordToSearch << "\"\n\n";
-    std::vector<PostMatch> results = searchPostsByWord(content, wordToSearch);
-    printMatches(results);
+//     std::cout << "Searching file: " << filename << " for word: \"" << wordToSearch << "\"\n\n";
+//     std::vector<PostMatch> results = searchPostsByWord(content, wordToSearch);
+//     printMatches(results);
 
-    return 0;
-}*/
+//     return 0;
+// }
