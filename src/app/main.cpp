@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "VerificationPage.h"
+#include "CompressPage.h"
 #include "minifyingPage.h" 
 #include "CLICommands.h"
 #include <QApplication>
@@ -39,6 +40,9 @@ int main(int argc, char *argv[])
         // Renamed to 'm' to avoid conflict with MainWindow 'w'
         MinifyingPage m;
         m.show();
+
+        CompressPage c;
+        c.show();
 
         return a.exec();
     }

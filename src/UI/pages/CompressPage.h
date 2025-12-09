@@ -5,8 +5,8 @@
 #include <QString>
 #include <QScrollArea>
 
+// Forward declaration of the UI namespace
 QT_BEGIN_NAMESPACE
-// Note: You may need to update the .ui file name in the project if it was MinifyingPage.ui
 namespace Ui { class CompressPage; } 
 QT_END_NAMESPACE
 
@@ -22,6 +22,7 @@ private slots:
     void onBackToOperations();
     void onBrowseFile();
     
+    // This function will now call the new backend utility: compressXMLString
     void onCompressXML(); 
     void onDownload();
 
@@ -31,7 +32,6 @@ private:
     QString outputXML;
     QString currentFilePath;
     qint64 originalSize;
-    // Renamed size variable
     qint64 compressedSize; 
 
     void updateStatistics();
@@ -39,4 +39,4 @@ private:
     void showMessage(const QString& message, bool isError = false);
 };
 
-#endif
+#endif // COMPRESSPAGE_H

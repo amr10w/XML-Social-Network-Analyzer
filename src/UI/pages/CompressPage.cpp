@@ -1,8 +1,8 @@
 #include "CompressPage.h"
 #include "../../core/FileUtils.h"
-#include "../../core/XML_Compress.h"
-// Assuming your .ui file is now named ui_CompressPage.h
-#include "ui_CompressPage.h" 
+// This include now contains the required declaration for compressXMLString
+#include "../../core/XML_Compress.h" 
+#include "ui_CompressPage.h" // The generated header file
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QFile>
@@ -10,33 +10,32 @@
 #include <QFileInfo>
 #include <QScrollBar>
 
+// Helper macro to wrap the newly declared backend function
+extern std::string compressXMLString(const std::string& xmlContent);
 
-#include "../../core/XML_Compress.h" 
-// Assuming the function signature is: std::string compressXML(const std::string& xmlContent);
 
 CompressPage::CompressPage(QWidget *parent)
     : QScrollArea(parent)
     , ui(new Ui::CompressPage)
     , originalSize(0)
-    // Renamed size variable
     , compressedSize(0) 
 {
     ui->setupUi(this);
     setFixedSize(900, 750);
     
-    // Initially hide output section and stats
-    ui->statsWidget->setVisible(false);
-    ui->outputLabel->setVisible(false);
-    ui->outputTextEdit->setVisible(false);
-    ui->downloadButton->setVisible(false);
+    // Initial UI Setup 
+    if (ui->statsContainer) ui->statsContainer->setVisible(false);
+    if (ui->outputLabel) ui->outputLabel->setVisible(false);
+    if (ui->outputTextEdit) ui->outputTextEdit->setVisible(false);
+    if (ui->downloadButton) ui->downloadButton->setVisible(false);
     
-    // Set placeholder (same as your screenshot)
-    ui->inputTextEdit->setPlaceholderText("Paste your XML content here...");
+    if (ui->inputTextEdit) {
+        ui->inputTextEdit->setPlaceholderText("Paste your XML content here...");
+    }
     
-    // Connect signals
+    // Connect signals 
     connect(ui->backButton, &QPushButton::clicked, this, &CompressPage::onBackToOperations);
     connect(ui->browseButton, &QPushButton::clicked, this, &CompressPage::onBrowseFile);
-    // Connect to the new slot
     connect(ui->minifyButton, &QPushButton::clicked, this, &CompressPage::onCompressXML); 
     connect(ui->downloadButton, &QPushButton::clicked, this, &CompressPage::onDownload);
 }
@@ -76,14 +75,13 @@ void CompressPage::onBrowseFile()
     currentFilePath = fileName;
     ui->inputTextEdit->setPlainText(inputXML);
     
-    // Hide output when new file is loaded
-    ui->statsWidget->setVisible(false);
+    // Hide output when new file is loaded (using statsContainer)
+    ui->statsContainer->setVisible(false);
     ui->outputLabel->setVisible(false);
     ui->outputTextEdit->setVisible(false);
     ui->downloadButton->setVisible(false);
 }
 
-// Renamed core logic function
 void CompressPage::onCompressXML()
 {
     inputXML = ui->inputTextEdit->toPlainText();
@@ -100,8 +98,7 @@ void CompressPage::onCompressXML()
         // Convert QString to std::string for the utility function
         std::string xmlContentStd = inputXML.toStdString();
         
-        // Use the new compression function
-        std::string compressedXmlStd = compressXML(xmlContentStd); 
+        std::string compressedXmlStd = compressXMLString(xmlContentStd); 
         
         // Convert the result back to QString
         outputXML = QString::fromStdString(compressedXmlStd);
@@ -124,7 +121,6 @@ void CompressPage::onCompressXML()
             scrollBar->setValue(0);
         }
         
-        
     } catch (const std::exception& e) {
         QMessageBox::critical(this, "Error", 
             QString("Failed to compress XML: %1").arg(e.what()));
@@ -137,12 +133,11 @@ void CompressPage::onCompressXML()
 
 void CompressPage::updateStatistics()
 {
-    // Update size labels (Note: Ensure your UI labels are correctly mapped)
+    // FIX 1: Change minifiedSizeLabel to compressedSizeLabel 
+    // to match the final .ui file structure.
     ui->originalSizeLabel->setText(QString::number(originalSize) + " bytes");
-    // Updated label text
-    ui->minifiedSizeLabel->setText(QString::number(compressedSize) + " bytes"); 
+    ui->compressedSizeLabel->setText(QString::number(compressedSize) + " bytes"); 
     
-    // Calculate reduction
     qint64 savedBytes = originalSize - compressedSize;
     double percentage = originalSize > 0 ? 
         ((double)savedBytes * 100.0 / originalSize) : 0.0;
@@ -153,7 +148,8 @@ void CompressPage::updateStatistics()
 void CompressPage::updateOutputVisibility()
 {
     bool hasOutput = !outputXML.isEmpty();
-    ui->statsWidget->setVisible(hasOutput);
+    // FIX 2: Ensure we consistently use statsContainer, not statsWidget
+    ui->statsContainer->setVisible(hasOutput); 
     ui->outputLabel->setVisible(hasOutput);
     ui->outputTextEdit->setVisible(hasOutput);
     ui->downloadButton->setVisible(hasOutput);
@@ -166,11 +162,20 @@ void CompressPage::onDownload()
         return;
     }
     
+    QString defaultFileName = "compressed.comp"; // Changed default file name
+    
+    // Check if the user loaded a file previously
+    if (!currentFilePath.isEmpty()) {
+        QFileInfo info(currentFilePath);
+        // Set the default name to 'original_name.comp'
+        defaultFileName = info.completeBaseName() + ".comp"; 
+    }
+    
     QString saveFileName = QFileDialog::getSaveFileName(
         this,
         tr("Save Compressed XML"),
-        "compressed.xml", // Changed default file name
-        tr("XML Files (*.xml);;All Files (*)")
+        defaultFileName, // Use the new default file name
+        tr("Compressed Files (*.comp);;All Files (*)") // Changed file filter description
     );
     
     if (saveFileName.isEmpty())
