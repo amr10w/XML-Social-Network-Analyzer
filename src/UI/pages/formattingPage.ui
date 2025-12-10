@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormattingPage</class>
+ <widget class="QWidget" name="FormattingPage">
+  <property name="windowTitle">
+   <string>Prettify XML</string>
+  </property>
+
+  <layout class="QVBoxLayout" name="rootLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <layout class="QVBoxLayout" name="mainLayout">
+       <property name="spacing">
+        <number>16</number>
+       </property>
+       <property name="leftMargin">
+        <number>24</number>
+       </property>
+       <property name="topMargin">
+        <number>24</number>
+       </property>
+       <property name="rightMargin">
+        <number>24</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+
+       <item>
+        <widget class="QPushButton" name="backButton">
+         <property name="text">
+          <string>← Back to Operations</string>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QWidget" name="headerWidget" native="true">
+         <property name="minimumSize">
+          <size><width>0</width><height>120</height></size>
+         </property>
+         <layout class="QHBoxLayout" name="headerLayout">
+          <property name="spacing"><number>16</number></property>
+          <property name="leftMargin"><number>24</number></property>
+          <property name="topMargin"><number>24</number></property>
+          <property name="rightMargin"><number>24</number></property>
+          <property name="bottomMargin"><number>24</number></property>
+
+          <item>
+           <widget class="QLabel" name="iconLabel">
+            <property name="minimumSize">
+             <size><width>60</width><height>60</height></size>
+            </property>
+            <property name="maximumSize">
+             <size><width>60</width><height>60</height></size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: white; border-radius: 12px; font-size: 24px; font-weight: bold; color: #2563eb;</string>
+            </property>
+            <property name="text"><string>&lt;&gt;</string></property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+
+          <item>
+           <layout class="QVBoxLayout" name="headerTextLayout">
+            <property name="spacing"><number>4</number></property>
+
+            <item>
+             <widget class="QLabel" name="titleLabel">
+              <property name="text">
+               <string>Prettify XML</string>
+              </property>
+             </widget>
+            </item>
+
+            <item>
+             <widget class="QLabel" name="subtitleLabel">
+              <property name="text">
+               <string>Format XML with proper indentation</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size><width>40</width><height>20</height></size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QWidget" name="contentWidget" native="true">
+         <layout class="QVBoxLayout" name="contentLayout">
+          <property name="spacing"><number>20</number></property>
+          <property name="leftMargin"><number>32</number></property>
+          <property name="topMargin"><number>32</number></property>
+          <property name="rightMargin"><number>32</number></property>
+          <property name="bottomMargin"><number>32</number></property>
+
+          <item>
+           <widget class="QLabel" name="inputLabel">
+            <property name="text">
+             <string>Input XML File</string>
+            </property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QPushButton" name="browseButton">
+            <property name="minimumSize">
+             <size><width>0</width><height>48</height></size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>⬆  Browse XML File</string>
+            </property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QLabel" name="orLabel">
+            <property name="text"><string>OR</string></property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QTextEdit" name="inputTextEdit">
+            <property name="minimumSize">
+             <size><width>0</width><height>200</height></size>
+            </property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QPushButton" name="prettifyButton">
+            <property name="minimumSize">
+             <size><width>0</width><height>50</height></size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>&lt;&gt;  Prettify XML</string>
+            </property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QLabel" name="outputLabel">
+            <property name="text"><string>Formatted XML</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QTextEdit" name="outputTextEdit">
+            <property name="minimumSize">
+             <size><width>0</width><height>250</height></size>
+            </property>
+            <property name="readOnly"><bool>true</bool></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QPushButton" name="downloadButton">
+            <property name="minimumSize">
+             <size><width>0</width><height>45</height></size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>⬇  Download</string>
+            </property>
+           </widget>
+          </item>
+
+         </layout>
+        </widget>
+       </item>
+
+       </layout>
+     </widget>
+    </widget>
+   </item>
+
+  </layout>
+
+  <property name="styleSheet">
+   <string notr="true">
+/* Global styles */
+QWidget {
+    background-color: #e5e7eb;
+}
+QLabel {
+    background-color: transparent;
+}
+
+/* Specific styling for scroll area's content wrapper */
+QWidget#scrollAreaWidgetContents {
+    background-color: #e5e7eb;
+}
+
+/* Back Button */
+QPushButton#backButton {
+    background-color: transparent;
+    border: none;
+    color: #4f46e5;
+    font-size: 14px;
+    text-align: left;
+    padding: 8px;
+}
+
+QPushButton#backButton:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+    border-radius: 6px;
+}
+
+/* Header Widget (Gradient Blue) */
+QWidget#headerWidget {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                 stop:0 #2563eb, stop:1 #0891b2);
+    border-radius: 12px;
+}
+
+QLabel#titleLabel {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#subtitleLabel {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+}
+
+/* Content Widget (White Card) */
+QWidget#contentWidget {
+    background-color: white;
+    border-radius: 12px;
+}
+
+/* Labels */
+QLabel#inputLabel, QLabel#outputLabel {
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Browse Button */
+QPushButton#browseButton {
+    background-color: #dbeafe;
+    color: #2563eb;
+    border: 1px solid #93c5fd;
+    border-radius: 6px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+QPushButton#browseButton:hover {
+    background-color: #bfdbfe;
+}
+
+QLabel#orLabel {
+    color: #0859faff;
+    font-size: 13px;
+}
+
+/* Input Text Edit */
+QTextEdit#inputTextEdit {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #374151;
+}
+
+QTextEdit#inputTextEdit:focus {
+    border: 2px solid #3b82f6;
+    background-color: white;
+}
+
+/* Output Text Edit */
+QTextEdit#outputTextEdit {
+    background-color: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #0c4a6e;
+}
+
+/* Prettify Button */
+QPushButton#prettifyButton {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+QPushButton#prettifyButton:hover {
+    background-color: #1d4ed8;
+}
+
+QPushButton#prettifyButton:pressed {
+    background-color: #1e40af;
+}
+
+/* Download Button */
+QPushButton#downloadButton {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QPushButton#downloadButton:hover {
+    background-color: #2563eb;
+}
+
+QPushButton#downloadButton:pressed {
+    background-color: #1d4ed8;
+}
+
+/* --- SCROLL BAR STYLING (New) --- */
+QScrollBar:vertical {
+    border: none;
+    background: #e0e0e0; /* Light gray track background */
+    width: 10px; 
+    margin: 0px; 
+}
+
+QScrollBar::handle:vertical {
+    background: #2563eb; /* Primary blue color, matching theme */
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #1d4ed8; /* Darker blue on hover */
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px; 
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+   </string>
+  </property>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

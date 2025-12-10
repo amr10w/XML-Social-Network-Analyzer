@@ -41,6 +41,8 @@ public:
     Tree(const Tree<T>& other);    // deep copy constructor
     ~Tree();
 
+    Node<T>* getRoot() const { return root; }
+    
     void print_preorder();
     void print_prettified();
     std::string getPrettifyingString();

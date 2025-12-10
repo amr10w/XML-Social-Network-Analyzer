@@ -125,7 +125,7 @@ Tree<std::string>* buildTree(const std::vector<Token>& tokens)
             par->addChild(node);
         }
     }
-    Tree<std::string> *tree=new Tree(root);
+    Tree<std::string> *tree=new Tree<std::string>(root);
     return tree;
 
 }

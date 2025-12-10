@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "AboutPage.h"
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -18,10 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->addWidget(m_welcomePage);
     ui->stackedWidget->addWidget(m_teamPage);
     ui->stackedWidget->addWidget(m_processingPage);
-    // (Example: Add a second page later)
-    // m_processingPage = new ProcessingPage(this);
-    // ui->stackedWidget->addWidget(m_processingPage);
-
+    
     // 3. Connect signals from WelcomePage to MainWindow slots
     connect(m_welcomePage, &WelcomePage::startProcessingClicked, this, &MainWindow::onStartProcessingClicked);
     connect(m_welcomePage, &WelcomePage::aboutClicked, this, &MainWindow::onAboutClicked);
@@ -55,9 +52,12 @@ void MainWindow::onStartProcessingClicked()
 
 void MainWindow::onAboutClicked()
 {
-    qDebug() << "Showing About info...";
+    // Using the implementation from 'main' to show the actual dialog
+    AboutPage aboutDialog(this);
+    aboutDialog.exec(); // .exec() opens it as a modal dialog (blocks interaction with main window)
 }
 
+// These methods from 'TeamPage-Creation' are kept because they are connected in the constructor
 void MainWindow::onTeamPageClicked()
 {
     qDebug() << "Switching to Team Page...";

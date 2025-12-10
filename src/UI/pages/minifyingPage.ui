@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MinifyingPage</class>
+ <widget class="QScrollArea" name="MinifyingPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>750</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Minify XML</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+/* Applying the global background to the inner widget */
+QWidget#scrollAreaWidgetContents {
+    background-color: #e5e7eb;
+}
+
+QScrollArea#MinifyingPage {
+     border: none; /* Remove default scroll area border */
+}
+
+QLabel {
+    background-color: transparent;
+}
+
+QPushButton#backButton {
+    background-color: transparent;
+    border: none;
+    color: #7c3aed;
+    font-size: 14px;
+    text-align: left;
+    padding: 8px;
+}
+
+QPushButton#backButton:hover {
+    background-color: rgba(124, 58, 237, 0.1);
+    border-radius: 6px;
+}
+
+QWidget#headerWidget {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                 stop:0 #9333ea, stop:1 #c026d3);
+    border-radius: 12px;
+}
+
+QLabel#titleLabel {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#subtitleLabel {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+}
+
+QWidget#contentWidget {
+    background-color: white;
+    border-radius: 12px;
+}
+
+QLabel#inputLabel, QLabel#outputLabel {
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QPushButton#browseButton {
+    background-color: #fae8ff;
+    color: #9333ea;
+    border: 1px solid #d8b4fe;
+    border-radius: 6px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+QPushButton#browseButton:hover {
+    background-color: #f3e8ff;
+}
+
+QLabel#orLabel {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+QTextEdit#inputTextEdit {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #374151;
+}
+
+QTextEdit#inputTextEdit:focus {
+    border: 2px solid #9333ea;
+    background-color: white;
+}
+
+QTextEdit#outputTextEdit {
+    background-color: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #581c87;
+}
+
+QPushButton#minifyButton {
+    background-color: #9333ea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+QPushButton#minifyButton:hover {
+    background-color: #7e22ce;
+}
+
+QPushButton#minifyButton:pressed {
+    background-color: #6b21a8;
+}
+
+QFrame#statFrame1, QFrame#statFrame2, QFrame#statFrame3 {
+    background-color: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+QLabel#stat1TitleLabel, QLabel#stat2TitleLabel, QLabel#stat3TitleLabel {
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+QLabel#originalSizeLabel, QLabel#minifiedSizeLabel, QLabel#reductionLabel {
+    color: #9333ea;
+}
+
+QPushButton#downloadButton {
+    background-color: #9333ea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QPushButton#downloadButton:hover {
+    background-color: #7e22ce;
+}
+
+QPushButton#downloadButton:pressed {
+    background-color: #6b21a8;
+}
+
+/* --- SCROLL BAR STYLING (New) --- */
+
+QScrollBar:vertical {
+    border: none;
+    background: #e0e0e0; /* Light gray track background */
+    width: 10px; 
+    margin: 0px; 
+}
+
+QScrollBar::handle:vertical {
+    background: #9333ea; /* Primary purple color, matching your theme */
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #7e22ce; 
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px; 
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+   </string>
+  </property>
+  <property name="widgetResizable">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="scrollAreaWidgetContents">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing">
+     <number>16</number>
+    </property>
+    <property name="leftMargin">
+     <number>24</number>
+    </property>
+    <property name="topMargin">
+     <number>24</number>
+    </property>
+    <property name="rightMargin">
+     <number>24</number>
+    </property>
+    <property name="bottomMargin">
+     <number>24</number>
+    </property>
+    <item>
+     <widget class="QPushButton" name="backButton">
+      <property name="text">
+       <string>← Back to Operations</string>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="headerWidget" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>120</height>
+       </size>
+      </property>
+      <layout class="QHBoxLayout" name="headerLayout">
+       <property name="spacing">
+        <number>16</number>
+       </property>
+       <property name="leftMargin">
+        <number>24</number>
+       </property>
+       <property name="topMargin">
+        <number>24</number>
+       </property>
+       <property name="rightMargin">
+        <number>24</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="iconLabel">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: white; border-radius: 12px; font-size: 24px; font-weight: bold; color: #9333ea;</string>
+         </property>
+         <property name="text">
+          <string>✨</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="headerTextLayout">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="titleLabel">
+           <property name="text">
+            <string>Minify XML</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="subtitleLabel">
+           <property name="text">
+            <string>Remove whitespace and reduce file size</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="contentWidget" native="true">
+      <layout class="QVBoxLayout" name="contentLayout">
+       <property name="spacing">
+        <number>20</number>
+       </property>
+       <property name="leftMargin">
+        <number>32</number>
+       </property>
+       <property name="topMargin">
+        <number>32</number>
+       </property>
+       <property name="rightMargin">
+        <number>32</number>
+       </property>
+       <property name="bottomMargin">
+        <number>32</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="inputLabel">
+         <property name="text">
+          <string>Input XML File</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="browseButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>48</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>⬆  Browse XML File</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="orLabel">
+         <property name="text">
+          <string>OR</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="inputTextEdit">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>200</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="minifyButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>✨  Minify XML</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="statsWidget" native="true">
+         <layout class="QHBoxLayout" name="statsLayout">
+          <property name="spacing">
+           <number>12</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="statFrame1">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>80</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <layout class="QVBoxLayout" name="stat1Layout">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="stat1TitleLabel">
+               <property name="text">
+                <string>Original Size</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="originalSizeLabel">
+               <property name="text">
+                <string>0 bytes</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="statFrame2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>80</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <layout class="QVBoxLayout" name="stat2Layout">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="stat2TitleLabel">
+               <property name="text">
+                <string>Minified Size</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="minifiedSizeLabel">
+               <property name="text">
+                <string>0 bytes</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="statFrame3">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>80</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <layout class="QVBoxLayout" name="stat3Layout">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="stat3TitleLabel">
+               <property name="text">
+                <string>Size Reduction</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="reductionLabel">
+               <property name="text">
+                <string>0.00%</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="outputLabel">
+         <property name="text">
+          <string>Minified XML</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="outputTextEdit">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="downloadButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>45</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>⬇  Download</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
