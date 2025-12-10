@@ -143,3 +143,31 @@ GRAPH Graph::getGraph() const
 {
     return graph;
 }
+
+int Graph::getMostInfluencerId()
+{
+    if (graph.empty()) {
+        return -1;
+    }
+
+    int mostInfluencerId = -1;
+    size_t maxFollowers = 0;
+
+    for (const auto& entry : graph)
+    {
+        int userId = entry.first;
+        const std::vector<int>& followers = entry.second;
+        
+        if (followers.size() > maxFollowers)
+        {
+            maxFollowers = followers.size();
+            mostInfluencerId = userId;
+        }
+    }
+
+    if (mostInfluencerId == -1 && !graph.empty()) {
+        return graph.begin()->first;
+    }
+
+    return mostInfluencerId;
+}
