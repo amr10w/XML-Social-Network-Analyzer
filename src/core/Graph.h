@@ -13,6 +13,7 @@ class Graph
 private:
     GRAPH graph;
     int numberOfUsers;
+    std::map<int, int> postCounts;
     // std::vector<Vertex> vertex;
     void buildGraph(const std::vector<Token> &tokens);
     int countUsers(const std::vector<Token> &tokens);
