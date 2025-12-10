@@ -27,6 +27,8 @@ public:
     GRAPH getGraph() const;
     int getMostInfluencerId();
     int getMostActivePersonId();
+    int getMostActivePersonIdPosts();
+
 
 };
 #endif

@@ -184,6 +184,35 @@ int Graph::getMostInfluencerId()
 }
 int Graph::getMostActivePersonId()
 {
+    if (graph.empty()) {
+        return -1;
+    }
+    std::map<int, int> followingCounts;
+    for (const auto& entry :  graph) {
+        followingCounts[entry.first] = 0;
+    }
+    for (const auto& entry:graph) {
+        for (int follower:entry.second) {
+            followingCounts[follower]++;
+        }
+    }
+    for (const auto& entry:graph) {
+        
+        followingCounts[entry.first]+=entry.second.size();
+        
+    }
+    int mostActiveId = -1;
+    int maxFollowing = -1;
+    for (const auto& entry:followingCounts) {
+        if (entry.second > maxFollowing) {
+            maxFollowing = entry.second;
+            mostActiveId = entry.first;
+        }
+    }
+    return mostActiveId;
+}
+int Graph::getMostActivePersonIdPosts()
+{
     if (postCounts.empty()) {
         return -1;
     }
