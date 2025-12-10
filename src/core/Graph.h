@@ -24,6 +24,7 @@ public:
     void print();
     int getNumberOfUsers();
     GRAPH getGraph() const;
+    int getMostInfluencerId();
 
 };
 #endif
