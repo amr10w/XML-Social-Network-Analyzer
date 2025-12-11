@@ -78,7 +78,7 @@ void GraphPage::onBrowseFile()
     ui->graphDisplayLabel->setVisible(false);
     ui->downloadButton->setVisible(false);
     
-    QMessageBox::information(this, "Success", "File loaded successfully!");
+    // QMessageBox::information(this, "Success", "File loaded successfully!");
 }
 
 void GraphPage::onGenerateGraph()
@@ -105,7 +105,7 @@ void GraphPage::onGenerateGraph()
             // Show output section
             updateOutputVisibility();
             
-            QMessageBox::information(this, "Success", "Graph generated successfully!");
+            // QMessageBox::information(this, "Success", "Graph generated successfully!");
         } else {
             QMessageBox::critical(this, "Error", "Failed to generate graph image!");
         }
@@ -354,7 +354,7 @@ void GraphPage::onDownloadGraph()
         return;
     
     if (graphImage.save(saveFileName)) {
-        QMessageBox::information(this, "Success", "Graph saved successfully to:\n" + saveFileName);
+        // QMessageBox::information(this, "Success", "Graph saved successfully to:\n" + saveFileName);
     } else {
         QMessageBox::critical(this, "Error", "Failed to save graph image!");
     }
@@ -365,6 +365,6 @@ void GraphPage::showMessage(const QString& message, bool isError)
     if (isError) {
         QMessageBox::critical(this, "Error", message);
     } else {
-        QMessageBox::information(this, "Success", message);
+        // QMessageBox::information(this, "Success", message);
     }
 }
