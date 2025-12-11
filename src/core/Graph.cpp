@@ -227,11 +227,7 @@ int Graph::getMostActivePersonId()
             followingCounts[follower]++;
         }
     }
-    for (const auto& entry:graph) {
-        
-        followingCounts[entry.first]+=entry.second.size();
-        
-    }
+    
     int mostActiveId = -1;
     int maxFollowing = -1;
     for (const auto& entry:followingCounts) {
