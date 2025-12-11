@@ -136,7 +136,7 @@ vector<PostMatch> searchPostsByTopic(const string& xmlContent, const string& top
 }
 
 
-void printMatches(const vector<PostMatch>& matches) {
+void printMatchesTopic(const vector<PostMatch>& matches) {
     if (matches.empty()) {
         cout << "No posts found for the requested topic.\n";
         return;

@@ -211,7 +211,7 @@ void PostSearch::on_searchByTopics_clicked()
     // --- Core Search Logic ---
     try {
         // 3. Call the external function, returning PostMatchTopic vector
-        std::vector<PostMatchTopic> results = searchPostsByTopic(xmlContentStd, topicStd);
+        std::vector<PostMatch> results = searchPostsByTopic(xmlContentStd, topicStd);
 
         // 4. Format the Results for Display (Manual QString building)
         QString resultText;

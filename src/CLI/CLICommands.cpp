@@ -340,8 +340,8 @@ else if(args[0]=="-t")
                 //  std::cerr << "hello \n";
 
         const std::string topicToSearch = args[1];
-         std::vector<PostMatchTopic> results = searchPostsByTopic(content, topicToSearch);
-        printMatches(results);
+         std::vector<PostMatch> results = searchPostsByTopic(content, topicToSearch);
+        printMatchesTopic(results);
                 return OK;
 
 

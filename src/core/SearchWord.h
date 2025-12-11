@@ -1,3 +1,6 @@
+#ifndef SEARCHWORD_H
+#define SEARCHWORD_H
+
 #include <string>
 #include <vector>
 
@@ -13,3 +16,5 @@ std::vector<PostMatch> searchPostsByWord(const std::string& xmlContent,
 
 // print matches to console
 void printMatches(const std::vector<PostMatch>& matches);
+
+#endif

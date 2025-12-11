@@ -6,8 +6,7 @@ add_library(UI STATIC
 
 
 
-target_link_libraries(UI
-    
+target_link_libraries(UI 
 PUBLIC
     UI_Pages 
 PRIVATE
