@@ -34,5 +34,6 @@ public:
     std::string getMostActivePersonName();
     int getMostActivePersonIdPosts();
     std::string getName(int id);
+    std::vector<int> getFollowings(int id);
 };
 #endif

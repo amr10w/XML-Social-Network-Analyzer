@@ -2,16 +2,31 @@
 #include <algorithm>
 #include <iostream>
 
+std::vector<int> removeValues(const std::vector<int>& source,
+                              const std::vector<int>& toRemove)
+{
+    std::vector<int> result;
+    result.reserve(source.size());
+
+    for (int x : source)
+    {
+        // check if x exists in toRemove (linear search)
+        if (std::find(toRemove.begin(), toRemove.end(), x) == toRemove.end())
+        {
+            result.push_back(x);   // keep it
+        }
+    }
+
+    return result;
+}
+
 
 std::vector<int> suggest(Graph& graph, int id)
 {
-    
     std::vector<int> suggest;
-
-    //get the followers of the user
     std::vector<int> followers = graph.getNeighbors(id);
-
-    //get the followers of followers and add them to suggest
+    std::vector<int> followings = graph.getFollowings(id);
+    
     for (int i = 0; i < (int)followers.size(); i++)
     {
         std::vector<int> fofollowers = graph.getNeighbors(followers[i]);
@@ -20,24 +35,23 @@ std::vector<int> suggest(Graph& graph, int id)
             suggest.push_back(fofollowers[j]);
     }
 
-    //remove the duplicates
     std::sort(suggest.begin(), suggest.end());
     suggest.erase(std::unique(suggest.begin(), suggest.end()), suggest.end());
 
-    //remove the user itself if appears in the followers of followers
     suggest.erase(
         std::remove(suggest.begin(), suggest.end(), id),
         suggest.end()
     );
 
-    return suggest;
+
+    return removeValues(suggest,followings);
 }
 
-void printSuggestions(const std::vector<int>& v)
+void printsuggestions(const std::vector<int>& v)
 {
     if (v.empty())
     {
-        std::cout << "No suggestions found.\n";
+        std::cout << "No suggestions founddd.\n";
         return;
     }
 
@@ -47,13 +61,16 @@ void printSuggestions(const std::vector<int>& v)
     std::cout << "\n";
 }
 
-// int main()
-// {
-//     std::string file = "test.xml";
-//     Graph g(file);
 
-//     std::vector<int> suggestion = suggest(g, 1);
+int main()
+{
+    std::string file = "test.xml";
+    std::string xml = readFileToString(file);  
 
-//     printsuggestions(suggestion);
-//     return 0;
-// }
+    Graph g(xml);                              
+
+    std::vector<int> suggestion = suggest(g,7);
+    printsuggestions(suggestion);
+    return 0;
+}
+

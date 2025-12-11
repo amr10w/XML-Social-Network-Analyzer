@@ -273,4 +273,26 @@ std::string Graph::getName(int id)
     return "Unknown";
 }
 
+std::vector<int> Graph::getFollowings(int id)
+{
+    std::vector<int> followings;
 
+    // Iterate through every user in the graph
+    for (const auto& entry : graph)
+    {
+        int otherUser = entry.first;
+        const std::vector<int>& followersList = entry.second;
+
+        // Check if our 'id' is inside this other user's list of followers
+        for (int follower : followersList)
+        {
+            if (follower == id)
+            {
+                // If 'id' is a follower of 'otherUser', then 'id' follows 'otherUser'
+                followings.push_back(otherUser);
+                break; // Found it, no need to check the rest of this list
+            }
+        }
+    }
+    return followings;
+}
