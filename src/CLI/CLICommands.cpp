@@ -22,6 +22,7 @@ int CLICommands::handle(int argc, char *argv[])
     if(cmd == "search") return searchCommand(args);
     if(cmd == "most_active") return mostActiveCommand(args);
     if(cmd == "most_influencer") return mostInfluencerCommand(args);
+    if(cmd == "suggest") return suggestCommand(args);
 
     
 
@@ -406,5 +407,47 @@ int CLICommands::mostInfluencerCommand(const std::vector<std::string> &args)
     int mostInfluencerPersonId = graph.getMostInfluencerId();
     std::string mostInfluencerPersonName = graph.getName(mostInfluencerPersonId);
     std::cout << mostInfluencerPersonId << ": " << mostInfluencerPersonName << std::endl;
+    return OK;
+}
+
+// xml_editor suggest -i input_file.xml -id 1
+int CLICommands::suggestCommand(const std::vector<std::string> &args)
+{
+    if(args.size() != 4 || args[0] != "-i" || args[2] != "-id") {
+        std::cerr<<"Invalid option\n";
+        std::cerr << "Usage: suggest -i <filename.xml>\n";
+        return ERR_INVALID_OPTION;
+    }
+
+    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml") {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a .xml file\n";
+        return ERR_INVALID_OPTION;
+    }
+
+    if(args[3].length() > 1 || !std::isdigit(args[3][0])) {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a (one)number\n";
+        return ERR_INVALID_OPTION;
+    }
+
+    int id = std::stoi(args[3]);
+    if(id < 0) {
+        std::cerr << "Invalid option\n";
+        std::cerr << "Input file must be a positive number\n";
+        return ERR_INVALID_OPTION;
+    }
+
+    
+
+    std::string filename = args[1];
+    std::string content = readFileToString(filename);
+    if(content == "") return ERR_FILE_NOT_FOUND;
+    
+    Graph graph(content);
+    std::vector<int> suggests = suggest(graph, id);
+    printSuggestions(suggests);
+
+   
     return OK;
 }

@@ -33,7 +33,7 @@ std::vector<int> suggest(Graph& graph, int id)
     return suggest;
 }
 
-void printsuggestions(const std::vector<int>& v)
+void printSuggestions(const std::vector<int>& v)
 {
     if (v.empty())
     {
@@ -47,13 +47,13 @@ void printsuggestions(const std::vector<int>& v)
     std::cout << "\n";
 }
 
-int main()
-{
-    std::string file = "test.xml";
-    Graph g(file);
+// int main()
+// {
+//     std::string file = "test.xml";
+//     Graph g(file);
 
-    std::vector<int> suggestion = suggest(g, 1);
+//     std::vector<int> suggestion = suggest(g, 1);
 
-    printsuggestions(suggestion);
-    return 0;
-}
+//     printsuggestions(suggestion);
+//     return 0;
+// }

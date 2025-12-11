@@ -26,7 +26,8 @@ add_library(core STATIC
     SearchTopic.h
     SearchWord.cpp
     SearchWord.h
-
+    Suggest.cpp
+    Suggest.h
 )
 
 target_link_libraries(core

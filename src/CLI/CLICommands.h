@@ -10,6 +10,7 @@
 #include "GraphVisualizer.h"
 #include "SearchWord.h"
 #include "SearchTopic.h"
+#include "Suggest.h"
 #include <vector>
 
 enum ErrorCode {
@@ -35,4 +36,6 @@ private:
     int searchCommand(const std::vector<std::string>& args);
     int mostActiveCommand(const std::vector<std::string>& args);
     int mostInfluencerCommand(const std::vector<std::string>& args);
+    int suggestCommand(const std::vector<std::string>& args);
+    
 };

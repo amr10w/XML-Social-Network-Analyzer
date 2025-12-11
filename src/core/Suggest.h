@@ -3,4 +3,4 @@
 
 std::vector<int>suggest(Graph& graph, int id );
 
-void printsuggestions(const std::vector<int>& v);
+void printSuggestions(const std::vector<int>& v);
