@@ -188,9 +188,13 @@ QPushButton#generateButton:pressed {
 }
 
 QScrollArea#graphScrollArea {
-    background-color: #faf5ff;
-    border: 1px solid #e9d5ff;
+    background-color: #1e1e1e;
+    border: 1px solid #2d2d2d;
     border-radius: 8px;
+}
+
+QScrollArea#graphScrollArea QWidget {
+    background-color: #1e1e1e;
 }
 
 QLabel#graphDisplayLabel {
