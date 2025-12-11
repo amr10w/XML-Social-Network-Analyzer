@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 #include "welcomepage.h"
+#include "teampage.h"
+#include "processingpage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,13 +26,14 @@ private slots:
     // Slots to handle signals from pages
     void onStartProcessingClicked();
     void onAboutClicked();
+    void onTeamPageClicked();
+    void onBackToWelcomeClicked();
 
 private:
     Ui::MainWindow *ui;
     WelcomePage *m_welcomePage;
-    
-    // You can add more pages here, e.g.:
-    // ProcessingPage *m_processingPage;
+    TeamPage *m_teamPage;
+    ProcessingPage *m_processingPage;
 };
 
 #endif // MAINWINDOW_H

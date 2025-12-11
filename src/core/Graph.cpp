@@ -26,7 +26,7 @@ void Graph::buildGraph(const std::vector<Token> &tokens)
                 catch (const std::invalid_argument &e)
                 {
                     std::cerr << "Invalid user ID: " << tokens[i].text << "\n";
-                    continue; // Skip this user
+                    continue; 
                 }
                 catch (const std::out_of_range &e)
                 {
@@ -39,13 +39,21 @@ void Graph::buildGraph(const std::vector<Token> &tokens)
                 std::cerr << "Missing value for user ID at token " << i << "\n";
                 continue;
             }
-            // Ensure user exists in graph even if they have no followers
+
             if (graph.find(id) == graph.end()) {
                 graph[id] = {};
             }
+            
+            int currentPostCount = 0; // Initialize counter for the current user
 
             while(i < tokens.size()&&tokens[i].text != "/user")
             {
+                // NEW: Count posts for the current user ID
+                if(tokens[i].type=="tag" &&tokens[i].text == "post" )
+                {
+                    currentPostCount++;
+                }
+                
                 if(tokens[i].type=="tag" &&tokens[i].text == "id" )
                 {
                     i++;
@@ -73,6 +81,9 @@ void Graph::buildGraph(const std::vector<Token> &tokens)
                 }
                 i++;
             }
+            
+            // NEW: Store the total post count after processing the user's block
+            postCounts[id] = currentPostCount;
         }
     }
 }
@@ -171,3 +182,57 @@ int Graph::getMostInfluencerId()
 
     return mostInfluencerId;
 }
+int Graph::getMostActivePersonId()
+{
+    if (graph.empty()) {
+        return -1;
+    }
+    std::map<int, int> followingCounts;
+    for (const auto& entry :  graph) {
+        followingCounts[entry.first] = 0;
+    }
+    for (const auto& entry:graph) {
+        for (int follower:entry.second) {
+            followingCounts[follower]++;
+        }
+    }
+    for (const auto& entry:graph) {
+        
+        followingCounts[entry.first]+=entry.second.size();
+        
+    }
+    int mostActiveId = -1;
+    int maxFollowing = -1;
+    for (const auto& entry:followingCounts) {
+        if (entry.second > maxFollowing) {
+            maxFollowing = entry.second;
+            mostActiveId = entry.first;
+        }
+    }
+    return mostActiveId;
+}
+int Graph::getMostActivePersonIdPosts()
+{
+    if (postCounts.empty()) {
+        return -1;
+    }
+
+    int mostActiveId = -1;
+    int maxPosts = -1;
+
+    for (const auto& entry : postCounts)
+    {
+        int userId = entry.first;
+        int postCount = entry.second;
+        
+        if (postCount > maxPosts)
+        {
+            maxPosts = postCount;
+            mostActiveId = userId;
+        }
+    }
+
+    return mostActiveId;
+}
+
+

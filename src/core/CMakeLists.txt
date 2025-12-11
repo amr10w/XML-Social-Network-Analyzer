@@ -22,6 +22,11 @@ add_library(core STATIC
     GraphVisualizer.cpp
     JsonConverter.cpp
     JsonConverter.h
+    SearchTopic.cpp
+    SearchTopic.h
+    SearchWord.cpp
+    SearchWord.h
+
 )
 
 target_link_libraries(core
