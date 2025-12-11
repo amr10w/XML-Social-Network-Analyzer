@@ -23,6 +23,7 @@ GraphPage::GraphPage(QWidget *parent)
     setFixedSize(900, 750);
     // Initially hide output section
     ui->outputLabel->setVisible(false);
+    ui->graphScrollArea->setVisible(false);
     ui->graphDisplayLabel->setVisible(false);
     ui->downloadButton->setVisible(false);
     
@@ -73,10 +74,11 @@ void GraphPage::onBrowseFile()
     
     // Hide output when new file is loaded
     ui->outputLabel->setVisible(false);
+    ui->graphScrollArea->setVisible(false);
     ui->graphDisplayLabel->setVisible(false);
     ui->downloadButton->setVisible(false);
     
-    //QMessageBox::information(this, "Success", "File loaded successfully!");
+    QMessageBox::information(this, "Success", "File loaded successfully!");
 }
 
 void GraphPage::onGenerateGraph()
@@ -103,7 +105,7 @@ void GraphPage::onGenerateGraph()
             // Show output section
             updateOutputVisibility();
             
-            //QMessageBox::information(this, "Success", "Graph generated successfully!");
+            QMessageBox::information(this, "Success", "Graph generated successfully!");
         } else {
             QMessageBox::critical(this, "Error", "Failed to generate graph image!");
         }
@@ -329,6 +331,7 @@ void GraphPage::updateOutputVisibility()
 {
     bool hasOutput = !graphImage.isNull();
     ui->outputLabel->setVisible(hasOutput);
+    ui->graphScrollArea->setVisible(hasOutput);
     ui->graphDisplayLabel->setVisible(hasOutput);
     ui->downloadButton->setVisible(hasOutput);
 }
@@ -351,7 +354,7 @@ void GraphPage::onDownloadGraph()
         return;
     
     if (graphImage.save(saveFileName)) {
-        //QMessageBox::information(this, "Success", "Graph saved successfully to:\n" + saveFileName);
+        QMessageBox::information(this, "Success", "Graph saved successfully to:\n" + saveFileName);
     } else {
         QMessageBox::critical(this, "Error", "Failed to save graph image!");
     }
@@ -360,8 +363,8 @@ void GraphPage::onDownloadGraph()
 void GraphPage::showMessage(const QString& message, bool isError)
 {
     if (isError) {
-        //QMessageBox::critical(this, "Error", message);
+        QMessageBox::critical(this, "Error", message);
     } else {
-        //QMessageBox::information(this, "Success", message);
+        QMessageBox::information(this, "Success", message);
     }
 }
