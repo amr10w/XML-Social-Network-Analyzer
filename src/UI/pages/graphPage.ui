@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GraphPage</class>
+ <widget class="QWidget" name="GraphPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>910</width>
+    <height>1000</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>XML to Graph</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QWidget {
+    background-color: #e5e7eb;
+}
+QLabel {
+    background-color: transparent;
+}
+
+/* Modern Scrollbar Design */
+QScrollArea, QScrollBar:vertical, QScrollBar:horizontal {
+    background-color: transparent;
+}
+
+QScrollBar:vertical {
+    border: none;
+    background: #f3f4f6;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #c4b5fd;
+    min-height: 30px;
+    border-radius: 6px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #a78bfa;
+}
+
+QScrollBar::handle:vertical:pressed {
+    background: #8b5cf6;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background: #f3f4f6;
+    height: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #c4b5fd;
+    min-width: 30px;
+    border-radius: 6px;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #a78bfa;
+}
+
+QScrollBar::handle:horizontal:pressed {
+    background: #8b5cf6;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    border: none;
+    background: none;
+    width: 0px;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+QPushButton#backButton {
+    background-color: transparent;
+    border: none;
+    color: #7c3aed;
+    font-size: 14px;
+    text-align: left;
+    padding: 8px;
+}
+
+QPushButton#backButton:hover {
+    background-color: rgba(124, 58, 237, 0.1);
+    border-radius: 6px;
+}
+
+QWidget#headerWidget {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                stop:0 #7c3aed, stop:1 #a855f7);
+    border-radius: 12px;
+}
+
+QLabel#titleLabel {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#subtitleLabel {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+}
+
+QWidget#contentWidget {
+    background-color: white;
+    border-radius: 12px;
+}
+
+QLabel#inputLabel, QLabel#outputLabel {
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QPushButton#browseButton {
+    background-color: #ede9fe;
+    color: #7c3aed;
+    border: 1px solid #c4b5fd;
+    border-radius: 6px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+QPushButton#browseButton:hover {
+    background-color: #ddd6fe;
+}
+
+QLabel#orLabel {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+QTextEdit#inputTextEdit {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #374151;
+}
+
+QTextEdit#inputTextEdit:focus {
+    border: 2px solid #7c3aed;
+    background-color: white;
+}
+
+QPushButton#generateButton {
+    background-color: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+QPushButton#generateButton:hover {
+    background-color: #6d28d9;
+}
+
+QPushButton#generateButton:pressed {
+    background-color: #5b21b6;
+}
+
+QScrollArea#graphScrollArea {
+    background-color: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+}
+
+QLabel#graphDisplayLabel {
+    background-color: transparent;
+}
+
+QPushButton#downloadButton {
+    background-color: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QPushButton#downloadButton:hover {
+    background-color: #6d28d9;
+}
+
+QPushButton#downloadButton:pressed {
+    background-color: #5b21b6;
+}
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QScrollArea" name="mainScrollArea">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>910</width>
+        <height>1000</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="scrollContentLayout">
+       <property name="spacing">
+        <number>16</number>
+       </property>
+       <property name="leftMargin">
+        <number>24</number>
+       </property>
+       <property name="topMargin">
+        <number>24</number>
+       </property>
+       <property name="rightMargin">
+        <number>24</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="backButton">
+         <property name="text">
+          <string>← Back to Operations</string>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="headerWidget" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>120</height>
+          </size>
+         </property>
+         <layout class="QHBoxLayout" name="headerLayout">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <property name="leftMargin">
+           <number>24</number>
+          </property>
+          <property name="topMargin">
+           <number>24</number>
+          </property>
+          <property name="rightMargin">
+           <number>24</number>
+          </property>
+          <property name="bottomMargin">
+           <number>24</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="iconLabel">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>60</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: white; border-radius: 12px; font-size: 24px; font-weight: bold; color: #7c3aed;</string>
+            </property>
+            <property name="text">
+             <string>📊</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="headerTextLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="titleLabel">
+              <property name="text">
+               <string>XML to Graph</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="subtitleLabel">
+              <property name="text">
+               <string>Visualize XML structure as a hierarchical graph</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="contentWidget" native="true">
+         <layout class="QVBoxLayout" name="contentLayout">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <property name="leftMargin">
+           <number>32</number>
+          </property>
+          <property name="topMargin">
+           <number>32</number>
+          </property>
+          <property name="rightMargin">
+           <number>32</number>
+          </property>
+          <property name="bottomMargin">
+           <number>32</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="inputLabel">
+            <property name="text">
+             <string>Input XML File</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="browseButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>48</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>⬆  Browse XML File</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="orLabel">
+            <property name="text">
+             <string>OR</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="inputTextEdit">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>200</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="generateButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>📊  Generate Graph</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="outputLabel">
+            <property name="text">
+             <string>Generated Graph</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QScrollArea" name="graphScrollArea">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="widgetResizable">
+             <bool>true</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <widget class="QWidget" name="scrollAreaWidgetContents">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>800</width>
+               <height>600</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="scrollLayout">
+              <item>
+               <widget class="QLabel" name="graphDisplayLabel">
+                <property name="minimumSize">
+                 <size>
+                  <width>800</width>
+                  <height>600</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="downloadButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>⬇  Download</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
