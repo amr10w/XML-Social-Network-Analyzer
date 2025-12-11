@@ -28,6 +28,9 @@ add_library(UI_Pages STATIC
     json_converter_page.cpp
     postsearch.cpp
     postsearch.h
+    graphpage.cpp
+    graphpage.h
+    graphpage.ui
 )
 
 
