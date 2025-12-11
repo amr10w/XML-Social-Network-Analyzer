@@ -62,15 +62,15 @@ void printsuggestions(const std::vector<int>& v)
 }
 
 
-int main()
-{
-    std::string file = "test.xml";
-    std::string xml = readFileToString(file);  
+// int main()
+// {
+//     std::string file = "test.xml";
+//     std::string xml = readFileToString(file);  
 
-    Graph g(xml);                              
+//     Graph g(xml);                              
 
-    std::vector<int> suggestion = suggest(g,7);
-    printsuggestions(suggestion);
-    return 0;
-}
+//     std::vector<int> suggestion = suggest(g,7);
+//     printsuggestions(suggestion);
+//     return 0;
+// }
 
