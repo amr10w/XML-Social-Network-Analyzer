@@ -1,0 +1,47 @@
+#ifndef DECOMPRESSPAGE_H
+#define DECOMPRESSPAGE_H
+
+#include <QScrollArea>
+#include <QString>
+
+// Forward declaration of the UI namespace
+QT_BEGIN_NAMESPACE
+namespace Ui { class DecompressPage; } 
+QT_END_NAMESPACE
+
+class DecompressPage : public QScrollArea
+{
+    Q_OBJECT
+
+public:
+    explicit DecompressPage(QWidget *parent = nullptr);
+    ~DecompressPage();
+
+private slots:
+    void onBackToOperations();
+    void onBrowseFile();
+    void onDecompressXML(); 
+    void onDownload();
+
+private:
+    Ui::DecompressPage *ui;
+    
+    // Holds the raw byte content of the loaded compressed file (.comp)
+    QByteArray compressedDataBytes; 
+    
+    // Holds the final decompressed XML output
+    QString outputXML;
+    
+    // File path for smart saving/file info
+    QString currentFilePath;
+
+    qint64 originalSize;    // Size of the loaded .comp file
+    qint64 decompressedSize; // Size of the resulting XML
+    
+    // UI Helpers
+    void updateStatistics();
+    void updateOutputVisibility(bool visible);
+    void showMessage(const QString& message, bool isError = false);
+};
+
+#endif // DECOMPRESSPAGE_H

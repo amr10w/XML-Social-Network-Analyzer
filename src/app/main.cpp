@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "VerificationPage.h"
 #include "CompressPage.h"
+#include "DecompressPage.h"
 #include "minifyingPage.h" 
 #include "CLICommands.h"
 #include <QApplication>
@@ -43,6 +44,9 @@ int main(int argc, char *argv[])
 
         CompressPage c;
         c.show();
+
+        DecompressPage d;
+        d.show();
 
         return a.exec();
     }

@@ -23,6 +23,9 @@ add_library(UI_Pages STATIC
     CompressPage.cpp
     CompressPage.h
     CompressPage.ui
+    DecompressPage.cpp
+    DecompressPage.h
+    DecompressPage.ui
 )
 
 set_property(TARGET UI_Pages PROPERTY AUTORCC ON)

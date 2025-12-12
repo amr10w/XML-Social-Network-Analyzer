@@ -9,9 +9,10 @@
 #include <QTextStream>
 #include <QFileInfo>
 #include <QScrollBar>
+#include "../../core/BPE_Bridge.h"
 
 // Helper macro to wrap the newly declared backend function
-extern std::string compressXMLString(const std::string& xmlContent);
+extern std::string compressxmlString(const std::string& xmlContent);
 
 
 CompressPage::CompressPage(QWidget *parent)

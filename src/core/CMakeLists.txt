@@ -22,6 +22,9 @@ add_library(core STATIC
     GraphVisualizer.cpp
     JsonConverter.cpp
     JsonConverter.h
+    BPE_Bridge.h
+    BPE_Bridge.cpp
+    main.cpp
 )
 
 target_link_libraries(core
