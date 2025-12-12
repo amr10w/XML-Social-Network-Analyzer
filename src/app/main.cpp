@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "VerificationPage.h"
+#include "CompressPage.h"
 #include "minifyingPage.h" 
 #include "postsearch.h" 
 #include "social_relations_page.h"
