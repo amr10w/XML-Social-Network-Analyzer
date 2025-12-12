@@ -24,7 +24,6 @@ add_library(core STATIC
     JsonConverter.h
     BPE_Bridge.h
     BPE_Bridge.cpp
-    main.cpp
     SearchTopic.cpp
     SearchTopic.h
     SearchWord.cpp
