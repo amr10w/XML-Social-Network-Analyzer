@@ -6,67 +6,167 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>945</width>
-    <height>762</height>
+    <width>1000</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>XML Operations</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#ProcessingPage {
-	background-color: #f0f2f5;
-}
+   <string notr="true">
+    QWidget#ProcessingPage {
+        background-color: #F8F9FA; /* Light Grey Background */
+    }
+    
+    /* CARD STYLES */
+    QFrame.card {
+        background-color: white;
+        border: 1px solid #E0E0E0;
+        border-radius: 12px;
+    }
+    QFrame.card:hover {
+        border: 1px solid #B0BEC5;
+        background-color: #FFFFFF;
+        /* Ideally box-shadow, but Qt stylesheets obscure shadows. Using border/bg change. */
+    }
 
-QWidget#headerContainer {
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #2c5f8d, stop:1 #5a9fd4);
-}
+    /* ICON CONTAINERS (Top Left of Card) */
+    QLabel.iconLabel {
+        border-radius: 10px;
+        padding: 10px;
+        color: white;
+        font-size: 24px;
+        qproperty-alignment: AlignCenter;
+    }
+       /* Header Banner Container */
+    QFrame#bannerContainer {
+        /* Modern Blue Gradient Banner */
+        background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #1E88E5, stop:1 #1565C0);
+        border-radius: 20px;
+    }
 
-QLabel#lblHeaderTitle {
-	color: white;
-	font-size: 24px;
-	font-weight: bold;
-}
+    /* Back Button (Independent Link) */
+    QPushButton#btnBack {
+        background-color: transparent;
+        color: #1565C0; /* Strong Blue */
+        border: none;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        text-align: left;
+    }
+    QPushButton#btnBack:hover {
+        color: #0D47A1; /* Darker Blue on Hover */
+        text-decoration: underline;
+    }
 
-QLabel#lblHeaderSub {
-	color: #e0e0e0;
-	font-size: 14px;
-}
+    /* Header Text (Inside Banner) */
+    QLabel#lblHeaderTitle {
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 32px;
+        font-weight: bold;
+    }
+    QLabel#lblHeaderSub {
+        color: rgba(255, 255, 255, 0.9);
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+    /* BADGES (Top Right of Card) */
+    QLabel.badgeLabel {
+        border-radius: 12px;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: bold;
+    }
 
-QPushButton#btnBack {
-	background-color: rgba(255, 255, 255, 0.2);
-	color: white;
-	border: 1px solid white;
-	border-radius: 6px;
-	padding: 8px 16px;
-	font-size: 12px;
-}
+    /* TITLES */
+    QLabel.cardTitle {
+        color: #34495E;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
 
-QPushButton#btnBack:hover {
-	background-color: rgba(255, 255, 255, 0.3);
-}
+    /* DESCRIPTIONS */
+    QLabel.cardDesc {
+        color: #7F8C8D;
+        font-size: 12px;
+        line-height: 1.4;
+    }
 
-QPushButton {
-	border-radius: 8px;
-	padding: 20px;
-	text-align: left;
-	background-color: white;
-	border: 1px solid #ddd;
-}
+    /* ACTION BUTTONS (Links) */
+    QPushButton.actionBtn {
+        text-align: left;
+        background-color: transparent;
+        border: none;
+        font-weight: bold;
+        font-size: 13px;
+    }
+    QPushButton.actionBtn:hover {
+        text-decoration: underline;
+    }
 
-QPushButton:hover {
-	background-color: #f9f9f9;
-	border: 1px solid #ccc;
-}
+    /* --- SPECIFIC THEMES --- */
 
-QLabel.operationIcon {
-	font-size: 32px;
-	background-color: transparent;
-	border: none;
-}
-</string>
+    /* 1. Verification (Green) */
+    QLabel#iconVerification { background-color: #4CAF50; }
+    QLabel#badgeVerification { background-color: #E8F5E9; color: #2E7D32; }
+    QPushButton#btnVerification { color: #4CAF50; }
+
+    /* 2. Formatting (Blue) */
+    QLabel#iconFormatting { background-color: #2196F3; }
+    QLabel#badgeFormatting { background-color: #E3F2FD; color: #1565C0; }
+    QPushButton#btnFormatting { color: #2196F3; }
+
+    /* 3. Prettify (Light Blue) */
+    QLabel#iconPrettify { background-color: #03A9F4; }
+    QLabel#badgePrettify { background-color: #E1F5FE; color: #0277BD; }
+    QPushButton#btnPrettify { color: #03A9F4; }
+
+    /* 4. Minify (Purple) */
+    QLabel#iconMinify { background-color: #9C27B0; }
+    QLabel#badgeMinify { background-color: #F3E5F5; color: #7B1FA2; }
+    QPushButton#btnMinify { color: #9C27B0; }
+
+    /* 5. JSON (Amber) */
+    QLabel#iconJson { background-color: #FFC107; }
+    QLabel#badgeJson { background-color: #FFF8E1; color: #FF8F00; }
+    QPushButton#btnConvertJson { color: #FFC107; }
+
+    /* 6. Compress (Red) */
+    QLabel#iconCompress { background-color: #F44336; }
+    QLabel#badgeCompress { background-color: #FFEBEE; color: #C62828; }
+    QPushButton#btnCompress { color: #F44336; }
+
+    /* 7. Decompress (Teal) */
+    QLabel#iconDecompress { background-color: #009688; }
+    QLabel#badgeDecompress { background-color: #E0F2F1; color: #00695C; }
+    QPushButton#btnDecompress { color: #009688; }
+
+    /* 8. Graph (Indigo) */
+    QLabel#iconGraph { background-color: #3F51B5; }
+    QLabel#badgeGraph { background-color: #E8EAF6; color: #283593; }
+    QPushButton#btnGraph { color: #3F51B5; }
+
+    /* 9. Social (Pink) */
+    QLabel#iconSocial { background-color: #E91E63; }
+    QLabel#badgeSocial { background-color: #FCE4EC; color: #AD1457; }
+    QPushButton#btnSocial { color: #E91E63; }
+
+    /* 10. Post Search (Deep Orange) */
+    QLabel#iconPostSearch { background-color: #FF5722; }
+    QLabel#badgePostSearch { background-color: #FBE9E7; color: #D84315; }
+    QPushButton#btnPostSearch { color: #FF5722; }
+
+   </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -92,304 +192,717 @@ QLabel.operationIcon {
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>933</width>
-        <height>1000</height>
+        <width>1000</width>
+        <height>950</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_Main">
        <property name="leftMargin">
-        <number>0</number>
+        <number>40</number>
        </property>
        <property name="topMargin">
-        <number>0</number>
+        <number>20</number>
        </property>
        <property name="rightMargin">
-        <number>0</number>
+        <number>40</number>
        </property>
        <property name="bottomMargin">
-        <number>0</number>
+        <number>40</number>
        </property>
+       
+       <!-- Back Link Row -->
        <item>
-        <widget class="QWidget" name="headerContainer" native="true">
+        <layout class="QHBoxLayout" name="hLayoutBack">
+         <property name="leftMargin"><number>10</number></property>
+         <item>
+          <widget class="QPushButton" name="btnBack">
+           <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+           <property name="text"><string>← Back to Home</string></property>
+           <property name="fixedSize">
+            <size>
+             <width>160</width>
+             <height>30</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="headerBackSpacer">
+           <property name="orientation"><enum>Qt::Horizontal</enum></property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+
+       <!-- Spacing -->
+       <item>
+        <spacer name="spacerBeforeBanner">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property>
+        </spacer>
+       </item>
+
+       <!-- Banner Container -->
+       <item>
+        <widget class="QFrame" name="bannerContainer">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>200</height>
+           <height>180</height>
           </size>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <property name="topMargin">
-           <number>30</number>
+         <layout class="QVBoxLayout" name="vLayoutBanner">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QPushButton" name="btnBack">
-              <property name="text">
-               <string>Back to Home</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item>
            <widget class="QLabel" name="lblHeaderTitle">
-            <property name="text">
-             <string>XML Operations</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
-            </property>
+            <property name="text"><string>XML Processing Operations</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
            </widget>
           </item>
           <item>
            <widget class="QLabel" name="lblHeaderSub">
-            <property name="text">
-             <string>Choose an operation to perform on your XML files</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
-            </property>
+            <property name="text"><string>Select an operation to process your XML files</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </widget>
        </item>
+
        <item>
-        <widget class="QWidget" name="bodyContainer" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <property name="leftMargin">
-           <number>50</number>
-          </property>
-          <property name="topMargin">
-           <number>40</number>
-          </property>
-          <property name="rightMargin">
-           <number>50</number>
-          </property>
-          <property name="bottomMargin">
-           <number>40</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="font">
-             <font>
-              <pointsize>14</pointsize>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>XML Processing Operations</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Policy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QGridLayout" name="gridLayout">
-            <property name="horizontalSpacing">
-             <number>20</number>
-            </property>
-            <property name="verticalSpacing">
-             <number>20</number>
-            </property>
-            <item row="0" column="0">
+        <spacer name="verticalSpacer_Top">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+
+       <!-- GRID OF CARDS -->
+       <item>
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="horizontalSpacing">
+          <number>25</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>25</number>
+         </property>
+
+         <!-- 1. Verification -->
+         <item row="0" column="0">
+          <widget class="QFrame" name="cardVerification">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>180</height>
+            </size>
+           </property>
+           <property name="class" stdset="0">
+            <string>card</string>
+           </property>
+           <!-- Specific Style for Verification Card Header/Icon -->
+           <property name="styleSheet">
+              <string notr="true">
+                  #iconVerification { color: #00b865; background-color: rgba(0, 184, 101, 0.15); border-radius: 8px; }
+                  #badgeVerification { background-color: rgba(0, 184, 101, 0.1); color: #00b865; }
+                  #btnVerification { background-color: transparent; color: #006436; border: none; font-weight: bold; text-align: left; }
+                  #btnVerification:hover { text-decoration: underline; color: #004d2a; }
+              </string>
+           </property>
+           <layout class="QVBoxLayout" name="vLayout1">
+            <item>
+             <layout class="QHBoxLayout" name="hLayout1">
+              <item>
+               <widget class="QLabel" name="iconVerification">
+                <property name="class" stdset="0"><string>iconLabel</string></property>
+                <property name="text"><string>✓</string></property> <!-- Checkmark -->
+                <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                <property name="alignment"><set>Qt::AlignCenter</set></property>
+                <property name="font"><font><pointsize>18</pointsize><bold>true</bold></font></property>
+               </widget>
+              </item>
+              <item><spacer name="s1"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+              <item>
+               <widget class="QLabel" name="badgeVerification">
+                <property name="class" stdset="0"><string>badgeLabel</string></property>
+                <property name="text"><string>Verification</string></property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="title1">
+              <property name="class" stdset="0"><string>cardTitle</string></property>
+              <property name="text"><string>XML Verification</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="desc1">
+              <property name="class" stdset="0"><string>cardDesc</string></property>
+              <property name="text"><string>Check XML consistency and validation.</string></property>
+              <property name="wordWrap"><bool>true</bool></property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="btnVerification">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>XML Verification
-Check if your XML is well-formed</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QPushButton" name="btnFormatting">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>XML Formatting
-Format and beautify XML structure</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QPushButton" name="btnPrettify">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Prettify XML
-Add proper indentation and spacing</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QPushButton" name="btnMinify">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Minify XML
-Remove whitespace for production</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QPushButton" name="btnConvertJson">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Convert to JSON
-Transform XML data to JSON format</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QPushButton" name="btnCompress">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Compress XML
-Compress XML files for storage</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QPushButton" name="btnDecompress">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Decompress XML
-Extract compressed XML files</string>
-              </property>
+              <property name="class" stdset="0"><string>actionBtn</string></property>
+              <property name="text"><string>Start Verification →</string></property>
+              <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
              </widget>
             </item>
            </layout>
-          </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
+          </widget>
+         </item>
+
+               <!-- 2. Prettify (Moved to 0,1) -->
+               <item row="0" column="1">
+                <widget class="QFrame" name="cardPrettify">
+                 <property name="minimumSize"><size><width>0</width><height>180</height></size></property>
+                 <property name="class" stdset="0"><string>card</string></property>
+                 <property name="styleSheet">
+                    <string notr="true">
+                        #iconPrettify { color: #2563eb; background-color: rgba(37, 99, 235, 0.15); border-radius: 8px; }
+                        #badgePrettify { background-color: rgba(37, 99, 235, 0.1); color: #2563eb; }
+                        #btnPrettify { background-color: transparent; color: #1e40af; border: none; font-weight: bold; text-align: left; }
+                        #btnPrettify:hover { text-decoration: underline; color: #1e3a8a; }
+                    </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="vLayout3">
+                  <item>
+                   <layout class="QHBoxLayout" name="hLayout3">
+                    <item>
+                     <widget class="QLabel" name="iconPrettify">
+                      <property name="class" stdset="0"><string>iconLabel</string></property>
+                      <property name="text"><string>&lt;&gt;</string></property>
+                      <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="font"><font><pointsize>16</pointsize><bold>true</bold></font></property>
+                     </widget>
+                    </item>
+                    <item><spacer name="s3"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                    <item>
+                     <widget class="QLabel" name="badgePrettify">
+                      <property name="class" stdset="0"><string>badgeLabel</string></property>
+                      <property name="text"><string>Prettify</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="title3">
+                    <property name="class" stdset="0"><string>cardTitle</string></property>
+                    <property name="text"><string>Prettify XML</string></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="desc3">
+                    <property name="class" stdset="0"><string>cardDesc</string></property>
+                    <property name="text"><string>Format XML with proper indentation and whitespace.</string></property>
+                    <property name="wordWrap"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnPrettify">
+                    <property name="class" stdset="0"><string>actionBtn</string></property>
+                    <property name="text"><string>Start Prettifying →</string></property>
+                    <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+
+               <!-- 3. Minify (Moved to 1,0) -->
+               <item row="1" column="0">
+                <widget class="QFrame" name="cardMinify">
+                 <property name="minimumSize"><size><width>0</width><height>180</height></size></property>
+                 <property name="class" stdset="0"><string>card</string></property>
+                 <property name="styleSheet">
+                    <string notr="true">
+                        #iconMinify { color: #9333ea; background-color: rgba(147, 51, 234, 0.15); border-radius: 8px; }
+                        #badgeMinify { background-color: rgba(147, 51, 234, 0.1); color: #9333ea; }
+                        #btnMinify { background-color: transparent; color: #6b21a8; border: none; font-weight: bold; text-align: left; }
+                        #btnMinify:hover { text-decoration: underline; color: #581c87; }
+                    </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="vLayout4">
+                  <item>
+                   <layout class="QHBoxLayout" name="hLayout4">
+                    <item>
+                     <widget class="QLabel" name="iconMinify">
+                      <property name="class" stdset="0"><string>iconLabel</string></property>
+                      <property name="text"><string>✨</string></property>
+                      <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="font"><font><pointsize>18</pointsize></font></property>
+                     </widget>
+                    </item>
+                    <item><spacer name="s4"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                    <item>
+                     <widget class="QLabel" name="badgeMinify">
+                      <property name="class" stdset="0"><string>badgeLabel</string></property>
+                      <property name="text"><string>Minification</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="title4">
+                    <property name="class" stdset="0"><string>cardTitle</string></property>
+                    <property name="text"><string>Minify XML</string></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="desc4">
+                    <property name="class" stdset="0"><string>cardDesc</string></property>
+                    <property name="text"><string>Remove unnecessary whitespace to reduce file size.</string></property>
+                    <property name="wordWrap"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnMinify">
+                    <property name="class" stdset="0"><string>actionBtn</string></property>
+                    <property name="text"><string>Start Minifying →</string></property>
+                    <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+
+               <!-- 4. Convert JSON (Moved to 1,1) -->
+               <item row="1" column="1">
+                <widget class="QFrame" name="cardJson">
+                 <property name="minimumSize"><size><width>0</width><height>180</height></size></property>
+                 <property name="class" stdset="0"><string>card</string></property>
+                 <property name="styleSheet">
+                    <string notr="true">
+                        #iconJson { color: #ef6c00; background-color: rgba(239, 108, 0, 0.15); border-radius: 8px; }
+                        #badgeJson { background-color: rgba(239, 108, 0, 0.1); color: #ef6c00; }
+                        #btnConvertJson { background-color: transparent; color: #c2410c; border: none; font-weight: bold; text-align: left; }
+                        #btnConvertJson:hover { text-decoration: underline; color: #9a3412; }
+                    </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="vLayout5">
+                  <item>
+                   <layout class="QHBoxLayout" name="hLayout5">
+                    <item>
+                     <widget class="QLabel" name="iconJson">
+                      <property name="class" stdset="0"><string>iconLabel</string></property>
+                      <property name="text"><string>{ }</string></property>
+                      <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="font"><font><pointsize>14</pointsize><bold>true</bold></font></property>
+                     </widget>
+                    </item>
+                    <item><spacer name="s5"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                    <item>
+                     <widget class="QLabel" name="badgeJson">
+                      <property name="class" stdset="0"><string>badgeLabel</string></property>
+                      <property name="text"><string>Conversion</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="title5">
+                    <property name="class" stdset="0"><string>cardTitle</string></property>
+                    <property name="text"><string>Convert to JSON</string></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="desc5">
+                    <property name="class" stdset="0"><string>cardDesc</string></property>
+                    <property name="text"><string>Transform XML documents into JSON format.</string></property>
+                    <property name="wordWrap"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnConvertJson">
+                    <property name="class" stdset="0"><string>actionBtn</string></property>
+                    <property name="text"><string>Start Converting →</string></property>
+                    <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+
+               <!-- 5. Compress (Moved to 2,0) -->
+               <item row="2" column="0">
+                <widget class="QFrame" name="cardCompress">
+                 <property name="minimumSize"><size><width>0</width><height>180</height></size></property>
+                 <property name="class" stdset="0"><string>card</string></property>
+                 <property name="styleSheet">
+                    <string notr="true">
+                        #iconCompress { color: black; background-color: rgba(248, 73, 104, 0.15); border-radius: 8px; } /* Icon was text only in page, kept simple */
+                        #badgeCompress { background-color: rgba(248, 73, 104, 0.1); color: #F84968; }
+                        #btnCompress { background-color: transparent; color: #be123c; border: none; font-weight: bold; text-align: left; }
+                        #btnCompress:hover { text-decoration: underline; color: #9f1239; }
+                    </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="vLayout6">
+                  <item>
+                   <layout class="QHBoxLayout" name="hLayout6">
+                    <item>
+                     <widget class="QLabel" name="iconCompress">
+                      <property name="class" stdset="0"><string>iconLabel</string></property>
+                      <property name="text"><string>💾</string></property>
+                      <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="font"><font><pointsize>18</pointsize></font></property>
+                     </widget>
+                    </item>
+                    <item><spacer name="s6"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                    <item>
+                     <widget class="QLabel" name="badgeCompress">
+                      <property name="class" stdset="0"><string>badgeLabel</string></property>
+                      <property name="text"><string>Compression</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="title6">
+                    <property name="class" stdset="0"><string>cardTitle</string></property>
+                    <property name="text"><string>Compress XML</string></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="desc6">
+                    <property name="class" stdset="0"><string>cardDesc</string></property>
+                    <property name="text"><string>Compress XML files for efficient storage.</string></property>
+                    <property name="wordWrap"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnCompress">
+                    <property name="class" stdset="0"><string>actionBtn</string></property>
+                    <property name="text"><string>Start Compression →</string></property>
+                    <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+
+               <!-- 6. Decompress (Moved to 2,1) - Unfinished/Generic -->
+               <item row="2" column="1">
+                <widget class="QFrame" name="cardDecompress">
+                 <property name="minimumSize"><size><width>0</width><height>180</height></size></property>
+                 <property name="class" stdset="0"><string>card</string></property>
+                 <property name="styleSheet">
+                    <string notr="true">
+                        #iconDecompress { color: #607D8B; background-color: rgba(96, 125, 139, 0.15); border-radius: 8px; }
+                        #badgeDecompress { background-color: rgba(96, 125, 139, 0.1); color: #607D8B; }
+                        #btnDecompress { background-color: transparent; color: #37474F; border: none; font-weight: bold; text-align: left; }
+                        #btnDecompress:hover { text-decoration: underline; color: #263238; }
+                    </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="vLayout7">
+                  <item>
+                   <layout class="QHBoxLayout" name="hLayout7">
+                    <item>
+                     <widget class="QLabel" name="iconDecompress">
+                      <property name="class" stdset="0"><string>iconLabel</string></property>
+                      <property name="text"><string>📂</string></property>
+                      <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="font"><font><pointsize>18</pointsize></font></property>
+                     </widget>
+                    </item>
+                    <item><spacer name="s7"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                    <item>
+                     <widget class="QLabel" name="badgeDecompress">
+                      <property name="class" stdset="0"><string>badgeLabel</string></property>
+                      <property name="text"><string>Decompression</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="title7">
+                    <property name="class" stdset="0"><string>cardTitle</string></property>
+                    <property name="text"><string>Decompress XML</string></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="desc7">
+                    <property name="class" stdset="0"><string>cardDesc</string></property>
+                    <property name="text"><string>Restore compressed XML files to original.</string></property>
+                    <property name="wordWrap"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnDecompress">
+                    <property name="class" stdset="0"><string>actionBtn</string></property>
+                    <property name="text"><string>Start Decompression →</string></property>
+                    <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+
+               <!-- 7. Graph (Moved to 3,0) -->
+               <item row="3" column="0">
+                <widget class="QFrame" name="cardGraph">
+                 <property name="minimumSize"><size><width>0</width><height>180</height></size></property>
+                 <property name="class" stdset="0"><string>card</string></property>
+                 <property name="styleSheet">
+                    <string notr="true">
+                        #iconGraph { color: #7c3aed; background-color: rgba(124, 58, 237, 0.15); border-radius: 8px; }
+                        #badgeGraph { background-color: rgba(124, 58, 237, 0.1); color: #7c3aed; }
+                        #btnGraph { background-color: transparent; color: #5b21b6; border: none; font-weight: bold; text-align: left; }
+                        #btnGraph:hover { text-decoration: underline; color: #4c1d95; }
+                    </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="vLayout8">
+                  <item>
+                   <layout class="QHBoxLayout" name="hLayout8">
+                    <item>
+                     <widget class="QLabel" name="iconGraph">
+                      <property name="class" stdset="0"><string>iconLabel</string></property>
+                      <property name="text"><string>📊</string></property>
+                      <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="font"><font><pointsize>18</pointsize></font></property>
+                     </widget>
+                    </item>
+                    <item><spacer name="s8"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                    <item>
+                     <widget class="QLabel" name="badgeGraph">
+                      <property name="class" stdset="0"><string>badgeLabel</string></property>
+                      <property name="text"><string>Visualization</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="title8">
+                    <property name="class" stdset="0"><string>cardTitle</string></property>
+                    <property name="text"><string>XML to Graph</string></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="desc8">
+                    <property name="class" stdset="0"><string>cardDesc</string></property>
+                    <property name="text"><string>Visualize hierarchical structure.</string></property>
+                    <property name="wordWrap"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnGraph">
+                    <property name="class" stdset="0"><string>actionBtn</string></property>
+                    <property name="text"><string>Start Visualization →</string></property>
+                    <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+
+               <!-- 8. Social/Network (Moved to 3,1) -->
+               <item row="3" column="1">
+                <widget class="QFrame" name="cardSocial">
+                 <property name="minimumSize"><size><width>0</width><height>180</height></size></property>
+                 <property name="class" stdset="0"><string>card</string></property>
+                 <property name="styleSheet">
+                    <string notr="true">
+                        #iconSocial { color: #7c3aed; background-color: rgba(124, 58, 237, 0.15); border-radius: 8px; }
+                        #badgeSocial { background-color: rgba(124, 58, 237, 0.1); color: #7c3aed; }
+                        #btnSocial { background-color: transparent; color: #5b21b6; border: none; font-weight: bold; text-align: left; }
+                        #btnSocial:hover { text-decoration: underline; color: #4c1d95; }
+                    </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="vLayout9">
+                  <item>
+                   <layout class="QHBoxLayout" name="hLayout9">
+                    <item>
+                     <widget class="QLabel" name="iconSocial">
+                      <property name="class" stdset="0"><string>iconLabel</string></property>
+                      <property name="text"><string>👥</string></property>
+                      <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="font"><font><pointsize>18</pointsize></font></property>
+                     </widget>
+                    </item>
+                    <item><spacer name="s9"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                    <item>
+                     <widget class="QLabel" name="badgeSocial">
+                      <property name="class" stdset="0"><string>badgeLabel</string></property>
+                      <property name="text"><string>Analysis</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="title9">
+                    <property name="class" stdset="0"><string>cardTitle</string></property>
+                    <property name="text"><string>Network Analysis</string></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="desc9">
+                    <property name="class" stdset="0"><string>cardDesc</string></property>
+                    <property name="text"><string>Analyze network structure and influence.</string></property>
+                    <property name="wordWrap"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnSocial">
+                    <property name="class" stdset="0"><string>actionBtn</string></property>
+                    <property name="text"><string>Start Analysis →</string></property>
+                    <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+
+               <!-- 9. Post Search (Moved to 4,0) -->
+               <item row="4" column="0">
+                <widget class="QFrame" name="cardPostSearch">
+                 <property name="minimumSize"><size><width>0</width><height>180</height></size></property>
+                 <property name="class" stdset="0"><string>card</string></property>
+                 <property name="styleSheet">
+                    <string notr="true">
+                        #iconPostSearch { color: #FFA239; background-color: rgba(255, 162, 57, 0.15); border-radius: 8px; }
+                        #badgePostSearch { background-color: rgba(255, 162, 57, 0.1); color: #FFA239; }
+                        #btnPostSearch { background-color: transparent; color: #c2410c; border: none; font-weight: bold; text-align: left; }
+                        #btnPostSearch:hover { text-decoration: underline; color: #9a3412; }
+                    </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="vLayout10">
+                  <item>
+                   <layout class="QHBoxLayout" name="hLayout10">
+                    <item>
+                     <widget class="QLabel" name="iconPostSearch">
+                      <property name="class" stdset="0"><string>iconLabel</string></property>
+                      <property name="text"><string>🔎</string></property>
+                      <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="font"><font><pointsize>18</pointsize></font></property>
+                     </widget>
+                    </item>
+                    <item><spacer name="s10"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                    <item>
+                     <widget class="QLabel" name="badgePostSearch">
+                      <property name="class" stdset="0"><string>badgeLabel</string></property>
+                      <property name="text"><string>Search</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="title10">
+                    <property name="class" stdset="0"><string>cardTitle</string></property>
+                    <property name="text"><string>Post Search</string></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="desc10">
+                    <property name="class" stdset="0"><string>cardDesc</string></property>
+                    <property name="text"><string>Search through XML for topics.</string></property>
+                    <property name="wordWrap"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnPostSearch">
+                    <property name="class" stdset="0"><string>actionBtn</string></property>
+                    <property name="text"><string>Start Search →</string></property>
+                    <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               
+
+               <!-- 10. Influence & Activity -->
+               <item row="4" column="1">
+                <widget class="QFrame" name="cardInfluence">
+                 <property name="minimumSize"><size><width>0</width><height>180</height></size></property>
+                 <property name="class" stdset="0"><string>card</string></property>
+                 <property name="styleSheet">
+                    <string notr="true">
+                        #iconInfluence { color: #FFC107; background-color: rgba(255, 193, 7, 0.15); border-radius: 8px; }
+                        #badgeInfluence { background-color: rgba(255, 193, 7, 0.1); color: #FFB300; }
+                        #btnInfluence { background-color: transparent; color: #FFA000; border: none; font-weight: bold; text-align: left; }
+                        #btnInfluence:hover { text-decoration: underline; color: #FF8F00; }
+                    </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="vLayoutInfluence">
+                  <item>
+                   <layout class="QHBoxLayout" name="hLayoutInfluence">
+                    <item>
+                     <widget class="QLabel" name="iconInfluence">
+                      <property name="class" stdset="0"><string>iconLabel</string></property>
+                      <property name="text"><string>👑</string></property>
+                      <property name="fixedSize"><size><width>45</width><height>45</height></size></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="font"><font><pointsize>18</pointsize></font></property>
+                     </widget>
+                    </item>
+                    <item><spacer name="sInfluence"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                    <item>
+                     <widget class="QLabel" name="badgeInfluence">
+                      <property name="class" stdset="0"><string>badgeLabel</string></property>
+                      <property name="text"><string>Analysis</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="title10_new">
+                    <property name="class" stdset="0"><string>cardTitle</string></property>
+                    <property name="text"><string>Influence &amp; Activity</string></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="desc10_new">
+                    <property name="class" stdset="0"><string>cardDesc</string></property>
+                    <property name="text"><string>Calculate most active users and top influencers.</string></property>
+                    <property name="wordWrap"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnInfluence">
+                    <property name="class" stdset="0"><string>actionBtn</string></property>
+                    <property name="text"><string>Analyze Influence →</string></property>
+                    <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+
+
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_Bottom">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>

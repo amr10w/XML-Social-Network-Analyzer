@@ -17,22 +17,28 @@ public:
     
 signals:
     void verificationClicked();
-    void formattingClicked();
+    // void formattingClicked(); // Removed
     void minifyClicked();
     void prettifyClicked();
     void convertToJsonClicked();
     void compressClicked();
     void decompressClicked();
+    void graphClicked();
+    void socialClicked();
+    void postSearchClicked();
     void backToWelcomeClicked();
 
 private slots:
     void on_btnVerification_clicked();
-    void on_btnFormatting_clicked();
+    // void on_btnFormatting_clicked(); // Removed
     void on_btnMinify_clicked();
     void on_btnPrettify_clicked();
     void on_btnConvertJson_clicked();
     void on_btnCompress_clicked();
     void on_btnDecompress_clicked();
+    void on_btnGraph_clicked();
+    void on_btnSocial_clicked();
+    void on_btnPostSearch_clicked();
     void on_btnBack_clicked();
 
 private:

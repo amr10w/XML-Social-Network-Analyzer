@@ -12,6 +12,7 @@ WelcomePage::WelcomePage(QWidget *parent) :
     Q_INIT_RESOURCE(resources);
 
     ui->setupUi(this);
+    setWindowTitle("Welcome to XNet");
 }
 
 WelcomePage::~WelcomePage()

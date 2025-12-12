@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>680</width>
-    <height>950</height>
+    <width>500</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -167,8 +167,8 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>680</width>
-        <height>1200</height>
+        <width>668</width>
+        <height>1339</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -223,26 +223,40 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </property>
         </widget>
        </item>
-       
        <item>
         <widget class="QFrame" name="card1">
          <property name="styleSheet">
           <string notr="true">QFrame#card1 { background-color: #e8f5e9; border-radius: 8px; border: none; }</string>
          </property>
          <layout class="QHBoxLayout" name="cl1">
-          <property name="leftMargin"><number>10</number></property>
-          <property name="topMargin"><number>10</number></property>
-          <property name="rightMargin"><number>10</number></property>
-          <property name="bottomMargin"><number>10</number></property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="icon1">
             <property name="styleSheet">
              <string notr="true">background-color: #2e7d32; color: white; border-radius: 4px; font-weight: bold;</string>
             </property>
-            <property name="text"><string>&lt; &gt;</string></property>
-            <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+            <property name="text">
+             <string>&lt; &gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
             <property name="fixedSize" stdset="0">
-             <size><width>40</width><height>40</height></size>
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -251,12 +265,17 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
             <item>
              <widget class="QLabel" name="ch1">
               <property name="font">
-               <font><pointsize>10</pointsize><bold>true</bold></font>
+               <font>
+                <pointsize>10</pointsize>
+                <bold>true</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>XML Verification</string></property>
+              <property name="text">
+               <string>XML Verification</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -264,8 +283,12 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Validates XML structure and checks for consistency errors.</string></property>
-              <property name="wordWrap"><bool>true</bool></property>
+              <property name="text">
+               <string>Validates XML structure and checks for consistency errors.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -273,26 +296,40 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </layout>
         </widget>
        </item>
-
        <item>
         <widget class="QFrame" name="card2">
          <property name="styleSheet">
           <string notr="true">QFrame#card2 { background-color: #e3f2fd; border-radius: 8px; border: none; }</string>
          </property>
          <layout class="QHBoxLayout" name="cl2">
-          <property name="leftMargin"><number>10</number></property>
-          <property name="topMargin"><number>10</number></property>
-          <property name="rightMargin"><number>10</number></property>
-          <property name="bottomMargin"><number>10</number></property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="icon2">
             <property name="styleSheet">
              <string notr="true">background-color: #1565c0; color: white; border-radius: 4px; font-weight: bold;</string>
             </property>
-            <property name="text"><string>{ }</string></property>
-            <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+            <property name="text">
+             <string>{ }</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
             <property name="fixedSize" stdset="0">
-             <size><width>40</width><height>40</height></size>
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -301,12 +338,17 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
             <item>
              <widget class="QLabel" name="ch2">
               <property name="font">
-               <font><pointsize>10</pointsize><bold>true</bold></font>
+               <font>
+                <pointsize>10</pointsize>
+                <bold>true</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Prettify (Format)</string></property>
+              <property name="text">
+               <string>Prettify (Format)</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -314,8 +356,12 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Formats XML with proper indentation and structure.</string></property>
-              <property name="wordWrap"><bool>true</bool></property>
+              <property name="text">
+               <string>Formats XML with proper indentation and structure.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -323,26 +369,40 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </layout>
         </widget>
        </item>
-
        <item>
         <widget class="QFrame" name="card3">
          <property name="styleSheet">
           <string notr="true">QFrame#card3 { background-color: #f3e5f5; border-radius: 8px; border: none; }</string>
          </property>
          <layout class="QHBoxLayout" name="cl3">
-          <property name="leftMargin"><number>10</number></property>
-          <property name="topMargin"><number>10</number></property>
-          <property name="rightMargin"><number>10</number></property>
-          <property name="bottomMargin"><number>10</number></property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="icon3">
             <property name="styleSheet">
              <string notr="true">background-color: #7b1fa2; color: white; border-radius: 4px; font-weight: bold;</string>
             </property>
-            <property name="text"><string>- -</string></property>
-            <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+            <property name="text">
+             <string>- -</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
             <property name="fixedSize" stdset="0">
-             <size><width>40</width><height>40</height></size>
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -351,12 +411,17 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
             <item>
              <widget class="QLabel" name="ch3">
               <property name="font">
-               <font><pointsize>10</pointsize><bold>true</bold></font>
+               <font>
+                <pointsize>10</pointsize>
+                <bold>true</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Minify</string></property>
+              <property name="text">
+               <string>Minify</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -364,8 +429,12 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Removes unnecessary whitespace and reduces file size.</string></property>
-              <property name="wordWrap"><bool>true</bool></property>
+              <property name="text">
+               <string>Removes unnecessary whitespace and reduces file size.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -373,26 +442,40 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </layout>
         </widget>
        </item>
-
        <item>
         <widget class="QFrame" name="card4">
          <property name="styleSheet">
           <string notr="true">QFrame#card4 { background-color: #fff3e0; border-radius: 8px; border: none; }</string>
          </property>
          <layout class="QHBoxLayout" name="cl4">
-          <property name="leftMargin"><number>10</number></property>
-          <property name="topMargin"><number>10</number></property>
-          <property name="rightMargin"><number>10</number></property>
-          <property name="bottomMargin"><number>10</number></property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="icon4">
             <property name="styleSheet">
              <string notr="true">background-color: #ef6c00; color: white; border-radius: 4px; font-weight: bold;</string>
             </property>
-            <property name="text"><string>JS</string></property>
-            <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+            <property name="text">
+             <string>JS</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
             <property name="fixedSize" stdset="0">
-             <size><width>40</width><height>40</height></size>
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -401,12 +484,17 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
             <item>
              <widget class="QLabel" name="ch4">
               <property name="font">
-               <font><pointsize>10</pointsize><bold>true</bold></font>
+               <font>
+                <pointsize>10</pointsize>
+                <bold>true</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Convert to JSON</string></property>
+              <property name="text">
+               <string>Convert to JSON</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -414,8 +502,12 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Transforms XML documents into JSON format while preserving structure and attributes.</string></property>
-              <property name="wordWrap"><bool>true</bool></property>
+              <property name="text">
+               <string>Transforms XML documents into JSON format while preserving structure and attributes.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -423,26 +515,40 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </layout>
         </widget>
        </item>
-
        <item>
         <widget class="QFrame" name="card5">
          <property name="styleSheet">
           <string notr="true">QFrame#card5 { background-color: #ffebee; border-radius: 8px; border: none; }</string>
          </property>
          <layout class="QHBoxLayout" name="cl5">
-          <property name="leftMargin"><number>10</number></property>
-          <property name="topMargin"><number>10</number></property>
-          <property name="rightMargin"><number>10</number></property>
-          <property name="bottomMargin"><number>10</number></property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="icon5">
             <property name="styleSheet">
              <string notr="true">background-color: #c62828; color: white; border-radius: 4px; font-weight: bold;</string>
             </property>
-            <property name="text"><string>&lt;/&gt;</string></property>
-            <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+            <property name="text">
+             <string>&lt;/&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
             <property name="fixedSize" stdset="0">
-             <size><width>40</width><height>40</height></size>
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -451,12 +557,17 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
             <item>
              <widget class="QLabel" name="ch5">
               <property name="font">
-               <font><pointsize>10</pointsize><bold>true</bold></font>
+               <font>
+                <pointsize>10</pointsize>
+                <bold>true</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Compress XML</string></property>
+              <property name="text">
+               <string>Compress XML</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -464,8 +575,12 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Compresses XML files by removing unnecessary whitespace to reduce file size. Perfect for storage optimization.</string></property>
-              <property name="wordWrap"><bool>true</bool></property>
+              <property name="text">
+               <string>Compresses XML files by removing unnecessary whitespace to reduce file size. Perfect for storage optimization.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -473,26 +588,40 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </layout>
         </widget>
        </item>
-
        <item>
         <widget class="QFrame" name="card6">
          <property name="styleSheet">
           <string notr="true">QFrame#card6 { background-color: #e0f2f1; border-radius: 8px; border: none; }</string>
          </property>
          <layout class="QHBoxLayout" name="cl6">
-          <property name="leftMargin"><number>10</number></property>
-          <property name="topMargin"><number>10</number></property>
-          <property name="rightMargin"><number>10</number></property>
-          <property name="bottomMargin"><number>10</number></property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="icon6">
             <property name="styleSheet">
              <string notr="true">background-color: #00695c; color: white; border-radius: 4px; font-weight: bold;</string>
             </property>
-            <property name="text"><string>&lt; &gt;</string></property>
-            <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+            <property name="text">
+             <string>&lt; &gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
             <property name="fixedSize" stdset="0">
-             <size><width>40</width><height>40</height></size>
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -501,12 +630,17 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
             <item>
              <widget class="QLabel" name="ch6">
               <property name="font">
-               <font><pointsize>10</pointsize><bold>true</bold></font>
+               <font>
+                <pointsize>10</pointsize>
+                <bold>true</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Decompress XML</string></property>
+              <property name="text">
+               <string>Decompress XML</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -514,8 +648,12 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Restores compressed XML files to their original readable format with proper indentation and structure.</string></property>
-              <property name="wordWrap"><bool>true</bool></property>
+              <property name="text">
+               <string>Restores compressed XML files to their original readable format with proper indentation and structure.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -523,26 +661,40 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </layout>
         </widget>
        </item>
-
        <item>
         <widget class="QFrame" name="card7">
          <property name="styleSheet">
           <string notr="true">QFrame#card7 { background-color: #e8eaf6; border-radius: 8px; border: none; }</string>
          </property>
          <layout class="QHBoxLayout" name="cl7">
-          <property name="leftMargin"><number>10</number></property>
-          <property name="topMargin"><number>10</number></property>
-          <property name="rightMargin"><number>10</number></property>
-          <property name="bottomMargin"><number>10</number></property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="icon7">
             <property name="styleSheet">
              <string notr="true">background-color: #283593; color: white; border-radius: 4px; font-weight: bold;</string>
             </property>
-            <property name="text"><string>|l|</string></property>
-            <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+            <property name="text">
+             <string>|l|</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
             <property name="fixedSize" stdset="0">
-             <size><width>40</width><height>40</height></size>
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -551,12 +703,17 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
             <item>
              <widget class="QLabel" name="ch7">
               <property name="font">
-               <font><pointsize>10</pointsize><bold>true</bold></font>
+               <font>
+                <pointsize>10</pointsize>
+                <bold>true</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>XML Graph Representation</string></property>
+              <property name="text">
+               <string>XML Graph Representation</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -564,8 +721,12 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Visualize XML structure as interactive graphs and charts. View hierarchical relationships.</string></property>
-              <property name="wordWrap"><bool>true</bool></property>
+              <property name="text">
+               <string>Visualize XML structure as interactive graphs and charts. View hierarchical relationships.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -573,26 +734,40 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </layout>
         </widget>
        </item>
-
        <item>
         <widget class="QFrame" name="card8">
          <property name="styleSheet">
           <string notr="true">QFrame#card8 { background-color: #e0f7fa; border-radius: 8px; border: none; }</string>
          </property>
          <layout class="QHBoxLayout" name="cl8">
-          <property name="leftMargin"><number>10</number></property>
-          <property name="topMargin"><number>10</number></property>
-          <property name="rightMargin"><number>10</number></property>
-          <property name="bottomMargin"><number>10</number></property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="icon8">
             <property name="styleSheet">
              <string notr="true">background-color: #00838f; color: white; border-radius: 4px; font-weight: bold;</string>
             </property>
-            <property name="text"><string>o-o</string></property>
-            <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+            <property name="text">
+             <string>o-o</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
             <property name="fixedSize" stdset="0">
-             <size><width>40</width><height>40</height></size>
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -601,12 +776,17 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
             <item>
              <widget class="QLabel" name="ch8">
               <property name="font">
-               <font><pointsize>10</pointsize><bold>true</bold></font>
+               <font>
+                <pointsize>10</pointsize>
+                <bold>true</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Network Analysis</string></property>
+              <property name="text">
+               <string>Network Analysis</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -614,8 +794,12 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Analyze complex XML network structures and relationships. Identify patterns and dependencies.</string></property>
-              <property name="wordWrap"><bool>true</bool></property>
+              <property name="text">
+               <string>Analyze complex XML network structures and relationships. Identify patterns and dependencies.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -623,26 +807,40 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </layout>
         </widget>
        </item>
-
        <item>
         <widget class="QFrame" name="card9">
          <property name="styleSheet">
           <string notr="true">QFrame#card9 { background-color: #fff8e1; border-radius: 8px; border: none; }</string>
          </property>
          <layout class="QHBoxLayout" name="cl9">
-          <property name="leftMargin"><number>10</number></property>
-          <property name="topMargin"><number>10</number></property>
-          <property name="rightMargin"><number>10</number></property>
-          <property name="bottomMargin"><number>10</number></property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="icon9">
             <property name="styleSheet">
              <string notr="true">background-color: #ff8f00; color: white; border-radius: 4px; font-weight: bold;</string>
             </property>
-            <property name="text"><string>Q</string></property>
-            <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+            <property name="text">
+             <string>Q</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
             <property name="fixedSize" stdset="0">
-             <size><width>40</width><height>40</height></size>
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -651,12 +849,17 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
             <item>
              <widget class="QLabel" name="ch9">
               <property name="font">
-               <font><pointsize>10</pointsize><bold>true</bold></font>
+               <font>
+                <pointsize>10</pointsize>
+                <bold>true</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Post Search</string></property>
+              <property name="text">
+               <string>Post Search</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -664,8 +867,12 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
               <property name="styleSheet">
                <string notr="true">background-color: transparent;</string>
               </property>
-              <property name="text"><string>Advanced search capabilities to find specific elements, attributes, or content within XML documents.</string></property>
-              <property name="wordWrap"><bool>true</bool></property>
+              <property name="text">
+               <string>Advanced search capabilities to find specific elements, attributes, or content within XML documents.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -673,7 +880,6 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </layout>
         </widget>
        </item>
-
        <item>
         <widget class="QLabel" name="techHead">
          <property name="font">
@@ -763,12 +969,8 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
          </item>
         </layout>
        </item>
-
        <item>
         <widget class="QPushButton" name="btnTeam">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -781,6 +983,9 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
            <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="styleSheet">
           <string notr="true">
@@ -814,6 +1019,19 @@ QLabel { color: white; font-family: &quot;Segoe UI&quot;, sans-serif; }</string>
           </size>
          </property>
         </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelFooter">
+         <property name="styleSheet">
+          <string notr="true">color: #90A4AE; font-size: 11px; padding: 20px;</string>
+         </property>
+         <property name="text">
+          <string>© 2025 XML Editor. Built for developers by developers.</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

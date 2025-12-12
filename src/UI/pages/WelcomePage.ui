@@ -13,63 +13,77 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget#WelcomePage {
-	background-color: #f0f2f5;
+ <property name="styleSheet">
+   <string notr="true">/* GLOBAL BACKGROUND */
+QWidget#WelcomePage {
+	background-color: #FAFAFA; /* Very light subtle grey/white */
 }
 
-/* Header Area Blue Gradient */
+/* HEADER SECTION */
 QWidget#headerContainer {
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #2c5f8d, stop:1 #5a9fd4);
-}
-
-/* White Circle for Icon */
-QWidget#iconCircle {
-    background-color: white;
-    border-radius: 50px; /* Half of width/height */
+    /* Modern Gradient: Deep Blue to Purple */
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #1CB5E0, stop:1 #000046);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 QLabel#lblHeaderTitle {
 	color: white;
-	font-size: 24px;
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 32px;
 	font-weight: bold;
 }
 
 QLabel#lblHeaderSub {
-	color: #e0e0e0;
-	font-size: 14px;
+	color: #E0E0E0;
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 16px;
 }
 
-QPushButton#btnBack {
-	background-color: rgba(255, 255, 255, 0.2);
-	color: white;
-	border: 1px solid white;
-	border-radius: 6px;
-	padding: 8px 16px;
-	font-size: 12px;
+/* WELCOME TEXT */
+QLabel#label_4 {
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-QPushButton#btnBack:hover {
-	background-color: rgba(255, 255, 255, 0.3);
+QLabel#label_5 {
+    color: #555555;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
-/* Feature Emojis */
-QLabel#lblFeat1, QLabel#lblFeat2, QLabel#lblFeat3, QLabel#lblFeat4 {
-    font-size: 40px;
-}
-
-/* Main Cards */
+/* ACTION BUTTONS (Start, About, Team) */
 QPushButton {
-	border-radius: 8px;
-	padding: 10px;
+	border: 1px solid #E0E0E0;
+	border-radius: 12px;
+	padding: 15px;
 	text-align: left;
     background-color: white;
-    border: 1px solid #ddd;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 QPushButton:hover {
-	background-color: #f9f9f9;
-    border: 1px solid #ccc;
+	background-color: #F0F8FF; /* Light Alice Blue */
+    border: 1px solid #B0C4DE;
+    transform: translateY(-2px); /* Note: Qt CSS doesn't support transform animations usually, but nice to have in web */
+}
+
+/* Custom Colors for Buttons */
+QPushButton#btnStart {
+    border-left: 5px solid #1CB5E0; /* Blue accent */
+}
+QPushButton#btnAbout {
+    border-left: 5px solid #FFD700; /* Gold accent */
+}
+QPushButton#btnTeam {
+    border-left: 5px solid #FF6B6B; /* Red/Pink accent */
+}
+
+/* FEATURE CIRCLES */
+/* We will style these individually in the widget properties for unique colors */
+QLabel {
+    font-family: 'Segoe UI', sans-serif;
 }
 </string>
   </property>
@@ -121,17 +135,20 @@ QPushButton:hover {
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>300</height>
+           <height>220</height>
           </size>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="topMargin">
            <number>40</number>
           </property>
+          <property name="bottomMargin">
+           <number>40</number>
+          </property>
           <item>
            <widget class="QLabel" name="lblHeaderTitle">
             <property name="text">
-             <string>XML Editor</string>
+             <string>XML Social Analyzer</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -141,25 +158,12 @@ QPushButton:hover {
           <item>
            <widget class="QLabel" name="lblHeaderSub">
             <property name="text">
-             <string>Professional XML Processing Tool</string>
+             <string>Search, Graph, and Visualize your Data</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
             </property>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </widget>
@@ -168,10 +172,10 @@ QPushButton:hover {
         <widget class="QWidget" name="bodyContainer" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <property name="leftMargin">
-           <number>50</number>
+           <number>40</number>
           </property>
           <property name="rightMargin">
-           <number>50</number>
+           <number>40</number>
           </property>
           <item>
            <spacer name="verticalSpacer">
@@ -184,21 +188,15 @@ QPushButton:hover {
             <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
-              <height>40</height>
+              <height>30</height>
              </size>
             </property>
            </spacer>
           </item>
           <item>
            <widget class="QLabel" name="label_4">
-            <property name="font">
-             <font>
-              <pointsize>16</pointsize>
-              <bold>true</bold>
-             </font>
-            </property>
             <property name="text">
-             <string>Welcome</string>
+             <string>Welcome Back!</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -207,14 +205,8 @@ QPushButton:hover {
           </item>
           <item>
            <widget class="QLabel" name="label_5">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-              <italic>true</italic>
-             </font>
-            </property>
             <property name="text">
-             <string>A powerful desktop application for processing XML files. Verify consistency, format your XML, minify for production, and convert to JSON with ease.</string>
+             <string>Your all-in-one toolkit for XML analysis, graph visualization, and data minification.</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -235,7 +227,7 @@ QPushButton:hover {
             <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
-              <height>40</height>
+              <height>30</height>
              </size>
             </property>
            </spacer>
@@ -243,31 +235,22 @@ QPushButton:hover {
           <item>
            <layout class="QVBoxLayout" name="verticalButtonLayout">
             <property name="spacing">
-             <number>20</number>
-            </property>
-            <property name="leftMargin">
-             <number>40</number>
-            </property>
-            <property name="rightMargin">
-             <number>40</number>
+             <number>15</number>
             </property>
             <item>
              <widget class="QPushButton" name="btnStart">
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>120</height>
+                <height>90</height>
                </size>
               </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="text">
-               <string>  Start Processing
-  Open XML files and perform operations</string>
+               <string>  Start Analysis
+  Load XML files and begin processing</string>
               </property>
               <property name="icon">
                <iconset resource="resources.qrc">
@@ -275,8 +258,8 @@ QPushButton:hover {
               </property>
               <property name="iconSize">
                <size>
-                <width>40</width>
-                <height>40</height>
+                <width>32</width>
+                <height>32</height>
                </size>
               </property>
              </widget>
@@ -286,18 +269,15 @@ QPushButton:hover {
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>120</height>
+                <height>90</height>
                </size>
               </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="text">
-               <string>  About
-  Learn more about this application</string>
+               <string>  About Project
+  Learn about the algorithms used</string>
               </property>
               <property name="icon">
                <iconset resource="resources.qrc">
@@ -305,8 +285,8 @@ QPushButton:hover {
               </property>
               <property name="iconSize">
                <size>
-                <width>40</width>
-                <height>40</height>
+                <width>32</width>
+                <height>32</height>
                </size>
               </property>
              </widget>
@@ -316,27 +296,25 @@ QPushButton:hover {
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>120</height>
+                <height>90</height>
                </size>
               </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <bold>true</bold>
-               </font>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="text">
-               <string>  Our Team
-  Meet the awesome team behind XNet</string>
+               <string>  Meet the Team
+  Developers behind this tool</string>
               </property>
+              <!-- REPLACED ICON -->
               <property name="icon">
                <iconset resource="resources.qrc">
-                <normaloff>:/new/Prefix1/images/icon_info.png</normaloff>:/new/Prefix1/images/icon_info.png</iconset>
+                <normaloff>:/new/Prefix1/images/team.png</normaloff>:/new/Prefix1/images/team.png</iconset>
               </property>
               <property name="iconSize">
                <size>
-                <width>40</width>
-                <height>40</height>
+                <width>32</width>
+                <height>32</height>
                </size>
               </property>
              </widget>
@@ -354,7 +332,7 @@ QPushButton:hover {
             <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
-              <height>60</height>
+              <height>40</height>
              </size>
             </property>
            </spacer>
@@ -362,87 +340,51 @@ QPushButton:hover {
           <item>
            <widget class="QLabel" name="label_6">
             <property name="text">
-             <string>Features</string>
+             <string>Key Features</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
             </property>
             <property name="styleSheet">
-             <string>font-size: 22px; font-weight: bold; color: #333; margin-top: 30px; margin-bottom: 20px;</string>
+             <string>font-size: 20px; font-weight: bold; color: #2c3e50; margin-bottom: 20px;</string>
             </property>
            </widget>
           </item>
           <item>
            <layout class="QGridLayout" name="gridLayout">
-            <item row="0" column="3">
-             <layout class="QVBoxLayout" name="verticalLayout_8">
-              <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-               <widget class="QLabel" name="lblFeat4">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>50</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: #ffe8d6; /* light peach background */
-    color: #ff6f3c;           /* dark orange text */
-    font-size: 16px;
-    border-radius: 15px;
-    font-family: Arial, sans-serif;</string>
-                </property>
-                <property name="text">
-                 <string>{}</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_14">
-                <property name="text">
-                 <string>Convert to JSON</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="styleSheet">
-                 <string>font-weight: bold; font-size: 13px; color: #333;</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
+            <property name="verticalSpacing">
+             <number>30</number>
+            </property>
+            <property name="horizontalSpacing">
+             <number>20</number>
+            </property>
+
+            <!-- ROW 0 -->
+
+            <!-- FEATURE 1: XML Verification (Green) -->
             <item row="0" column="0">
-             <layout class="QVBoxLayout" name="verticalLayout_5">
+             <layout class="QVBoxLayout" name="featLayout1">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                <widget class="QLabel" name="lblFeat1">
                 <property name="minimumSize">
                  <size>
-                  <width>50</width>
-                  <height>50</height>
+                  <width>60</width>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>50</width>
-                  <height>50</height>
+                  <width>60</width>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: #d4edda;
-    color: #155724;      
-    font-size: 16px;        
-
-border-radius: 15px; 
-    font-family: Arial, sans-serif;</string>
+                 <string notr="true">
+                    background-color: #E8F5E9; /* Light Green */
+                    color: #2E7D32;            /* Dark Green */
+                    font-size: 24px;
+                    border-radius: 30px;
+                 </string>
                 </property>
                 <property name="text">
                  <string>✓</string>
@@ -461,41 +403,40 @@ border-radius: 15px;
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                 <property name="styleSheet">
-                 <string>font-weight: bold; font-size: 13px; color: #333;</string>
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
                 </property>
                </widget>
               </item>
              </layout>
             </item>
+
+            <!-- FEATURE 2: Prettify Format (Blue) -->
             <item row="0" column="1">
-             <layout class="QVBoxLayout" name="verticalLayout_6">
-              <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+             <layout class="QVBoxLayout" name="featLayout2">
+              <item alignment="Qt::AlignmentFlag::AlignHCenter">
                <widget class="QLabel" name="lblFeat2">
                 <property name="minimumSize">
                  <size>
-                  <width>50</width>
-                  <height>50</height>
+                  <width>60</width>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>50</width>
-                  <height>50</height>
+                  <width>60</width>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">    background-color: #cce5ff;
-    color: #004085;
-    font-size: 16px;
-    border-radius: 15px;
-    font-family: Arial, sans-serif;
-</string>
+                 <string notr="true">
+                    background-color: #E3F2FD; /* Light Blue */
+                    color: #1565C0;            /* Dark Blue */
+                    font-size: 20px;
+                    border-radius: 30px;
+                 </string>
                 </property>
                 <property name="text">
                  <string>&lt;/&gt;</string>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -510,35 +451,38 @@ border-radius: 15px;
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                <property name="styleSheet">
-                 <string>font-weight: bold; font-size: 13px; color: #333;</string>
+                 <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
                 </property>
                </widget>
               </item>
              </layout>
             </item>
+
+            <!-- FEATURE 3: Minify XML (Purple) -->
             <item row="0" column="2">
-             <layout class="QVBoxLayout" name="verticalLayout_7">
-              <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+             <layout class="QVBoxLayout" name="featLayout3">
+              <item alignment="Qt::AlignmentFlag::AlignHCenter">
                <widget class="QLabel" name="lblFeat3">
                 <property name="minimumSize">
                  <size>
-                  <width>50</width>
-                  <height>50</height>
+                  <width>60</width>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>50</width>
-                  <height>50</height>
+                  <width>60</width>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: #e6e6fa; /* light purple */
-    color: #b8860b;           /* dark golden / suitable for ⚡ */
-    font-size: 16px;
-    border-radius: 15px;
-    font-family: Arial, sans-serif;</string>
+                 <string notr="true">
+                    background-color: #F3E5F5; /* Light Purple */
+                    color: #7B1FA2;            /* Dark Purple */
+                    font-size: 24px;
+                    border-radius: 30px;
+                 </string>
                 </property>
                 <property name="text">
                  <string>⚡</string>
@@ -556,13 +500,262 @@ border-radius: 15px;
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                <property name="styleSheet">
-                 <string>font-weight: bold; font-size: 13px; color: #333;</string>
+                 <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
                 </property>
                </widget>
               </item>
              </layout>
             </item>
+
+            <!-- FEATURE 4: Convert to JSON (Gold) -->
+            <item row="0" column="3">
+             <layout class="QVBoxLayout" name="featLayout4">
+              <item alignment="Qt::AlignmentFlag::AlignHCenter">
+               <widget class="QLabel" name="lblFeat4">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+                    background-color: #FFF9C4; /* Light Yellow */
+                    color: #F9A825;            /* Golden */
+                    font-size: 20px;
+                    font-weight: bold;
+                    border-radius: 30px;
+                 </string>
+                </property>
+                <property name="text">
+                 <string>{}</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>Convert to JSON</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+                 <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+
+            <!-- ROW 1 -->
+
+            <!-- FEATURE 5: Compress XML (Red) -->
+            <item row="1" column="0">
+             <layout class="QVBoxLayout" name="featLayout5">
+              <item alignment="Qt::AlignmentFlag::AlignHCenter">
+               <widget class="QLabel" name="lblFeat5">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+                    background-color: #FFEBEE; /* Light Red */
+                    color: #C62828;            /* Dark Red */
+                    font-size: 24px;
+                    border-radius: 30px;
+                 </string>
+                </property>
+                <property name="text">
+                 <string>📦</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>Compress XML</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            
+            <!-- FEATURE 6: XML to Graph (Cyan/Blue-ish) -->
+            <item row="1" column="1">
+             <layout class="QVBoxLayout" name="featLayout6">
+              <item alignment="Qt::AlignmentFlag::AlignHCenter">
+               <widget class="QLabel" name="lblFeat6">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+                    background-color: #E0F7FA; /* Light Cyan */
+                    color: #00838F;            /* Dark Cyan */
+                    font-size: 24px;
+                    border-radius: 30px;
+                 </string>
+                </property>
+                <property name="text">
+                 <string>🕸️</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_16">
+                <property name="text">
+                 <string>XML to Graph</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+
+            <!-- FEATURE 7: Network Analysis (Pink) -->
+            <item row="1" column="2">
+             <layout class="QVBoxLayout" name="featLayout7">
+              <item alignment="Qt::AlignmentFlag::AlignHCenter">
+               <widget class="QLabel" name="lblFeat7">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+                    background-color: #FCE4EC; /* Light Pink */
+                    color: #AD1457;            /* Dark Pink */
+                    font-size: 24px;
+                    border-radius: 30px;
+                 </string>
+                </property>
+                <property name="text">
+                 <string>👥</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_17">
+                <property name="text">
+                 <string>Network Analysis</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            
+            <!-- FEATURE 8: Post Search (Indigo/Unique) -->
+            <item row="1" column="3">
+             <layout class="QVBoxLayout" name="featLayout8">
+              <item alignment="Qt::AlignmentFlag::AlignHCenter">
+               <widget class="QLabel" name="lblFeat8">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+                    background-color: #E8EAF6; /* Light Indigo */
+                    color: #283593;            /* Dark Indigo */
+                    font-size: 24px;
+                    border-radius: 30px;
+                 </string>
+                </property>
+                <property name="text">
+                 <string>🔎</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_18">
+                <property name="text">
+                 <string>Post Search</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+
            </layout>
           </item>
           <item>

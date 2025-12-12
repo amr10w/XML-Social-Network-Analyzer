@@ -42,7 +42,7 @@ TeamPage::TeamPage(QWidget *parent) :
         // Create centered container widget
         containerWidget = new QWidget();
         containerWidget->setStyleSheet("background-color: white; border-radius: 10px; padding: 15px;");
-        containerWidget->setMaximumWidth(900);
+        // containerWidget->setMaximumWidth(900);
         
         gridLayout = new QGridLayout(containerWidget);
         gridLayout->setSpacing(15);

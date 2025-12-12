@@ -9,6 +9,10 @@ AboutPage::AboutPage(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Force resize to ensure it's not too large
+    resize(600, 600);
+    // setMaximumHeight(500); // Also limit max height if needed
+
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
@@ -19,5 +23,6 @@ AboutPage::~AboutPage()
 
 void AboutPage::on_btnTeam_clicked()
 {
-    
+    emit teamPageRequested();
+    this->close();
 }

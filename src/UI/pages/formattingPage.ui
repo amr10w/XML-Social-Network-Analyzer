@@ -166,6 +166,12 @@
 
           <item>
            <widget class="QTextEdit" name="inputTextEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size><width>0</width><height>200</height></size>
             </property>
@@ -185,7 +191,6 @@
             </property>
            </widget>
           </item>
-
           <item>
            <widget class="QLabel" name="outputLabel">
             <property name="text"><string>Formatted XML</string></property>
@@ -194,6 +199,12 @@
 
           <item>
            <widget class="QTextEdit" name="outputTextEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size><width>0</width><height>250</height></size>
             </property>

@@ -19,6 +19,9 @@ private slots:
     // This slot handles the "Meet Our Team" button click
     void on_btnTeam_clicked();
 
+signals:
+    void teamPageRequested();
+
 private:
     Ui::AboutPage *ui;
 };

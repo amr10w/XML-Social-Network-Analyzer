@@ -15,7 +15,7 @@ JsonConverterPage::JsonConverterPage(QWidget *parent)
     , ui(new Ui::JsonConverterPage)
 {
     ui->setupUi(this);
-    setFixedSize(900, 750);
+    // setFixedSize(900, 750);
 
     // Initially hide output section
     ui->outputLabel->setVisible(false);
@@ -38,9 +38,8 @@ JsonConverterPage::~JsonConverterPage()
 
 void JsonConverterPage::onBackToOperations()
 {
-    this->close(); 
-    // using QStackedWidget, use emit signal here instead of close()
-    // will need edit when finalizing and integrate the GUI
+    // this->close(); 
+    emit backToHomeClicked();
 }
 
 void JsonConverterPage::onBrowseFile()

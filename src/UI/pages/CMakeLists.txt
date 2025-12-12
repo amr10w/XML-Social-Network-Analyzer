@@ -26,6 +26,9 @@ add_library(UI_Pages STATIC
     json_converter_page.ui
     json_converter_page.h
     json_converter_page.cpp
+    CompressPage.cpp
+    CompressPage.h
+    CompressPage.ui
     postsearch.cpp
     postsearch.h
     social_relations_page.cpp

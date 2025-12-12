@@ -39,7 +39,8 @@ MinifyingPage::~MinifyingPage()
 
 void MinifyingPage::onBackToOperations()
 {
-    this->close();
+    // this->close();
+    emit backToHomeClicked();
 }
 
 void MinifyingPage::onBrowseFile()

@@ -6,6 +6,8 @@ ProcessingPage::ProcessingPage(QWidget *parent) :
     ui(new Ui::ProcessingPage)
 {
     ui->setupUi(this);
+
+    // Programmatic buttons removed - now handled in UI file
 }
 
 ProcessingPage::~ProcessingPage()
@@ -18,11 +20,7 @@ void ProcessingPage::on_btnVerification_clicked()
     emit verificationClicked();
 }
 
-void ProcessingPage::on_btnFormatting_clicked()
-{
-    emit formattingClicked();
-}
-
+// Formatting removed
 void ProcessingPage::on_btnMinify_clicked()
 {
     emit minifyClicked();
@@ -46,6 +44,21 @@ void ProcessingPage::on_btnCompress_clicked()
 void ProcessingPage::on_btnDecompress_clicked()
 {
     emit decompressClicked();
+}
+
+void ProcessingPage::on_btnGraph_clicked()
+{
+    emit graphClicked();
+}
+
+void ProcessingPage::on_btnSocial_clicked()
+{
+    emit socialClicked();
+}
+
+void ProcessingPage::on_btnPostSearch_clicked()
+{
+    emit postSearchClicked();
 }
 
 void ProcessingPage::on_btnBack_clicked()
