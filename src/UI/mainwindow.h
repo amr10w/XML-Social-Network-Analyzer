@@ -16,6 +16,7 @@
 #include "formattingPage.h"
 #include "json_converter_page.h"
 #include "CompressPage.h"
+#include "influence_activity.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -52,6 +53,7 @@ private slots:
     void onGoToJSON();
     void onGoToPostSearch();
     void onGoToCompress();
+    void onGoToInfluence();
     // ... add others as needed
 
 private:
@@ -70,6 +72,7 @@ private:
     FormattingPage *m_formattingPage;
     JsonConverterPage *m_jsonPage;
     CompressPage *m_compressPage;
+    InfluenceAndActivity *m_influencePage;
 };
 
 #endif // MAINWINDOW_H

@@ -8,6 +8,12 @@ ProcessingPage::ProcessingPage(QWidget *parent) :
     ui->setupUi(this);
 
     // Programmatic buttons removed - now handled in UI file
+    
+    // Explicit connect for new button to ensure it works
+    QPushButton* btnInfluence = findChild<QPushButton*>("btnInfluence");
+    if (btnInfluence) {
+        connect(btnInfluence, &QPushButton::clicked, this, &ProcessingPage::on_btnInfluence_clicked);
+    }
 }
 
 ProcessingPage::~ProcessingPage()
@@ -59,6 +65,11 @@ void ProcessingPage::on_btnSocial_clicked()
 void ProcessingPage::on_btnPostSearch_clicked()
 {
     emit postSearchClicked();
+}
+
+void ProcessingPage::on_btnInfluence_clicked()
+{
+    emit influenceClicked();
 }
 
 void ProcessingPage::on_btnBack_clicked()

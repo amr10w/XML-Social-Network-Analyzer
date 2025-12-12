@@ -26,6 +26,7 @@ signals:
     void graphClicked();
     void socialClicked();
     void postSearchClicked();
+    void influenceClicked();
     void backToWelcomeClicked();
 
 private slots:
@@ -39,6 +40,7 @@ private slots:
     void on_btnGraph_clicked();
     void on_btnSocial_clicked();
     void on_btnPostSearch_clicked();
+    void on_btnInfluence_clicked();
     void on_btnBack_clicked();
 
 private:

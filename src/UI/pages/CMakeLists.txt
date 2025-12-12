@@ -39,6 +39,7 @@ add_library(UI_Pages STATIC
     graphpage.ui
     influence_activity.h
     influence_activity.cpp
+    influence_activity_page.ui
 
 )
 

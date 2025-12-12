@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_formattingPage = new FormattingPage(this);
     m_jsonPage = new JsonConverterPage(this);
     m_compressPage = new CompressPage(this);
+    m_influencePage = new InfluenceAndActivity(this);
 
     // --- 2. Add them to the stacked widget ---
     // The order here defines the index (0, 1, 2, 3...)
@@ -37,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->addWidget(m_formattingPage);   // Index 8
     ui->stackedWidget->addWidget(m_jsonPage);         // Index 9
     ui->stackedWidget->addWidget(m_compressPage);     // Index 10
+    ui->stackedWidget->addWidget(m_influencePage);    // Index 11
 
     // --- 3. Connect Welcome Page Signals ---
     connect(m_welcomePage, &WelcomePage::startProcessingClicked, this, &MainWindow::onStartProcessingClicked);
@@ -60,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_processingPage, &ProcessingPage::socialClicked, this, &MainWindow::onGoToSocial);
     connect(m_processingPage, &ProcessingPage::postSearchClicked, this, &MainWindow::onGoToPostSearch);
     connect(m_processingPage, &ProcessingPage::compressClicked, this, &MainWindow::onGoToCompress);
+    connect(m_processingPage, &ProcessingPage::influenceClicked, this, &MainWindow::onGoToInfluence);
 
     // --- Connect Tool Pages BACK to Welcome (or ProcessingPage) ---
     // Using Welcome as per current pattern, but could be ProcessingPage if desired
@@ -72,6 +75,7 @@ MainWindow::MainWindow(QWidget *parent)
     // PostSearch needs back signal too
     connect(m_postSearchPage, &PostSearch::backClicked, this, &MainWindow::onBackToProcessingClicked); // Need to add signal to PostSearch
     connect(m_compressPage, &CompressPage::backToHomeClicked, this, &MainWindow::onBackToProcessingClicked);
+    connect(m_influencePage, &InfluenceAndActivity::backToHomeClicked, this, &MainWindow::onBackToProcessingClicked);
 
     // Start at Welcome Page
     ui->stackedWidget->setCurrentIndex(0);
@@ -156,3 +160,9 @@ void MainWindow::onGoToCompress()
 {
     ui->stackedWidget->setCurrentWidget(m_compressPage);
 }
+
+void MainWindow::onGoToInfluence()
+{
+    ui->stackedWidget->setCurrentWidget(m_influencePage);
+}
+
