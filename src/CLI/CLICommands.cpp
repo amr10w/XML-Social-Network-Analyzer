@@ -324,11 +324,11 @@ if( args.size() != 4 || args[2] != "-i" ) {
 if(args[0]=="-w")
 {
 
-        const std::string wordToSearch = args[1];  // word hardcoded
+        const std::string wordToSearch = args[1];  
 
     std::vector<PostMatch> results = searchPostsByWord(content, wordToSearch);
         printMatches(results);
-            //  std::cerr << "hello \n";
+           
 
 
         return OK;
@@ -338,7 +338,7 @@ if(args[0]=="-w")
 }
 else if(args[0]=="-t")
 {
-                //  std::cerr << "hello \n";
+                
 
         const std::string topicToSearch = args[1];
          std::vector<PostMatch> results = searchPostsByTopic(content, topicToSearch);

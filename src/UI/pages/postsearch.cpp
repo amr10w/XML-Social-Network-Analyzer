@@ -23,7 +23,7 @@
 PostSearch::PostSearch(QWidget *parent)
     : QMainWindow(parent)
 {
-    setMinimumSize(500, 650);
+    setMinimumSize(900, 750);
     setWindowTitle("Post Search");
 
     // Global styling
