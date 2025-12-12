@@ -1,0 +1,8 @@
+Amr Ahmed Wahidi,2200429,Project Manager,
+Ali Ahmed Mohamed Abdelmaboud,2200927,Lead Developer,
+Omar Mohamed Hassan,2200294,Backend Developer,
+Ammar Mohamed Abdelghany,2200707,Frontend Developer,
+Hamza Basem Mohamed Ahmed,2200496,QA Engineer,
+Anas Ayman Mohammed Elsayed Elsaba,2200325,DevOps Engineer
+Mohamed Elsayed Moustafa Mohamed Moustafa Hamouda,2200095,UI Designer
+Ahmed Ezzat Ebrahim,2201472,Database Admin

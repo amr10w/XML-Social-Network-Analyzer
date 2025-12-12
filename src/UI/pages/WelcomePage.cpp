@@ -28,3 +28,8 @@ void WelcomePage::on_btnAbout_clicked()
 {
     emit aboutClicked();
 }
+
+void WelcomePage::on_btnTeam_clicked()
+{
+    emit teamPageClicked();
+}

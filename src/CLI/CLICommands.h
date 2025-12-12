@@ -8,6 +8,9 @@
 #include "Graph.h"
 #include "Mutual.h"
 #include "GraphVisualizer.h"
+#include "SearchWord.h"
+#include "SearchTopic.h"
+#include "Suggest.h"
 #include <vector>
 
 enum ErrorCode {
@@ -30,4 +33,9 @@ private:
     int decompressCommand(const std::vector<std::string>& args);
     int mutualCommand(const std::vector<std::string>& args);
     int visualizerCommand(const std::vector<std::string>& args);
+    int searchCommand(const std::vector<std::string>& args);
+    int mostActiveCommand(const std::vector<std::string>& args);
+    int mostInfluencerCommand(const std::vector<std::string>& args);
+    int suggestCommand(const std::vector<std::string>& args);
+    
 };

@@ -2,8 +2,11 @@
 #include "VerificationPage.h"
 #include "CompressPage.h"
 #include "minifyingPage.h" 
+#include "postsearch.h" 
+#include "social_relations_page.h"
 #include "CLICommands.h"
 #include <QApplication>
+#include <graphPage.h>
 
 int main(int argc, char *argv[])
 {
@@ -33,17 +36,21 @@ int main(int argc, char *argv[])
         w.show();
 
         // 2. Create and show the Verification Window (From 'main')
-        VerificationPage v;
-        v.show();
+        // VerificationPage v;
+        // v.show();
 
         // 3. Create and show the Minifying Page (From 'formatting-page')
         // Renamed to 'm' to avoid conflict with MainWindow 'w'
-        MinifyingPage m;
-        m.show();
+        // MinifyingPage m;
+        // m.show();
+        // GraphPage G;
+        // G.show();
 
-        CompressPage c;
-        c.show();
+        // PostSearch P;
+        // P.show();
 
+        // SocialRelationsPage s;
+        // s.show();
         return a.exec();
     }
 }

@@ -4,13 +4,19 @@ add_library(UI_Pages STATIC
     WelcomePage.cpp
     WelcomePage.h
     WelcomePage.ui
+    TeamPage.cpp      
+    TeamPage.h       
+    TeamPage.ui       
+    resources.qrc
+    ProcessingPage.cpp
+    ProcessingPage.h
+    ProcessingPage.ui
     Aboutpage.cpp
     Aboutpage.h
     Aboutpage.ui
     VerificationPage.h
     VerificationPage.cpp
     VerificationPage.ui
-    resources.qrc
     formattingPage.cpp
     formattingPage.h
     formattingPage.ui
@@ -23,7 +29,16 @@ add_library(UI_Pages STATIC
     CompressPage.cpp
     CompressPage.h
     CompressPage.ui
+    postsearch.cpp
+    postsearch.h
+    social_relations_page.cpp
+    social_relations_page.h
+    social_relations_page.ui
+    graphpage.cpp
+    graphpage.h
+    graphpage.ui
 )
+
 
 set_property(TARGET UI_Pages PROPERTY AUTORCC ON)
 

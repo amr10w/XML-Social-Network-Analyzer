@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+<class>SocialRelationsPage</class>
+<widget class="QWidget" name="SocialRelationsPage">
+  <property name="windowTitle">
+  <string>Social Relations</string>
+  </property>
+  <layout class="QVBoxLayout" name="rootLayout">
+  <property name="leftMargin"><number>0</number></property>
+  <property name="topMargin"><number>0</number></property>
+  <property name="rightMargin"><number>0</number></property>
+  <property name="bottomMargin"><number>0</number></property>
+  
+  <item>
+    <widget class="QScrollArea" name="scrollArea">
+    <property name="widgetResizable"><bool>true</bool></property>
+    <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+    
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+      <layout class="QVBoxLayout" name="mainLayout">
+      <property name="spacing"><number>20</number></property>
+      <property name="leftMargin"><number>24</number></property>
+      <property name="topMargin"><number>24</number></property>
+      <property name="rightMargin"><number>24</number></property>
+      <property name="bottomMargin"><number>24</number></property>
+
+      <item>
+        <widget class="QPushButton" name="backButton">
+        <property name="text"><string>← Back to Operations</string></property>
+        <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+        </widget>
+      </item>
+
+      <item>
+        <widget class="QWidget" name="headerWidget" native="true">
+        <property name="minimumSize"><size><width>0</width><height>120</height></size></property>
+        <layout class="QHBoxLayout" name="headerLayout">
+          <property name="spacing"><number>16</number></property>
+          <property name="leftMargin"><number>24</number></property>
+          <property name="topMargin"><number>24</number></property>
+          <property name="rightMargin"><number>24</number></property>
+          <property name="bottomMargin"><number>24</number></property>
+          
+          <item>
+          <widget class="QLabel" name="iconLabel">
+            <property name="minimumSize"><size><width>60</width><height>60</height></size></property>
+            <property name="maximumSize"><size><width>60</width><height>60</height></size></property>
+            <property name="styleSheet">
+            <string notr="true">background-color: white; border-radius: 12px; font-size: 24px; color: #7c3aed;</string>
+            </property>
+            <property name="text"><string>👥</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+          </widget>
+          </item>
+          <item>
+          <layout class="QVBoxLayout" name="headerTextLayout">
+            <property name="spacing"><number>4</number></property>
+            <item>
+            <widget class="QLabel" name="titleLabel">
+              <property name="text"><string>Social Relations</string></property>
+            </widget>
+            </item>
+            <item>
+            <widget class="QLabel" name="subtitleLabel">
+              <property name="text"><string>Analyze social network connections and discover relationships</string></property>
+            </widget>
+            </item>
+          </layout>
+          </item>
+          <item><spacer name="horizontalSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+        </layout>
+        </widget>
+      </item>
+
+      <item>
+        <widget class="QWidget" name="contentWidget" native="true">
+        <layout class="QVBoxLayout" name="contentLayout">
+          <property name="spacing"><number>20</number></property>
+          <property name="leftMargin"><number>32</number></property>
+          <property name="topMargin"><number>32</number></property>
+          <property name="rightMargin"><number>32</number></property>
+          <property name="bottomMargin"><number>32</number></property>
+
+          <item>
+          <widget class="QLabel" name="inputLabel">
+            <property name="text"><string>Input XML File</string></property>
+          </widget>
+          </item>
+          <item>
+          <widget class="QPushButton" name="browseButton">
+            <property name="minimumSize"><size><width>0</width><height>48</height></size></property>
+            <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+            <property name="text"><string>⬆  Browse XML File</string></property>
+          </widget>
+          </item>
+          <item>
+          <widget class="QLabel" name="orLabel">
+            <property name="text"><string>OR</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+          </widget>
+          </item>
+          <item>
+          <widget class="QTextEdit" name="txtXmlInput">
+            <property name="minimumSize"><size><width>0</width><height>150</height></size></property>
+            <property name="placeholderText"><string>Paste your social network XML content here...</string></property>
+          </widget>
+          </item>
+
+          <item>
+            <widget class="QFrame" name="infoFrame">
+            <property name="styleSheet"><string notr="true">background-color: #eff6ff; border: 1px solid #dbeafe; border-radius: 8px;</string></property>
+            <layout class="QVBoxLayout" name="infoLayout">
+              <property name="leftMargin"><number>16</number></property>
+              <property name="topMargin"><number>16</number></property>
+              <property name="rightMargin"><number>16</number></property>
+              <property name="bottomMargin"><number>16</number></property>
+              <item>
+              <widget class="QLabel" name="lblInfoTitle">
+                <property name="styleSheet"><string notr="true">color: #1e40af; font-weight: bold; font-size: 13px; border: none;</string></property>
+                <property name="text"><string>Expected XML Format:</string></property>
+              </widget>
+              </item>
+              <item>
+              <widget class="QLabel" name="lblInfoCode">
+                <property name="styleSheet"><string notr="true">color: #1d4ed8; font-family: 'Consolas', monospace; font-size: 12px; border: none;</string></property>
+                <property name="text"><string>&lt;social_network&gt;
+  &lt;user id=&quot;user1&quot;&gt;
+    &lt;followers&gt; ... &lt;/followers&gt;
+  &lt;/user&gt;
+&lt;/social_network&gt;</string></property>
+              </widget>
+              </item>
+            </layout>
+            </widget>
+          </item>
+
+          <item>
+          <layout class="QHBoxLayout" name="tabLayout">
+            <property name="spacing"><number>16</number></property>
+            <item>
+            <widget class="QPushButton" name="btnTabMutual">
+              <property name="text"><string>Mutual Followers</string></property>
+              <property name="checkable"><bool>true</bool></property>
+              <property name="checked"><bool>true</bool></property>
+              <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+              <property name="minimumSize"><size><width>0</width><height>45</height></size></property>
+            </widget>
+            </item>
+            <item>
+            <widget class="QPushButton" name="btnTabSuggest">
+              <property name="text"><string>Follower Suggestions</string></property>
+              <property name="checkable"><bool>true</bool></property>
+              <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+              <property name="minimumSize"><size><width>0</width><height>45</height></size></property>
+            </widget>
+            </item>
+          </layout>
+          </item>
+
+          <item>
+          <widget class="QStackedWidget" name="stackedWidget">
+            <property name="currentIndex"><number>0</number></property>
+            
+            <widget class="QWidget" name="pageMutual">
+            <layout class="QVBoxLayout" name="layoutMutual">
+              <property name="leftMargin"><number>0</number></property>
+              <property name="topMargin"><number>0</number></property>
+              <property name="rightMargin"><number>0</number></property>
+              <property name="bottomMargin"><number>0</number></property>
+              <property name="spacing"><number>16</number></property>
+              
+              <item><widget class="QLabel" name="lblUserIds"><property name="text"><string>User IDs (Comma Separated)</string></property></widget></item>
+              <item>
+              <widget class="QLineEdit" name="txtMutualUserIds">
+                <property name="placeholderText"><string>e.g., 101, 204</string></property>
+                <property name="minimumSize"><size><width>0</width><height>45</height></size></property>
+              </widget>
+              </item>
+              <item>
+              <widget class="QPushButton" name="btnFindMutual">
+                <property name="text"><string>👥 Find Mutual Followers</string></property>
+                <property name="minimumSize"><size><width>0</width><height>50</height></size></property>
+                <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+              </widget>
+              </item>
+            </layout>
+            </widget>
+
+            <widget class="QWidget" name="pageSuggest">
+            <layout class="QVBoxLayout" name="layoutSuggest">
+              <property name="leftMargin"><number>0</number></property>
+              <property name="topMargin"><number>0</number></property>
+              <property name="rightMargin"><number>0</number></property>
+              <property name="bottomMargin"><number>0</number></property>
+              <property name="spacing"><number>16</number></property>
+              
+              <item><widget class="QLabel" name="lblSuggestId"><property name="text"><string>User ID</string></property></widget></item>
+              <item>
+              <widget class="QLineEdit" name="txtSuggestId">
+                <property name="placeholderText"><string>e.g., 101</string></property>
+                <property name="minimumSize"><size><width>0</width><height>45</height></size></property>
+              </widget>
+              </item>
+              <item>
+              <widget class="QPushButton" name="btnGetSuggestions">
+                <property name="text"><string>✨ Get Suggestions</string></property>
+                <property name="minimumSize"><size><width>0</width><height>50</height></size></property>
+                <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+              </widget>
+              </item>
+            </layout>
+            </widget>
+          </widget>
+          </item>
+
+          <item>
+            <widget class="QLabel" name="lblResult"><property name="text"><string>Result</string></property></widget>
+          </item>
+          <item>
+          <widget class="QTextEdit" name="txtResult">
+            <property name="minimumSize"><size><width>0</width><height>100</height></size></property>
+            <property name="readOnly"><bool>true</bool></property>
+            <property name="placeholderText"><string>Results will appear here...</string></property>
+          </widget>
+          </item>
+
+        </layout>
+        </widget>
+      </item>
+      
+      <item><spacer name="verticalSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+      </layout>
+    </widget>
+    </widget>
+  </item>
+  </layout>
+
+  <property name="styleSheet">
+  <string notr="true">
+    /* Global Backgrounds */
+    QWidget { background-color: #e5e7eb; font-family: 'Segoe UI', sans-serif; }
+    QWidget#contentWidget { background-color: white; border-radius: 12px; }
+    QWidget#scrollAreaWidgetContents { background-color: #e5e7eb; }
+
+    /* Header (Purple Gradient) */
+    QWidget#headerWidget {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #7c3aed, stop:1 #9333ea);
+        border-radius: 12px;
+    }
+    QLabel#titleLabel { background: transparent; color: white; font-size: 24px; font-weight: bold; }
+    QLabel#subtitleLabel {background: transparent; color: rgba(255, 255, 255, 0.9); font-size: 13px; }
+
+    /* Inputs */
+    QLabel { color: #374151; font-weight: 600; font-size: 14px; }
+    QTextEdit, QLineEdit {
+        background-color: #FAFAFA; border: 1px solid #E5E7EB; border-radius: 6px; padding: 10px;
+        color: #1f2937; font-size: 13px;
+    }
+    QTextEdit#txtXmlInput { font-family: 'Courier New'; }
+    QTextEdit:focus, QLineEdit:focus { border: 2px solid #8b5cf6; background-color: white; }
+    
+    /* Result Box */
+    QTextEdit#txtResult {
+        background-color: #f5f3ff; border: 1px solid #ddd6fe; color: #5b21b6; font-family: 'Consolas';
+    }
+
+    /* Buttons */
+    QPushButton#browseButton {
+        background-color: #f5f3ff; color: #7c3aed; border: 1px dashed #c4b5fd;
+        border-radius: 6px; font-weight: 600;
+    }
+    QPushButton#browseButton:hover { background-color: #ede9fe; }
+
+    QPushButton#btnFindMutual, QPushButton#btnGetSuggestions {
+        background-color: #7c3aed; color: white; border: none; border-radius: 8px;
+        font-size: 15px; font-weight: bold;
+    }
+    QPushButton#btnFindMutual:hover, QPushButton#btnGetSuggestions:hover { background-color: #6d28d9; }
+
+    /* Back Button */
+    QPushButton#backButton {
+        background-color: transparent; border: none; color: #7c3aed; font-size: 14px; text-align: left; padding: 8px;
+    }
+    QPushButton#backButton:hover { background-color: rgba(124, 58, 237, 0.1); border-radius: 6px; }
+
+    /* Custom Tab Buttons */
+    QPushButton#btnTabMutual, QPushButton#btnTabSuggest {
+        background-color: #f3f4f6; color: #6b7280; border: none; border-radius: 8px; font-weight: 600;
+    }
+    QPushButton#btnTabMutual:checked, QPushButton#btnTabSuggest:checked {
+        background-color: #7c3aed; color: white;
+    }
+    QPushButton#btnTabMutual:hover, QPushButton#btnTabSuggest:hover {
+        background-color: #e5e7eb;
+    }
+    QPushButton#btnTabMutual:checked:hover, QPushButton#btnTabSuggest:checked:hover {
+        background-color: #6d28d9;
+    }
+
+    /* Scroll Bar */
+    QScrollBar:vertical { border: none; background: #e0e0e0; width: 10px; margin: 0px; }
+    QScrollBar::handle:vertical { background: #8b5cf6; min-height: 20px; border-radius: 5px; }
+    QScrollBar:horizontal { border: none; background: #e0e0e0; height: 10px; margin: 0px; }
+    QScrollBar::handle:horizontal { background: #8b5cf6; min-width: 20px; border-radius: 5px; }
+    QScrollBar::handle:horizontal:hover { background: #7c3aed; }
+    QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { width: 0px; }
+  </string>
+  </property>
+</widget>
+</ui>
