@@ -1,10 +1,5 @@
 // --- BPE_Bridge.cpp ---
-
-#include "BPE.h"      
-#include <QByteArray> 
-#include <string>     
-#include <sstream>    // Required for loading data from string stream
-#include <stdexcept>
+#include "BPE_Bridge.h"
 
 // Forward declaration of internal memory loader
 CompressedData load_compressed_data_from_memory(const std::string& compressedString);
@@ -35,7 +30,7 @@ std::string bpe_decompress_in_memory(const QByteArray& compressedBytes)
 // extern std::string compressXMLString(const std::string& xmlContent);
 // We implement it here by performing compression and then writing the result to memory.
 
-std::string compressxmlString(const std::string& xmlContent)
+QByteArray compressXMLString(const std::string& xmlContent)
 {
     BPE compressor;
     
@@ -43,25 +38,25 @@ std::string compressxmlString(const std::string& xmlContent)
     CompressedData result = compressor.compress(xmlContent);
     
     // 2. Write the result (dictionary + encoded text) to an output string stream
-    std::stringstream ss_out;
+    QByteArray output;
     
     // Mimic the logic of BPE::write_to_file but write to ss_out
     size_t count = result.dictionary.size();
-    ss_out.write((char *)&count, sizeof(size_t));
+    output.append((char *)&count, sizeof(size_t));
 
     for (const auto &pair : result.dictionary)
     {
         // Must ensure the pair length is exactly 2 bytes as per BPE logic
-        ss_out.write(pair.data(), 2); 
+        output.append(pair.data(), 2); 
     }
 
     char sep = 0x00;
-    ss_out.write(&sep, 1);
+    output.append(&sep, 1);
 
-    ss_out.write(result.encodedText.data(), result.encodedText.size());
+    output.append(result.encodedText.data(), result.encodedText.size());
     
     // 3. Return the complete compressed data as a single string
-    return ss_out.str();
+    return output;
 }
 
 

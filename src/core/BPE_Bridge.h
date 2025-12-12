@@ -2,11 +2,12 @@
 #ifndef BPE_BRIDGE_H
 #define BPE_BRIDGE_H
 
+#include "BPE.h"
 #include <string>
 #include <QByteArray>
 
 // Compression utility (used by CompressPage.cpp)
-std::string compressxmlString(const std::string& xmlContent);
+QByteArray compressXMLString(const std::string& xmlContent);
 
 // Decompression utility (used by DecompressPage.cpp)
 std::string bpe_decompress_in_memory(const QByteArray& compressedBytes);
