@@ -23,6 +23,9 @@ signals:
     void convertToJsonClicked();
     void compressClicked();
     void decompressClicked();
+    void graphClicked();
+    void socialClicked();
+    void postSearchClicked();
     void backToWelcomeClicked();
 
 private slots:
@@ -33,6 +36,9 @@ private slots:
     void on_btnConvertJson_clicked();
     void on_btnCompress_clicked();
     void on_btnDecompress_clicked();
+    void on_btnGraph_clicked();
+    void on_btnSocial_clicked();
+    void on_btnPostSearch_clicked();
     void on_btnBack_clicked();
 
 private:

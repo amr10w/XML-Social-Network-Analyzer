@@ -74,6 +74,12 @@ void PostSearch::setupUI()
     description->setStyleSheet("font-size: 14px;");
     headerLayout->addWidget(description);
 
+    // Back Button (Added)
+    QPushButton *backBtn = new QPushButton("Back");
+    backBtn->setStyleSheet("background-color: transparent; border: 1px solid white; color: white; padding: 5px; border-radius: 5px;");
+    connect(backBtn, &QPushButton::clicked, this, &PostSearch::on_backButton_clicked);
+    headerLayout->addWidget(backBtn);
+    
     mainLayout->addWidget(headerWidget);
     mainLayout->addSpacing(10); // Small space before the main content container
 
@@ -235,7 +241,7 @@ void PostSearch::on_searchByTopics_clicked()
     
     // Formatting each match for display
     // 3. Append the formatted ID to the result text, using the conditional value
-    resultText += QString("PostID: %1\n")
+    resultText += QString("UserID: %1\n")
         .arg(postIdDisplay);
     
     // Show a snippet of the text (e.g., first 100 characters)
@@ -372,7 +378,7 @@ void PostSearch::on_searchByWords_clicked()
             }
             
             // 3. Append the formatted ID to the result text, using the conditional value
-            resultText += QString("PostID: %1\n")
+            resultText += QString("UserID: %1\n")
                 .arg(postIdDisplay);
             
             // Show a snippet of the text (e.g., first 100 characters)
@@ -443,4 +449,9 @@ void PostSearch::on_browseButton_clicked()
             // QMessageBox::information(this, "File Loaded", "Loaded: " + fileName);
         }
     }
+}
+
+void PostSearch::on_backButton_clicked()
+{
+    emit backClicked();
 }

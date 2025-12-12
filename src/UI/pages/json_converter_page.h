@@ -22,6 +22,9 @@ private slots:
     void onDownload();
     void onBackToOperations();
 
+signals:
+    void backToHomeClicked();
+
 private:
     Ui::JsonConverterPage *ui;
     QString currentFilePath;

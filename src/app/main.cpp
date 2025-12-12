@@ -30,26 +30,9 @@ int main(int argc, char *argv[])
 
         a.setStyleSheet("QMessageBox { background-color: #2b2b2b; } QLabel { color: white; }");
         
-        // 1. Create and show the Main Window (From 'main')
-        // MainWindow w;
-        // w.show();
-
-        // 2. Create and show the Verification Window (From 'main')
-        // VerificationPage v;
-        // v.show();
-
-        // 3. Create and show the Minifying Page (From 'formatting-page')
-        // Renamed to 'm' to avoid conflict with MainWindow 'w'
-        // MinifyingPage m;
-        // m.show();
-        // GraphPage G;
-        // G.show();
-
-        // PostSearch P;
-        // P.show();
-
-        // SocialRelationsPage s;
-        // s.show();
+        // Create and show the Main Window ONLY
+        MainWindow w;
+        w.show();
         return a.exec();
     }
 }

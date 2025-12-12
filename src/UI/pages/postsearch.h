@@ -16,6 +16,10 @@ private slots:
     void on_searchByTopics_clicked();
     void on_searchByWords_clicked();
     void on_browseButton_clicked();
+    void on_backButton_clicked();
+
+signals:
+    void backClicked();
 
 private:
     QPushButton *browseButton;

@@ -38,7 +38,8 @@ FormattingPage::~FormattingPage()
 
 void FormattingPage::onBackToOperations()
 {
-    this->close();
+    // this->close();
+    emit backToHomeClicked();
 }
 
 void FormattingPage::onBrowseFile()

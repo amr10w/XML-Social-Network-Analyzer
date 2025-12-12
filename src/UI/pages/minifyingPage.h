@@ -22,6 +22,9 @@ private slots:
     void onMinifyXML();
     void onDownload();
 
+signals:
+    void backToHomeClicked();
+
 private:
     Ui::MinifyingPage *ui;
     QString inputXML;

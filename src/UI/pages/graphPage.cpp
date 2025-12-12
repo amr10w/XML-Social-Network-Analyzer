@@ -44,7 +44,8 @@ GraphPage::~GraphPage()
 
 void GraphPage::onBackToOperations()
 {
-    this->close();
+    // this->close();
+    emit backClicked();
 }
 
 void GraphPage::onBrowseFile()

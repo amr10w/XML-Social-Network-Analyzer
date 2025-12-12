@@ -24,6 +24,9 @@ private slots:
     void onDownloadGraph();
     void onBackToOperations();
 
+signals:
+    void backClicked();
+
 private:
     Ui::GraphPage *ui;
     QString currentFilePath;
