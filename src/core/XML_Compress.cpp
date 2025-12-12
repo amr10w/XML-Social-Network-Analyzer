@@ -26,3 +26,13 @@ void BPE_compress(const std::string &inputPath, const std::string &outputPath)
   compressor.write_to_file(outputPath, compressed);
   std::cout << "\n[+] Saved output to \"" << outputPath << "\"" << std::endl;
 }
+
+std::string compressXMLString(const std::string& xmlContent)
+{
+    BPE compressor;
+    
+    // We only need the encodedText for display in the UI
+    CompressedData compressed = compressor.compress(xmlContent); 
+    
+    return compressed.encodedText;
+}

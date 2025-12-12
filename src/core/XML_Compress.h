@@ -6,6 +6,6 @@
 #include <chrono>
 
 void BPE_compress(const std::string &inputPath, const std::string &outputPath);
-
+std::string compressXMLString(const std::string& xmlContent);
 
 #endif
