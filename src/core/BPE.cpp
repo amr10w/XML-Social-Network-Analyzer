@@ -63,14 +63,18 @@ std::string BPE::applyPair(const std::string &text, const int &pair, unsigned ch
     return out;
 }
 
-CompressedData BPE::compress(const std::string &xmlText)
+CompressedData BPE::compress(const std::string &input)
 {
     CompressedData result;
-    std::string text = xmlText;
-
+    std::string text = input;
+    if (input[0] == 60) {
+        result.file_type = 0;
+    } else if (input[0] == 123) {
+        result.file_type = 1;
+    }
     int nextToken = 128;
 
-    int fileSize = xmlText.size();
+    int fileSize = input.size();
     int MAX_ITER = std::min(255 - 128, fileSize / 10);
 
     int iter = 0;
@@ -144,48 +148,48 @@ std::string BPE::decompress(const CompressedData &compressedData)
     return currentText;
 }
 
-void BPE::write_to_file(const std::string& path, const CompressedData &data)
+std::string BPE::to_string(const CompressedData &data)
 {
-    std::ofstream output(path, std::ios::binary);
+    std::stringstream ss;
+    char sep = 0x00;
+    char type = data.file_type;
+    ss.write(&type, sizeof(char));
+    ss.write(&sep, 1);
 
     size_t count = data.dictionary.size();
-    output.write((char *)&count, sizeof(size_t));
+    ss.write((char *)&count, sizeof(size_t));
 
     for (const auto &pair : data.dictionary)
     {
-        output.write(pair.data(), 2);
+        ss.write(pair.data(), 2);
     }
+    ss.write(&sep, 1);
 
-    char sep = 0x00;
-    output.write(&sep, 1);
+    ss.write(data.encodedText.data(), data.encodedText.size());
 
-    output.write(data.encodedText.data(), data.encodedText.size());
-
-    output.close();
+    return ss.str();
 }
 
-CompressedData BPE::load_from_file(const std::string &path)
+CompressedData BPE::from_string(const std::string &input)
 {
     CompressedData out;
-
-    std::ifstream input(path, std::ios::binary);
-
+    std::stringstream ss(input);
+    char type;
+    ss.read(&type, sizeof(char));
+    out.file_type = type;
+    char sep;
+    ss.read(&sep, 1);
     size_t count = 0;
-    input.read((char *)&count, sizeof(size_t));
-
+    ss.read((char *)&count, sizeof(size_t));
     for (size_t i = 0; i < count; ++i)
     {
         char buffer[2];
-        input.read(buffer, 2);
+        ss.read(buffer, 2);
         out.dictionary.push_back(std::string(buffer, 2));
     }
-
-    char sep;
-    input.read(&sep, 1);
-
-    std::stringstream ss;
-    ss << input.rdbuf();
-    out.encodedText = ss.str();
-
+    ss.read(&sep, 1);
+    std::stringstream sss;
+    sss << ss.rdbuf();
+    out.encodedText = sss.str();
     return out;
 }

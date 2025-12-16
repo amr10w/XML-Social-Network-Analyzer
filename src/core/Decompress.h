@@ -6,6 +6,6 @@
 #include <chrono>
 
 
-void BPE_decompress(const std::string &inputPath, const std::string &outputPath);
+int BPE_decompress(const std::string &inputPath, const std::string &outputPath);
 
 #endif

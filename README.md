@@ -99,13 +99,13 @@ This always starts the **GUI Mode**.
 After the first GUI run, your build folder will contain:
 
 ```sh
-xml_editor.exe
+ilovexml.exe
 ```
 
 To run CLI mode:
 
 ```sh
-cd .\build\ .\xml_editor.exe <command>
+cd .\build\ .\ilovexml.exe <command>
 ```
 
 ###  **Current Implemented Features**
@@ -113,32 +113,32 @@ cd .\build\ .\xml_editor.exe <command>
 #### Validate XML
 
 ```sh
-.\xml_editor.exe verify -i test.xml
+.\ilovexml.exe verify -i test.xml
 ```
 
 #### Minify XML
 
 ```sh
-.\xml_editor.exe mini -i in.xml -o out.xml
+.\ilovexml.exe mini -i in.xml -o out.xml
 ```
 
 #### Format XML
 
 ```
-.\xml_editor.exe format -i input.xml -o formatted.xml
+.\ilovexml.exe format -i input.xml -o formatted.xml
 ```
 
 
 #### Compress XML
 
 ```sh
-.\xml_editor.exe compress -i sample.xml -o sample.comp
+.\ilovexml.exe compress -i sample.xml -o sample.comp
 ```
 
 #### Decompress XML
 
 ```sh
-.\xml_editor.exe decompress -i sample.comp -o sample_decompressed.xml
+.\ilovexml.exe decompress -i sample.comp -o sample_decompressed.xml
 ```
 
 ---
@@ -146,5 +146,5 @@ cd .\build\ .\xml_editor.exe <command>
 ## Important Notes
 
 - Your **XML files must be inside the `build` folder** to run CLI mode easily.
-- You must build the project **at least once** so that `xml_editor.exe` exists.
+- You must build the project **at least once** so that `ilovexml.exe` exists.
 - GUI and CLI both use the **same executable**.

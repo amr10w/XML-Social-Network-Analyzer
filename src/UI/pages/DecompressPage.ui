@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Decompress XML</string>
+   <string>Decompress XML/JSON</string>
   </property>
   <property name="styleSheet">
    <string notr="true">
@@ -262,14 +262,14 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
             <item>
              <widget class="QLabel" name="titleLabel">
               <property name="text">
-               <string>Decompress XML</string>
+               <string>Decompress XML/JSON</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QLabel" name="subtitleLabel">
               <property name="text">
-               <string>Decompressing BPE encoded XML back to its original form</string>
+               <string>Decompressing BPE encoded XML/JSON back to its original form</string>
               </property>
              </widget>
             </item>
@@ -342,7 +342,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
-             <string>🔓 Decompress XML</string>
+             <string>🔓 Decompress XML/JSON</string>
             </property>
            </widget>
           </item>
@@ -350,7 +350,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
           <!-- Output Label -->
           <item>
            <widget class="QLabel" name="outputLabel">
-            <property name="text"><string>Decompressed XML Output:</string></property>
+            <property name="text"><string>Decompressed XML/JSON Output:</string></property>
             <property name="visible"><bool>false</bool></property>
            </widget>
           </item>
@@ -410,7 +410,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
-             <string>⬇️ Download Decompressed XML</string>
+             <string>⬇️ Download Decompressed XML/JSON</string>
             </property>
             <property name="visible"><bool>false</bool></property>
            </widget>

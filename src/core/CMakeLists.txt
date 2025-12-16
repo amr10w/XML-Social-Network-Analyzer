@@ -9,10 +9,10 @@ add_library(core STATIC
     SimpleMap.h
     BPE.h
     BPE.cpp
-    XML_Compress.h
-    XML_Compress.cpp
-    XML_Decompress.h
-    XML_Decompress.cpp
+    Compress.h
+    Compress.cpp
+    Decompress.h
+    Decompress.cpp
     Graph.h
     Graph.cpp
     Mutual.cpp
@@ -22,8 +22,6 @@ add_library(core STATIC
     GraphVisualizer.cpp
     JsonConverter.cpp
     JsonConverter.h
-    BPE_Bridge.h
-    BPE_Bridge.cpp
     SearchTopic.cpp
     SearchTopic.h
     SearchWord.cpp

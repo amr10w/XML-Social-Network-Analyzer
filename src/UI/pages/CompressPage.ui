@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Compress XML</string>
+   <string>Compress XML/JSON</string>
   </property>
   <property name="styleSheet">
    <string notr="true">
@@ -106,19 +106,8 @@ QTextEdit#inputTextEdit:focus {
     background-color: white;
 }
 
-/* Output Text Edit */
-QTextEdit#outputTextEdit {
-    background-color: #fef2f2;
-    border: 1px solid #fecaca;
-    border-radius: 8px;
-    padding: 12px;
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    color: #991b1b;
-}
-
 /* Minify (Compress) Button */
-QPushButton#minifyButton {
+QPushButton#compressButton {
     background-color: #ef4444;
     color: white;
     border: none;
@@ -128,11 +117,11 @@ QPushButton#minifyButton {
     font-weight: 600;
 }
 
-QPushButton#minifyButton:hover {
+QPushButton#compressButton:hover {
     background-color: #dc2626;
 }
 
-QPushButton#minifyButton:pressed {
+QPushButton#compressButton:pressed {
     background-color: #b91c1c;
 }
 
@@ -260,14 +249,14 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
             <item>
              <widget class="QLabel" name="titleLabel">
               <property name="text">
-               <string>Compress XML</string>
+               <string>Compress XML/JSON</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QLabel" name="subtitleLabel">
               <property name="text">
-               <string>Compressing XML file using Byte Pair Encoding</string>
+               <string>Compressing XML/JSON file using Byte Pair Encoding</string>
               </property>
              </widget>
             </item>
@@ -292,7 +281,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
           <item>
            <widget class="QLabel" name="inputLabel">
             <property name="text">
-             <string>Input XML File</string>
+             <string>Input XML/JSON File</string>
             </property>
            </widget>
           </item>
@@ -307,7 +296,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
-             <string>⬆️ Browse XML File</string>
+             <string>⬆️ Browse XML/JSON File</string>
             </property>
            </widget>
           </item>
@@ -333,14 +322,14 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
              <size><width>0</width><height>200</height></size>
             </property>
             <property name="placeholderText">
-             <string>Paste your XML content here...</string>
+             <string>Paste your XML/JSON content here...</string>
             </property>
            </widget>
           </item>
 
           <!-- Minify (Compress) Button -->
           <item>
-           <widget class="QPushButton" name="minifyButton">
+           <widget class="QPushButton" name="compressButton">
             <property name="minimumSize">
              <size><width>0</width><height>50</height></size>
             </property>
@@ -348,7 +337,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
-             <string>💾 Compress XML</string>
+             <string>💾 Compress XML/JSON</string>
             </property>
            </widget>
           </item>
@@ -357,17 +346,6 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
           <item>
            <widget class="QLabel" name="outputLabel">
             <property name="text"><string>Compressed Output:</string></property>
-            <property name="visible"><bool>false</bool></property>
-           </widget>
-          </item>
-
-          <!-- Output Text Edit -->
-          <item>
-           <widget class="QTextEdit" name="outputTextEdit">
-            <property name="minimumSize">
-             <size><width>0</width><height>250</height></size>
-            </property>
-            <property name="readOnly"><bool>true</bool></property>
             <property name="visible"><bool>false</bool></property>
            </widget>
           </item>
@@ -416,7 +394,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
-             <string>⬇️ Download Compressed XML</string>
+             <string>⬇️ Download Compressed XML/JSON</string>
             </property>
             <property name="visible"><bool>false</bool></property>
            </widget>

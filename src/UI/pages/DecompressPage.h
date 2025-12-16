@@ -23,7 +23,7 @@ signals:
 private slots:
     void onBackToOperations();
     void onBrowseFile();
-    void onDecompressXML(); 
+    void onDecompress(); 
     void onDownload();
 
 private:
@@ -33,10 +33,12 @@ private:
     QByteArray compressedDataBytes; 
     
     // Holds the final decompressed XML output
-    QString outputXML;
+    QString outputQString;
     
     // File path for smart saving/file info
     QString currentFilePath;
+
+    std::string fileExtention;
 
     qint64 originalSize;    // Size of the loaded .comp file
     qint64 decompressedSize; // Size of the resulting XML

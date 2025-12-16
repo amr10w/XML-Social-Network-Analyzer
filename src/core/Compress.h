@@ -5,6 +5,6 @@
 #include <iostream>
 #include <chrono>
 
-void BPE_compress(const std::string &inputPath, const std::string &outputPath);
+int BPE_compress(const std::string &inputPath, const std::string &outputPath);
 
 #endif

@@ -182,9 +182,9 @@ int CLICommands::compressCommand(const std::vector<std::string> &args)
         std::cerr << "Usage: compress -i <filename> -o <filename>\n";
         return ERR_INVALID_OPTION;
     }
-    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml") {
+    if(args[1].length() < 4 || args[1].substr(args[1].length() - 4) != ".xml" && args[1].substr(args[1].length() - 5) != ".json") {
         std::cerr << "Invalid option\n";
-        std::cerr << "Input file must be a .xml file\n";
+        std::cerr << "Input file must be a .xml or .json file\n";
         return ERR_INVALID_OPTION;
     } 
     if(args[3].length() < 5 || args[3].substr(args[3].length() - 5) != ".comp") {
@@ -193,9 +193,7 @@ int CLICommands::compressCommand(const std::vector<std::string> &args)
         return ERR_INVALID_OPTION;
     }
 
-    BPE_compress(args[1], args[3]);
-
-    return OK;
+    return BPE_compress(args[1], args[3]);
 }
 
 int CLICommands::decompressCommand(const std::vector<std::string> &args)
@@ -210,14 +208,12 @@ int CLICommands::decompressCommand(const std::vector<std::string> &args)
         std::cerr << "Input file must be a .comp file\n";
         return ERR_INVALID_OPTION;
     }
-    if(args[3].length() < 4 || args[3].substr(args[3].length() - 4) != ".xml") {
+    if(args[3].length() < 4 || args[3].substr(args[3].length() - 4) != ".xml" && args[3].substr(args[3].length() - 5) != ".json") {
         std::cerr << "Invalid option\n";
         std::cerr << "Output file must be a .xml file\n";
         return ERR_INVALID_OPTION;
     }
-    BPE_decompress(args[1], args[3]);
-
-    return OK;
+    return BPE_decompress(args[1], args[3]);
 }
 
 int CLICommands::mutualCommand(const std::vector<std::string> &args)

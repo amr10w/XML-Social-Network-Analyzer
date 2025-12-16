@@ -1,18 +1,13 @@
 #include "DecompressPage.h"
-#include "ui_DecompressPage.h" // The generated header file
+#include "ui_DecompressPage.h"
+#include "../../core/Decompress.h"
+#include <QStandardPaths>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
 #include <QFileInfo>
 #include <QScrollBar>
-#include "../../core/BPE_Bridge.h"
-
-// Utility function we assume exists, wrapping the BPE::load_from_file and BPE::decompress
-// We pass the raw compressed bytes (including the dictionary header) and get the XML text.
-// NOTE: You must implement this bridge function in a utility file that links BPE.h/cpp.
-extern std::string bpe_decompress_in_memory(const QByteArray& compressedBytes); 
-
 
 DecompressPage::DecompressPage(QWidget *parent)
     : QWidget(parent)
@@ -21,22 +16,17 @@ DecompressPage::DecompressPage(QWidget *parent)
     , decompressedSize(0) 
 {
     ui->setupUi(this);
-    // topBar removed in UI refactor
-    // setFixedSize(900, 750);
     
-    // Initial UI Setup 
     updateOutputVisibility(false);
     
     if (ui->inputTextEdit) {
         ui->inputTextEdit->setPlaceholderText("Use the 'Browse Compressed File' button to load a .comp file...");
-        // Disable manual pasting, as compressed data is typically binary/non-text
         ui->inputTextEdit->setReadOnly(true); 
     }
     
-    // Connect signals 
     connect(ui->backButton, &QPushButton::clicked, this, &DecompressPage::onBackToOperations);
     connect(ui->browseButton, &QPushButton::clicked, this, &DecompressPage::onBrowseFile);
-    connect(ui->decompressButton, &QPushButton::clicked, this, &DecompressPage::onDecompressXML); 
+    connect(ui->decompressButton, &QPushButton::clicked, this, &DecompressPage::onDecompress); 
     connect(ui->downloadButton, &QPushButton::clicked, this, &DecompressPage::onDownload);
 }
 
@@ -52,18 +42,18 @@ void DecompressPage::onBackToOperations()
 
 void DecompressPage::onBrowseFile()
 {
+    QString documentsPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     QString fileName = QFileDialog::getOpenFileName(
         this,
         tr("Browse Compressed BPE File"),
-        QString(),
-        tr("Compressed BPE Files (*.comp);;All Files (*)") // Filter for .comp
+        documentsPath,
+        tr("Compressed BPE Files (*.comp)")
     );
     
     if (fileName.isEmpty())
         return;
     
     QFile file(fileName);
-    // Read compressed file as raw binary data
     if (!file.open(QIODevice::ReadOnly)) {
         QMessageBox::critical(this, "Error", "Cannot open file: " + fileName);
         return;
@@ -74,7 +64,6 @@ void DecompressPage::onBrowseFile()
     
     currentFilePath = fileName;
     
-    // Display file info in the text edit area
     QFileInfo info(fileName);
     QString fileSummary = QString("File Loaded:\nName: %1\nSize: %2 bytes\nPath: %3")
                           .arg(info.fileName())
@@ -82,57 +71,51 @@ void DecompressPage::onBrowseFile()
                           .arg(info.absoluteFilePath());
                           
     ui->inputTextEdit->setPlainText(fileSummary);
+
+    fileExtention = (compressedDataBytes[0] == 0)? ".xml" : ".json";
     
-    // Clear previous output/stats
     updateOutputVisibility(false);
-    outputXML.clear();
+    outputQString.clear();
 }
 
-void DecompressPage::onDecompressXML()
+void DecompressPage::onDecompress()
 {
-    // Check if a compressed file has been loaded into the QByteArray buffer
     if (compressedDataBytes.isEmpty()) {
         QMessageBox::warning(this, "Warning", "Please load a compressed .comp file first!");
         return;
     }
     
     try {
-        // Step 1: Calculate original size (the size of the loaded .comp file, which is the input)
         originalSize = compressedDataBytes.size();
         
-        // Step 2: Call the backend utility for in-memory decompression.
-        // This function handles the binary parsing of the QByteArray and returns the decompressed XML as std::string.
-        std::string decompressedXmlStd = bpe_decompress_in_memory(compressedDataBytes);
+        BPE decompressor;
+
+        auto data = decompressor.from_string(compressedDataBytes.toStdString());
+
+        auto decompressed = decompressor.decompress(data);
         
-        // Step 3: Convert the result back to QString for Qt display
-        outputXML = QString::fromStdString(decompressedXmlStd);
+        outputQString = QString::fromStdString(decompressed);
         
-        // Step 4: Calculate decompressed size (the size of the resulting XML output)
-        decompressedSize = outputXML.toUtf8().size(); 
+        decompressedSize = outputQString.toUtf8().size(); 
         
-        // Step 5: Display the result in the output text area
-        ui->outputTextEdit->setPlainText(outputXML);
+        ui->outputTextEdit->setPlainText(outputQString);
         
-        // Step 6: Update statistics and show the output sections
         updateStatistics();
         updateOutputVisibility(true);
         
-        // Scroll to the top of the output text
         QScrollBar *scrollBar = ui->outputTextEdit->verticalScrollBar();
         if (scrollBar) {
             scrollBar->setValue(0);
         }
         
     } catch (const std::exception& e) {
-        // Handle standard exceptions (e.g., parsing errors from the bridge logic)
         QMessageBox::critical(this, "Error", 
-            QString("Failed to decompress XML: %1").arg(e.what()));
-        updateOutputVisibility(false); // Hide output on failure
+            QString("Failed to decompress file: %1").arg(e.what()));
+        updateOutputVisibility(false);
     } catch (...) {
-        // Handle unknown exceptions
         QMessageBox::critical(this, "Error", 
             "An unknown error occurred while decompressing XML");
-        updateOutputVisibility(false); // Hide output on failure
+        updateOutputVisibility(false);
     }
 }
 
@@ -142,11 +125,10 @@ void DecompressPage::updateStatistics()
     ui->originalSizeLabel->setText(QString::number(originalSize) + " bytes");
     ui->decompressedSizeLabel->setText(QString::number(decompressedSize) + " bytes"); 
     
-    qint64 savedBytes = decompressedSize - originalSize; // Decompressed size is larger
+    qint64 savedBytes = decompressedSize - originalSize;
     double ratio = originalSize > 0 ? 
         ((double)originalSize * 100.0 / decompressedSize) : 0.0;
     
-    // Display compression ratio
     ui->reductionLabel->setText(QString::number(ratio, 'f', 2) + "%");
 }
 
@@ -160,25 +142,27 @@ void DecompressPage::updateOutputVisibility(bool visible)
 
 void DecompressPage::onDownload()
 {
-    if (outputXML.isEmpty()) {
-        QMessageBox::warning(this, "Warning", "No decompressed XML to download!");
+    if (outputQString.isEmpty()) {
+        QMessageBox::warning(this, "Warning", "No decompressed file to download!");
         return;
     }
+
+    QString documentsPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+
+    QString defaultFileName = documentsPath + QString::fromStdString("/decompressed" + fileExtention); 
     
-    QString defaultFileName = "decompressed.xml"; 
-    
-    // Suggest a name based on the input file
     if (!currentFilePath.isEmpty()) {
         QFileInfo info(currentFilePath);
-        // Change '.comp' extension to '.xml'
-        defaultFileName = info.completeBaseName() + ".xml"; 
+        defaultFileName = info.path() + "/" + info.completeBaseName() + QString::fromStdString(fileExtention); 
     }
     
+    const char* fileExtenionText = (fileExtention == ".xml")? "XML Files (*.xml)" : "JSON Files (*.json)";
+
     QString saveFileName = QFileDialog::getSaveFileName(
         this,
-        tr("Save Decompressed XML"),
+        tr("Save Decompressed File"),
         defaultFileName, 
-        tr("XML Files (*.xml);;All Files (*)")
+        tr(fileExtenionText)
     );
     
     if (saveFileName.isEmpty())
@@ -191,7 +175,7 @@ void DecompressPage::onDownload()
     }
     
     QTextStream out(&outFile);
-    out << outputXML;
+    out << outputQString;
     outFile.close();
 }
 

@@ -22,7 +22,7 @@ private slots:
     void onBrowseFile();
     
     // This function will now call the new backend utility: compressXMLString
-    void onCompressXML(); 
+    void onCompress(); 
     void onDownload();
 
 signals:
@@ -30,8 +30,7 @@ signals:
 
 private:
     Ui::CompressPage *ui;
-    QString inputXML;
-    QString outputXML;
+    QString inputQString;
     QString currentFilePath;
     qint64 originalSize;
     qint64 compressedSize;

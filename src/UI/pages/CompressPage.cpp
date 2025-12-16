@@ -1,15 +1,14 @@
 #include "CompressPage.h"
 #include "../../core/FileUtils.h"
-// This include now contains the required declaration for compressXMLString
-#include "../../core/XML_Compress.h" 
-#include "ui_CompressPage.h" // The generated header file
+#include "../../core/Compress.h" 
+#include "ui_CompressPage.h"
+#include <QStandardPaths>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
 #include <QFileInfo>
 #include <QScrollBar>
-#include "../../core/BPE_Bridge.h"
 
 
 CompressPage::CompressPage(QWidget *parent)
@@ -19,23 +18,18 @@ CompressPage::CompressPage(QWidget *parent)
     , compressedSize(0) 
 {
     ui->setupUi(this);
-    // topBar removed in UI refactor
-    // setFixedSize(900, 750);
     
-    // Initial UI Setup 
     if (ui->statsContainer) ui->statsContainer->setVisible(false);
     if (ui->outputLabel) ui->outputLabel->setVisible(false);
-    if (ui->outputTextEdit) ui->outputTextEdit->setVisible(false);
     if (ui->downloadButton) ui->downloadButton->setVisible(false);
     
     if (ui->inputTextEdit) {
         ui->inputTextEdit->setPlaceholderText("Paste your XML content here...");
     }
     
-    // Connect signals 
     connect(ui->backButton, &QPushButton::clicked, this, &CompressPage::onBackToOperations);
     connect(ui->browseButton, &QPushButton::clicked, this, &CompressPage::onBrowseFile);
-    connect(ui->minifyButton, &QPushButton::clicked, this, &CompressPage::onCompressXML); 
+    connect(ui->compressButton, &QPushButton::clicked, this, &CompressPage::onCompress); 
     connect(ui->downloadButton, &QPushButton::clicked, this, &CompressPage::onDownload);
 }
 
@@ -46,17 +40,17 @@ CompressPage::~CompressPage()
 
 void CompressPage::onBackToOperations()
 {
-    // this->close();
     emit backToHomeClicked();
 }
 
 void CompressPage::onBrowseFile()
 {
+    QString documentsPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     QString fileName = QFileDialog::getOpenFileName(
         this,
-        tr("Browse XML File"),
-        QString(),
-        tr("XML Files (*.xml);;All Files (*)")
+        tr("Browse XML/JSON File"),
+        documentsPath,
+        tr("XML/JSON Files (*.xml *.json)")
     );
     
     if (fileName.isEmpty())
@@ -69,70 +63,56 @@ void CompressPage::onBrowseFile()
     }
     
     QTextStream in(&file);
-    inputXML = in.readAll();
+    inputQString = in.readAll();
     file.close();
     
     currentFilePath = fileName;
-    ui->inputTextEdit->setPlainText(inputXML);
-    
-    // Hide output when new file is loaded (using statsContainer)
+    ui->inputTextEdit->setPlainText(inputQString);
     ui->statsContainer->setVisible(false);
     ui->outputLabel->setVisible(false);
-    ui->outputTextEdit->setVisible(false);
     ui->downloadButton->setVisible(false);
 }
 
-void CompressPage::onCompressXML()
+void CompressPage::onCompress()
 {
-    inputXML = ui->inputTextEdit->toPlainText();
+    inputQString = ui->inputTextEdit->toPlainText();
     
-    if (inputXML.trimmed().isEmpty()) {
+    if (inputQString.trimmed().isEmpty()) {
         QMessageBox::warning(this, "Warning", "Please provide XML content first!");
         return;
     }
     
     try {
-        // Calculate original size
-        originalSize = inputXML.toUtf8().size();
+        originalSize = inputQString.toUtf8().size();
         
-        // Convert QString to std::string for the utility function
-        std::string xmlContentStd = inputXML.toStdString();
+        std::string input = inputQString.toStdString();
         
-        // Convert the result back to QString
-        outputComp = bpe_compress_bridge(xmlContentStd);
+        BPE compressor;
+
+        auto data = compressor.compress(input);
+
+        auto dataString = compressor.to_string(data);
+
+        outputComp = QByteArray::fromStdString(dataString);
         
-        // Calculate compressed size
         compressedSize = outputComp.size(); 
         
-        // Display in output text edit
-        // ui->outputTextEdit->setPlainText(outputXML);
-        
-        // Update statistics
         updateStatistics();
         
-        // Show output section
         updateOutputVisibility();
-        
-        // Scroll to output
-        QScrollBar *scrollBar = ui->outputTextEdit->verticalScrollBar();
-        if (scrollBar) {
-            scrollBar->setValue(0);
-        }
         
     } catch (const std::exception& e) {
         QMessageBox::critical(this, "Error", 
-            QString("Failed to compress XML: %1").arg(e.what()));
+            QString("Failed to compress file: %1").arg(e.what()));
     } catch (...) {
         QMessageBox::critical(this, "Error", 
-            "An unknown error occurred while compressing XML");
+            "An unknown error occurred while compression");
     }
 }
 
 
 void CompressPage::updateStatistics()
 {
-    // FIX 1: Change minifiedSizeLabel to compressedSizeLabel 
-    // to match the final .ui file structure.
     ui->originalSizeLabel->setText(QString::number(originalSize) + " bytes");
     ui->compressedSizeLabel->setText(QString::number(compressedSize) + " bytes"); 
     
@@ -146,34 +126,31 @@ void CompressPage::updateStatistics()
 void CompressPage::updateOutputVisibility()
 {
     bool hasOutput = !outputComp.isEmpty();
-    // FIX 2: Ensure we consistently use statsContainer, not statsWidget
     ui->statsContainer->setVisible(hasOutput); 
     ui->outputLabel->setVisible(hasOutput);
-    // ui->outputTextEdit->setVisible(hasOutput);
     ui->downloadButton->setVisible(hasOutput);
 }
 
 void CompressPage::onDownload()
 {
+    QString documentsPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     if (outputComp.isEmpty()) {
         QMessageBox::warning(this, "Warning", "No compressed XML to download!");
         return;
     }
     
-    QString defaultFileName = "compressed.comp"; // Changed default file name
+    QString defaultFileName = documentsPath + "/compressed.comp";
     
-    // Check if the user loaded a file previously
     if (!currentFilePath.isEmpty()) {
         QFileInfo info(currentFilePath);
-        // Set the default name to 'original_name.comp'
-        defaultFileName = info.completeBaseName() + ".comp"; 
+        defaultFileName = info.path() + "/" + info.completeBaseName() + ".comp"; 
     }
     
     QString saveFileName = QFileDialog::getSaveFileName(
         this,
-        tr("Save Compressed XML"),
-        defaultFileName, // Use the new default file name
-        tr("Compressed Files (*.comp);;All Files (*)") // Changed file filter description
+        tr("Save Compressed File"),
+        defaultFileName,
+        tr("Compressed Files (*.comp)")
     );
     
     if (saveFileName.isEmpty())
