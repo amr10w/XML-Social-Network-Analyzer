@@ -2,8 +2,8 @@ Amr Ahmed Wahidi,2200429,Project Manager,:/new/Prefix1/images/Amr.png,www.linked
 Ali Ahmed Mohamed Abdelmaboud,2200927,Lead Developer,:/new/Prefix1/images/Ali.jpg,https://www.linkedin.com/in/ali-abdelmaboud-b00642202/
 Omar Mohamed Hassan,2200294,GUI Design and implementation,:/new/Prefix1/images/Omar.png,https://www.linkedin.com/in/omar-mohamed-5109701a7/
 Ammar Mohamed Abdelghany,2200707,Byte Encoding implementation,:/new/Prefix1/images/Ammar_M.jpeg,https://www.linkedin.com/in/ammar-abdelghany-93641430b/
-Hamza Basem Mohamed Ahmed,2200496,QA Engineer,:/new/Prefix1/images/Hamza.jpeg,https://www.linkedin.com/in/hamza-eldafrawy-a780591b9/
+Hamza Basem Mohamed Ahmed,2200496,QA Engineer,:/new/Prefix1/images/Hamza_E.jpg,https://www.linkedin.com/in/hamza-eldafrawy-a780591b9/
 Anas Elsaba,2200325,Hacker,:/new/Prefix1/images/Anas.jpg,https://www.linkedin.com/in/anas-elsaba-506540288/
 Mohamed Elsayed Moustafa Hamouda,2200095,UI Designer,:/new/Prefix1/images/HAMOUDA.jpg,https://eg.linkedin.com/in/me9991
-Ahmed Ezzat Ebrahim,2201472,Database Admin,https://www.linkedin.com/in/ahmed-ezzat-bb109230b?utm_source=shar٨e&utm_campaign=share_via&utm_content=profile&utm_medium=android_app,
+Ahmed Ezzat Ebrahim,2201472,Database Admin,:/new/Prefix1/images/Salah_Al_Din_Ibn.jpg,https://www.linkedin.com/in/ahmed-ezzat-bb109230b?utm_source=shar٨e&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
 Ahmed Ramadan,2200372,Database Admin,,

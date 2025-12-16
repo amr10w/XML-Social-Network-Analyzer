@@ -54,4 +54,5 @@ if(GRAPHVIZ_FOUND)
     
     # 4. CRITICAL: Tell C++ code that Graphviz is here
     target_compile_definitions(core PUBLIC ENABLE_GRAPHVIZ)
+    target_compile_definitions(core PUBLIC DOT_PATH="\\"${GRAPHVIZ_DIR}/bin/dot.exe\\"")
 endif()

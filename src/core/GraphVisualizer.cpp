@@ -66,7 +66,11 @@ bool Visualizer(const Graph &graph, const std::string &file_name)
         file.close();
 
         // 2. Command Update: Use -Kcirco to ensure the circular engine is used
-        std::string command = "dot -Kcirco -Tpng network.dot -o " + file_name;
+        std::string dot_exe = "dot";
+        #ifdef DOT_PATH
+            dot_exe = DOT_PATH;
+        #endif
+        std::string command = "\"" + dot_exe + " -Kcirco -Tpng network.dot -o \"" + file_name + "\"" + "\"";
         
         int result = std::system(command.c_str());
         
