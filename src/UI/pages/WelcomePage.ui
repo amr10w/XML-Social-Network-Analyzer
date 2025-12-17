@@ -175,7 +175,7 @@ QLabel {
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/new/Prefix1/images/ilovexml_full.png</pixmap>
+             <pixmap resource="resources.qrc">:/new/Prefix1/files/ilovexml_full.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -284,7 +284,7 @@ QLabel {
               </property>
               <property name="icon">
                <iconset resource="resources.qrc">
-                <normaloff>:/new/Prefix1/images/icon_play.png</normaloff>:/new/Prefix1/images/icon_play.png</iconset>
+                <normaloff>:/new/Prefix1/files/icon_play.png</normaloff>:/new/Prefix1/files/icon_play.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -311,7 +311,7 @@ QLabel {
               </property>
               <property name="icon">
                <iconset resource="resources.qrc">
-                <normaloff>:/new/Prefix1/images/icon_info.png</normaloff>:/new/Prefix1/images/icon_info.png</iconset>
+                <normaloff>:/new/Prefix1/files/icon_info.png</normaloff>:/new/Prefix1/files/icon_info.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -338,7 +338,7 @@ QLabel {
               </property>
               <property name="icon">
                <iconset resource="resources.qrc">
-                <normaloff>:/new/Prefix1/images/team.png</normaloff>:/new/Prefix1/images/team.png</iconset>
+                <normaloff>:/new/Prefix1/files/team.png</normaloff>:/new/Prefix1/files/team.png</iconset>
               </property>
               <property name="iconSize">
                <size>
