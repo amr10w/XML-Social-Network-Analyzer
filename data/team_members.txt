@@ -1,9 +1,0 @@
-Amr Ahmed Wahidi,2200429,Project Manager,:/new/Prefix1/images/Amr.png,www.linkedin.com/in/amr-wahidi
-Ali Ahmed Mohamed Abdelmaboud,2200927,Lead Developer,:/new/Prefix1/images/Ali.jpg,https://www.linkedin.com/in/ali-abdelmaboud-b00642202/
-Mohamed Elsayed Moustafa Hamouda,2200095,Algorithm Developer,:/new/Prefix1/images/HAMOUDA.jpg,https://eg.linkedin.com/in/me9991
-Omar Mohamed Hassan,2200294,Backend Developer,:/new/Prefix1/images/Omar.png,https://www.linkedin.com/in/omar-mohamed-5109701a7/
-Ammar Mohamed Abdelghany,2200707,Frontend Developer,:/new/Prefix1/images/Ammar.jpeg,https://www.linkedin.com/in/ammar-abdelghany-93641430b/
-Hamza Basem Mohamed Ahmed,2200496,QA Engineer,:/new/Prefix1/images/Hamza.jpeg,https://www.linkedin.com/in/hamza-eldafrawy-a780591b9/
-Anas Ayman Mohammed Elsayed Elsaba,2200325,DevOps Engineer,:/new/Prefix1/images/Anas.jpg,https://www.linkedin.com/in/anas-elsaba-506540288/
-Ahmed Ezzat Ebrahim,2201472,Database Admin,,
-Ahmed Ramadan,2200372,Database Admin,,

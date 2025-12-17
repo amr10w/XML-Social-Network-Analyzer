@@ -1,24 +1,24 @@
 <!DOCTYPE RCC>
 <RCC>
-  <qresource prefix="/"></qresource>
   <qresource prefix="/new/Prefix1">
-    <file>images/xml.png</file>
-    <file>images/header_icon.png</file>
-    <file>images/icon_info.png</file>
-    <file>images/icon_play.png</file>
-    <file>images/searchicon.jpeg</file>
-    <file>images/team.png</file>
-    <file>images/Ali.jpg</file>
-    <file>images/Hamza.jpeg</file>
-    <file>images/Ammar.jpeg</file>
-    <file>images/HAMOUDA.jpg</file>
-    <file>images/Anas.jpg</file>
-    <file>images/Omar.png</file>
-    <file>images/Amr.png</file>
-    <file>images/ilovexml.png</file>
-    <file>images/ilovexml_full.png</file>
-    <file>images/Ammar_M.jpeg</file>
-    <file>images/Salah_Al_Din_Ibn.jpg</file>
-    <file>images/Hamza_E.jpg</file>
+    <file>files/xml.png</file>
+    <file>files/header_icon.png</file>
+    <file>files/icon_info.png</file>
+    <file>files/icon_play.png</file>
+    <file>files/searchicon.jpeg</file>
+    <file>files/team.png</file>
+    <file>files/Ali.jpg</file>
+    <file>files/Hamza.jpeg</file>
+    <file>files/Ammar.jpeg</file>
+    <file>files/HAMOUDA.jpg</file>
+    <file>files/Anas.jpg</file>
+    <file>files/Omar.png</file>
+    <file>files/Amr.png</file>
+    <file>files/ilovexml.png</file>
+    <file>files/ilovexml_full.png</file>
+    <file>files/Ammar_M.jpeg</file>
+    <file>files/Salah_Al_Din_Ibn.jpg</file>
+    <file>files/Hamza_E.jpg</file>
+    <file>files/team_members.txt</file>
   </qresource>
 </RCC>

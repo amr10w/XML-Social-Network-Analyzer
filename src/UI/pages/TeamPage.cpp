@@ -133,7 +133,7 @@ TeamPage::TeamPage(QWidget *parent) :
         scrollArea->setWidget(outerContainer);
     }
     
-    loadTeamFromFile("./data/team_members.txt");
+    loadTeamFromFile(":/new/Prefix1/files/team_members.txt");
 }
 
 TeamPage::~TeamPage()
@@ -332,7 +332,7 @@ void TeamPage::loadTeamFromFile(const QString &filePath)
 {
     QFile file(filePath);
     if (!file.exists()) {
-        QString absolutePath = QCoreApplication::applicationDirPath() + "/../data/team_members.txt";
+        QString absolutePath = QCoreApplication::applicationDirPath() + ":/new/Prefix1/files/team_members.txt";
         file.setFileName(absolutePath);
     }
     

@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
   QApplication a(argc, argv);
 
   a.setStyleSheet("QMessageBox { background-color: #2b2b2b; } QLabel { color: white; }");
-  a.setWindowIcon(QIcon(":/new/Prefix1/images/ilovexml.png"));
+  a.setWindowIcon(QIcon(":/new/Prefix1/files/ilovexml.png"));
 
   // Create and show the Main Window ONLY
   MainWindow w;
