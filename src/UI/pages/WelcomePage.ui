@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
- <property name="styleSheet">
+  <property name="styleSheet">
    <string notr="true">/* GLOBAL BACKGROUND */
 QWidget#WelcomePage {
 	background-color: #FAFAFA; /* Very light subtle grey/white */
@@ -113,8 +113,8 @@ QLabel {
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>933</width>
-        <height>810</height>
+        <width>928</width>
+        <height>1090</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -145,10 +145,40 @@ QLabel {
           <property name="bottomMargin">
            <number>40</number>
           </property>
-          <item>
-           <widget class="QLabel" name="lblHeaderTitle">
+          <item alignment="Qt::AlignmentFlag::AlignHCenter">
+           <widget class="QLabel" name="label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>263</width>
+              <height>56</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>263</width>
+              <height>56</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::NoFrame</enum>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
+            </property>
             <property name="text">
-             <string>XML Social Analyzer</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/new/Prefix1/images/ilovexml_full.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -306,7 +336,6 @@ QLabel {
                <string>  Meet the Team
   Developers behind this tool</string>
               </property>
-              <!-- REPLACED ICON -->
               <property name="icon">
                <iconset resource="resources.qrc">
                 <normaloff>:/new/Prefix1/images/team.png</normaloff>:/new/Prefix1/images/team.png</iconset>
@@ -339,29 +368,25 @@ QLabel {
           </item>
           <item>
            <widget class="QLabel" name="label_6">
+            <property name="styleSheet">
+             <string>font-size: 20px; font-weight: bold; color: #2c3e50; margin-bottom: 20px;</string>
+            </property>
             <property name="text">
              <string>Key Features</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
             </property>
-            <property name="styleSheet">
-             <string>font-size: 20px; font-weight: bold; color: #2c3e50; margin-bottom: 20px;</string>
-            </property>
            </widget>
           </item>
           <item>
            <layout class="QGridLayout" name="gridLayout">
-            <property name="verticalSpacing">
-             <number>30</number>
-            </property>
             <property name="horizontalSpacing">
              <number>20</number>
             </property>
-
-            <!-- ROW 0 -->
-
-            <!-- FEATURE 1: XML Verification (Green) -->
+            <property name="verticalSpacing">
+             <number>30</number>
+            </property>
             <item row="0" column="0">
              <layout class="QVBoxLayout" name="featLayout1">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -396,21 +421,19 @@ QLabel {
               </item>
               <item>
                <widget class="QLabel" name="label_8">
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
                 <property name="text">
                  <string>XML Verification</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                <property name="styleSheet">
-                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
-                </property>
                </widget>
               </item>
              </layout>
             </item>
-
-            <!-- FEATURE 2: Prettify Format (Blue) -->
             <item row="0" column="1">
              <layout class="QVBoxLayout" name="featLayout2">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -445,21 +468,19 @@ QLabel {
               </item>
               <item>
                <widget class="QLabel" name="label_10">
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
                 <property name="text">
                  <string>Prettify Format</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                 <property name="styleSheet">
-                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
-                </property>
                </widget>
               </item>
              </layout>
             </item>
-
-            <!-- FEATURE 3: Minify XML (Purple) -->
             <item row="0" column="2">
              <layout class="QVBoxLayout" name="featLayout3">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -494,21 +515,19 @@ QLabel {
               </item>
               <item>
                <widget class="QLabel" name="label_12">
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
                 <property name="text">
                  <string>Minify XML</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                 <property name="styleSheet">
-                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
-                </property>
                </widget>
               </item>
              </layout>
             </item>
-
-            <!-- FEATURE 4: Convert to JSON (Gold) -->
             <item row="0" column="3">
              <layout class="QVBoxLayout" name="featLayout4">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -544,23 +563,19 @@ QLabel {
               </item>
               <item>
                <widget class="QLabel" name="label_14">
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
                 <property name="text">
                  <string>Convert to JSON</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                 <property name="styleSheet">
-                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
-                </property>
                </widget>
               </item>
              </layout>
             </item>
-
-            <!-- ROW 1 -->
-
-            <!-- FEATURE 5: Compress XML (Red) -->
             <item row="1" column="0">
              <layout class="QVBoxLayout" name="featLayout5">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -595,21 +610,19 @@ QLabel {
               </item>
               <item>
                <widget class="QLabel" name="label_15">
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
                 <property name="text">
                  <string>Compress XML</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                <property name="styleSheet">
-                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
-                </property>
                </widget>
               </item>
              </layout>
             </item>
-            
-            <!-- FEATURE 6: XML to Graph (Cyan/Blue-ish) -->
             <item row="1" column="1">
              <layout class="QVBoxLayout" name="featLayout6">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -644,21 +657,19 @@ QLabel {
               </item>
               <item>
                <widget class="QLabel" name="label_16">
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
                 <property name="text">
                  <string>XML to Graph</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                <property name="styleSheet">
-                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
-                </property>
                </widget>
               </item>
              </layout>
             </item>
-
-            <!-- FEATURE 7: Network Analysis (Pink) -->
             <item row="1" column="2">
              <layout class="QVBoxLayout" name="featLayout7">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -693,21 +704,19 @@ QLabel {
               </item>
               <item>
                <widget class="QLabel" name="label_17">
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
                 <property name="text">
                  <string>Network Analysis</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                <property name="styleSheet">
-                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
-                </property>
                </widget>
               </item>
              </layout>
             </item>
-            
-            <!-- FEATURE 8: Post Search (Indigo/Unique) -->
             <item row="1" column="3">
              <layout class="QVBoxLayout" name="featLayout8">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -742,20 +751,19 @@ QLabel {
               </item>
               <item>
                <widget class="QLabel" name="label_18">
+                <property name="styleSheet">
+                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
+                </property>
                 <property name="text">
                  <string>Post Search</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
-                <property name="styleSheet">
-                 <string>color: #555; font-weight: bold; margin-top: 5px;</string>
-                </property>
                </widget>
               </item>
              </layout>
             </item>
-
            </layout>
           </item>
           <item>

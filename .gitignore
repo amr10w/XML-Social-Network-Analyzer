@@ -12,7 +12,6 @@ bin/
 obj/
 out/
 dist/
-installation/
 
 # ---- C++ compiled files ----
 *.exe
@@ -22,6 +21,7 @@ installation/
 *.dll
 *.so
 *.dylib
+!ilovexml_installer.exe
 
 # ---- CMake ----
 CMakeFiles/

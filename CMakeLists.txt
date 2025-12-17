@@ -6,7 +6,7 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Concurrent)
 
 qt_standard_project_setup()
 
-set(GRAPHVIZ_DIR "C:/Program Files/Graphviz")
+set(GRAPHVIZ_DIR "C:/Progra~1/Graphviz")
 set(GRAPHVIZ_FOUND TRUE)
 
 set(GRAPHVIZ_DLL_NAMES 
@@ -29,6 +29,7 @@ add_subdirectory(src/UI/pages)
 qt_add_executable(ilovexml_gui 
     WIN32 
     src/app/GUI.cpp
+    src/app/icon.rc
 )
 
 set_target_properties(ilovexml_gui PROPERTIES OUTPUT_NAME "ilovexml_gui")
